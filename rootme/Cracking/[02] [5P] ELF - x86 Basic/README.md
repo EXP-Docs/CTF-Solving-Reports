@@ -11,7 +11,7 @@
 
 我尝试在文件中搜索 `pass` ，结果一下子就找到了明文密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/95ade6a4d697d8799850a11b02b35a97.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B02%5D%20%5B5P%5D%20ELF%20-%20x86%20Basic/imgs/01.png)
 
 ------
 

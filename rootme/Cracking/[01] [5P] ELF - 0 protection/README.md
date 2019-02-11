@@ -17,7 +17,7 @@
 
 其实这就是密码，这么直白地把密码明文存储也是没谁了，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/29e8355b99ba81e8aed9e018655a8ae6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B01%5D%20%5B5P%5D%20ELF%20-%200%20protection/imgs/01.png)
 
 ------
 

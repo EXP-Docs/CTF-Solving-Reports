@@ -18,8 +18,8 @@
 
 使用 Burp Suite -> Decoder 工具对其解密还原成 ASCII ，得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/4a34b9bc62f5f43a793601b66a8719f4.png)
-![](http://exp-blog.com/wp-content/uploads/2019/01/eca6eea5dffa2419cdb9a0e074339845.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B03%5D%20%5B5P%5D%20PE%20-%200%20protection/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B03%5D%20%5B5P%5D%20PE%20-%200%20protection/imgs/02.png)
 
 ------
 
