@@ -1,5 +1,5 @@
-# CTF-Solving-Reports （Root-Me）
-　[Root-Me 解题报告](http://exp-blog.com/2019/01/02/pid-2597/)
+# CTF-Solving-Reports
+　专题： [Root-Me 解题报告](http://exp-blog.com/2019/01/02/pid-2597/)
 
 ------
 
