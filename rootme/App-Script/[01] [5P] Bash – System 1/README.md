@@ -140,7 +140,7 @@ app-script-ch11@challenge02:/tmp/exp$ ~/ch11
 换言之新编译的 ch11 脚本的 SUID 位还是 app-script-ch11 自身，是没有办法利用 SUID 的特性在执行脚本的过程中提权为 app-script-ch11-cracked 的。
 
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/App-Script/01%20%5B5P%5D%20Bash%20%E2%80%93%20System%201/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/App-Script/%5B01%5D%20%5B5P%5D%20Bash%20%E2%80%93%20System%201/imgs/01.png)
 
 ------
 

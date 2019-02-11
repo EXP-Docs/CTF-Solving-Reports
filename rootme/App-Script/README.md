@@ -3,7 +3,7 @@
 
 ------
 
-- [\[5P\] Bash - System 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/App-Script/01%20%5B5P%5D%20Bash%20%E2%80%93%20System%201)
+- [\[5P\] Bash - System 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/App-Script/%5B01%5D%20%5B5P%5D%20Bash%20%E2%80%93%20System%201)
 - [sudo - weak configuration](#)
 - [Bash - System 2](#)
 - [Perl - Command injection](#)
