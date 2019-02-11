@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　专题： [XSS-Game 解题报告](#)
+　【专题】 [XSS-Game 解题报告](#)
 
 
 ------
