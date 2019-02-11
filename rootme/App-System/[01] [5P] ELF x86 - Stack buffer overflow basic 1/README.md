@@ -11,7 +11,7 @@
 - ch13 ： 由 ch13.c 编译而成的脚本文件，且其 owner 具备 S 位权限
 - ch13.c ： ch13 脚本的源文件，只是让我们看一下源码，知道其作用是当变量 `check==0xdeadbeef` 时，就帮当前用户进行提权
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/3856ff7daeb8b82f7a1fe2236c322c20.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/App-System/%5B01%5D%20%5B5P%5D%20ELF%20x86%20-%20Stack%20buffer%20overflow%20basic%201/imgs/01.png)
 
 那么这题的切入点就在于如何令变量 `check` 的值变成 `0xdeadbeef` 实现当前用户提权，再读取 `.passwd` 文件。
 
@@ -71,7 +71,7 @@ char *fgets 会从 (char *restrict s, int n, FILE *restrict stream);
 
 执行命令 `./ch13` 运行脚本，再输入这个 payloads ，最后按下回车输入 `\n` ，发现变量 `check` 的值被覆写了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/bfb1576511c42f7f717d49f203586e43.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/App-System/%5B01%5D%20%5B5P%5D%20ELF%20x86%20-%20Stack%20buffer%20overflow%20basic%201/imgs/02.png)
 
 进一步分析变量 `check` 的值，是 `0x64636261`，转换成 ASCII 码就是 `dcba`， 而所输入的 payloads 是 `abcd` ，顺序刚好相反。至此就有足够条件可以构造真正的 payloads 了。
 
@@ -83,7 +83,7 @@ char *fgets 会从 (char *restrict s, int n, FILE *restrict stream);
 
 此时执行命令 `cat .passwd` 成功得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/f0bfe09aa65aa00c570e8f21afc80f25.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/App-System/%5B01%5D%20%5B5P%5D%20ELF%20x86%20-%20Stack%20buffer%20overflow%20basic%201/imgs/03.png)
 
 ------
 
