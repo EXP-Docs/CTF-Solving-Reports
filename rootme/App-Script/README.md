@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【App-Script 分类】 [[官网入口](https://www.root-me.org/en/Challenges/App-Script/)] [[上级分类](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme)]
+　[[Root-Me](https://www.root-me.org/)] [[App-Script](https://www.root-me.org/en/Challenges/App-Script/)] [[上级分类](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme)]
 
 ------
 

@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【App-Script : Bash - System 1】 [[官网入口](https://www.root-me.org/en/Challenges/App-Script/ELF32-System-1)] [[上级分类](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/App-Script)]
+　[[Root-Me](https://www.root-me.org/)] [[App-Script](https://www.root-me.org/en/Challenges/App-Script/)] [[Bash - System 1](http://exp-blog.com/2019/01/02/pid-2705/)] [[官网入口](https://www.root-me.org/en/Challenges/App-Script/ELF32-System-1)] [[上级分类](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme)]
 
 ------
 
