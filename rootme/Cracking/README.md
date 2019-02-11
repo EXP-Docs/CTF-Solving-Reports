@@ -3,9 +3,9 @@
 
 ------
 
-- [\[5P\] ELF - 0 protection](http://exp-blog.com/2019/01/02/pid-2703/)
-- [\[5P\] ELF - x86 Basic](http://exp-blog.com/2019/01/13/pid-2860/)
-- [\[5P\] PE - 0 protection](http://exp-blog.com/2019/01/02/pid-2701/)
+- [\[5P\] ELF - 0 protection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B01%5D%20%5B5P%5D%20ELF%20-%200%20protection)
+- [\[5P\] ELF - x86 Basic](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B02%5D%20%5B5P%5D%20ELF%20-%20x86%20Basic)
+- [\[5P\] PE - 0 protection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B03%5D%20%5B5P%5D%20PE%20-%200%20protection)
 - [ELF C++ - 0 protection](#)
 - [PE DotNet - 0 protection](#)
 - [ELF - Fake Instructions](#)
