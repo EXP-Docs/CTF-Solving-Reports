@@ -3,7 +3,7 @@
 
 ------
 
-- [\[5P\] ELF x86 - Stack buffer overflow basic 1](http://exp-blog.com/2019/01/14/pid-3002/)
+- [\[5P\] ELF x86 - Stack buffer overflow basic 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/App-System/%5B01%5D%20%5B5P%5D%20ELF%20x86%20-%20Stack%20buffer%20overflow%20basic%201)
 - [ELF x86 - Stack buffer overflow basic 2](#)
 - [ELF x86 - Format string bug basic 1](#)
 - [ELF x64 - Stack buffer overflow - basic](#)
