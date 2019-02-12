@@ -40,7 +40,7 @@
 - (3) 字符分割：虽然字符宽度和间隔宽度均是不等宽，但由于字符之间无粘连，可以用垂直扫描线从左到右扫描，只要扫描线上的像素点全为白色背景色，则为间隔区域，从而实现字符分割
 - (4) 字符归一化：由于字符规正，直接缩放到同一大小即可，例如 32x32，再将其进行网格划分成 4×4 共16块（若有必要可继续划分）。通过可以计算每一块的特征值，最后就得到这个字符的 4×4 矩阵的网格特征值，这就是归一化（**其实就是卷积神经网络量化特征值的简化版**）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/9801671efae69580dfd2347fb6b1a5a3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B05%5D%20%5B20P%5D%20CAPTCHA%20me%20if%20you%20can/imgs/01.png)
 
 ## 字符识别
 
@@ -93,9 +93,9 @@
 
 这样就得到了 **每天免费 500 次** 的 OCR 识别权限，对于 CTF 是完全足够了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/509f3ef99dc9d49f1747990850f008e8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B05%5D%20%5B20P%5D%20CAPTCHA%20me%20if%20you%20can/imgs/02.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c41b7c6d5675009b1e13e7782b1e83ee.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B05%5D%20%5B20P%5D%20CAPTCHA%20me%20if%20you%20can/imgs/03.png)
 
 
 建议使用 python 进行开发，该 API 的 SDK 安装可以通过命令 `pip install baidu-aip` 简单实现。
