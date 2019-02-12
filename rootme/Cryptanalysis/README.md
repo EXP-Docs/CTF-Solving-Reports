@@ -3,12 +3,12 @@
 
 ------
 
-- [\[5P\] Encoding - ASCII](http://exp-blog.com/2019/01/13/pid-2872/)
-- [\[5P\] Encoding - UU](http://exp-blog.com/2019/01/13/pid-2874/)
-- [\[5P\] Hash - Message Digest 5](http://exp-blog.com/2019/01/13/pid-2876/)
-- [\[5P\] Hash - SHA-2](http://exp-blog.com/2019/01/13/pid-2878/)
-- [\[10P\] Shift cipher](http://exp-blog.com/2019/01/13/pid-2881/)
-- [\[15P\] Pixel Madness](http://exp-blog.com/2019/01/02/pid-2699/)
+- [\[5P\] Encoding - ASCII](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B01%5D%20%5B5P%5D%20Encoding%20-%20ASCII)
+- [\[5P\] Encoding - UU](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B02%5D%20%5B5P%5D%20Encoding%20-%20UU)
+- [\[5P\] Hash - Message Digest 5](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B03%5D%20%5B5P%5D%20Hash%20-%20Message%20Digest%205)
+- [\[5P\] Hash - SHA-2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B04%5D%20%5B5P%5D%20Hash%20-%20SHA-2)
+- [\[10P\] Shift cipher](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B05%5D%20%5B10P%5D%20Shift%20cipher)
+- [\[15P\] Pixel Madness](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B06%5D%20%5B15P%5D%20Pixel%20Madness)
 - [ELF64 - PID encryption](#)
 - [File - PKZIP](#)
 - [Monoalphabetic substitution - Caesar](#)
