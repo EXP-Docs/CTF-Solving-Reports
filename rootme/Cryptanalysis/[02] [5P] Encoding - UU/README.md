@@ -1,0 +1,25 @@
+# CTF-Solving-Reports
+　[[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Encoding - UU](https://www.root-me.org/en/Challenges/Cryptanalysis/Encoding-UU)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2874/)]
+
+------
+
+水题，题目就是提示，UU 解码。
+
+随便搜索一个 [UU 解码器](http://ctf.ssleye.com/uu.html) 即可。
+
+对 `begin` 和 `end` 之间的内容解码，得到密码，完成挑战。
+
+![](http://exp-blog.com/wp-content/uploads/2019/01/9c5e6a5e5cfb3eddd941e0705d1cd04c.png)
+
+------
+
+## 版权声明
+
+　[![Copyright (C) 2016-2019 By EXP](https://img.shields.io/badge/Copyright%20(C)-2006~2019%20By%20EXP-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+  
+
+- Site: [http://exp-blog.com](http://exp-blog.com) 
+- Mail: <a href="mailto:289065406@qq.com?subject=[EXP's Github]%20Your%20Question%20（请写下您的疑问）&amp;body=What%20can%20I%20help%20you?%20（需要我提供什么帮助吗？）">289065406@qq.com</a>
+
+
+------
