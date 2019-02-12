@@ -10,7 +10,7 @@
 
 输入任意内容，点击按钮提交，可得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/8070ab2137539080271eda68844e7377.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B01%5D%20%5B5P%5D%20HTML%20-%20disabled%20buttons/imgs/01.png)
 
 ------
 
