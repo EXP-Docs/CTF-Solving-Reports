@@ -3,7 +3,7 @@
 
 ------
 
-- [\[15P\] Command & Control - level 2](http://exp-blog.com/2019/01/02/pid-2697/)
+- [\[15P\] Command & Control - level 2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Forensic/%5B01%5D%20%5B15P%5D%20Command%20%26%20Control%20-%20level%202)
 - [Logs analysis - web attack](#)
 - [Command & Control - level 5](#)
 - [Find the cat](#)
