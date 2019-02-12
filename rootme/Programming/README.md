@@ -3,15 +3,15 @@
 
 ------
 
-- [\[5P\] Go back to college](http://exp-blog.com/2019/02/07/pid-3184/)
-- [\[10P\] Encoded string](http://exp-blog.com/2019/02/08/pid-3199/)
-- [\[10P\] The Roman’s wheel](http://exp-blog.com/2019/02/08/pid-3206/)
-- [\[10P\] Uncompress me](http://exp-blog.com/2019/02/08/pid-3213/)
-- [\[20P\] CAPTCHA me if you can](http://exp-blog.com/2019/02/09/pid-3217/)
-- [\[20P\] Arithmetic progression](http://exp-blog.com/2019/02/09/pid-3255/)
+- [\[5P\] Go back to college](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B01%5D%20%5B5P%5D%20Go%20back%20to%20college)
+- [\[10P\] Encoded string](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B02%5D%20%5B10P%5D%20Encoded%20string)
+- [\[10P\] The Roman’s wheel](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B03%5D%20%5B10P%5D%20The%20Roman%E2%80%99s%20wheel)
+- [\[10P\] Uncompress me](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B04%5D%20%5B10P%5D%20Uncompress%20me)
+- [\[20P\] CAPTCHA me if you can](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B05%5D%20%5B20P%5D%20CAPTCHA%20me%20if%20you%20can)
+- [\[20P\] Arithmetic progression](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression)
 - [ELF x64 - Shellcoding - Sheep warmup](#)
 - [ELF x64 - Shellcoding - Polymorphism](#)
-- [\[40P\] Quick Response Code](http://exp-blog.com/2019/02/10/pid-3267/)
+- [\[40P\] Quick Response Code](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Programming/%5B09%5D%20%5B40P%5D%20Quick%20Response%20Code)
 - [ELF x64 - Sandbox shellcoding](#)
 - [ELF x86 - Shellcoding - Alphanumeric](#)
 
