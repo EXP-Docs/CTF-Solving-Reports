@@ -13,7 +13,7 @@
 
 这三个“回”形图案是所有二维码都必须有的，其作用是用于扫描定位。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/qr_vertex.bmp)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B09%5D%20%5B40P%5D%20Quick%20Response%20Code/imgs/01.png)
 
 
 ## 二维码分析
@@ -26,7 +26,7 @@
 - “回”形图案的外圈大小为 7x7 个大像素点，内圈为 3x3 个大像素点，镂空距离为 1 个大像素点
 - 以原子像素计算，三个缺失的“回”形图案的左上角顶点坐标分别为 (18, 18)、 (18, 216)、 (216, 18)
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/qrcode_auxiliary.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B09%5D%20%5B40P%5D%20Quick%20Response%20Code/imgs/02.png)
 
 ## 二维码修复
 
@@ -38,12 +38,12 @@
 
 > 注：一个大像素点 = 9x9 个原子像素
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/qrcode.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B09%5D%20%5B40P%5D%20Quick%20Response%20Code/imgs/03.png)
 
 
 修复完成后尝试使用手机扫码，可以成功识别出二维码内容：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/acec149288f42abb9abb747cd85acaa8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B09%5D%20%5B40P%5D%20Quick%20Response%20Code/imgs/04.png)
 
 ## 解题代码
 
