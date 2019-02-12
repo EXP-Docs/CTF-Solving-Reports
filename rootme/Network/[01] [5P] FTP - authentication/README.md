@@ -10,11 +10,11 @@
 
 右击 `FTP-DATA` 的数据包 -> 追踪流 -> TCP流：对这个数据包进行 TCP追踪，尝试找到建立这个 FTP 会话的数据包。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/101b85aa3755c67a13ab475165a0f8f3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Network/%5B01%5D%20%5B5P%5D%20FTP%20-%20authentication/imgs/01.png)
 
 马上就找到了建立这个 FTP 会话时发送的账号和密码请求，竟然是明文传输。。。完成挑战
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/3db182e14de3105c48f9b3b79ad000a0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Network/%5B01%5D%20%5B5P%5D%20FTP%20-%20authentication/imgs/02.png)
 
 ------
 
