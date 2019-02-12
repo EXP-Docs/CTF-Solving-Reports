@@ -3,7 +3,7 @@
 
 ------
 
-- [\[5P\] FTP - authentication](http://exp-blog.com/2019/01/02/pid-2695/)
+- [\[5P\] FTP - authentication](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Network/%5B01%5D%20%5B5P%5D%20FTP%20-%20authentication)
 - [TELNET - authentication](#)
 - [ETHERNET - frame](#)
 - [Twitter authentication](#)
