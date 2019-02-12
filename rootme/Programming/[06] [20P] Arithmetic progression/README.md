@@ -4,75 +4,19 @@
 
 ## 题目分析
 
-高中数学题。
-
-多刷新几次挑战页面可以得到一个规律，挑战给出了一条 **固定格式** 的 **递推公式** ：
-
-$U_{n+1} = ( A + U_n ) \quad op \quad ( n * B )$
-
-同时给出初值 $U_0$ ， 要求在 **2秒内** 求出当 $n$ 为某个数时，$U_n$ 的值。
-
-其中：
-
-- $A$ 和 $B$ 是一个随机整数，每次刷新页面都会变化
-- $op$ 是一个运算符，只会是 $+$ 或 $-$
-- $U_0$ 是随机整数，每次刷新页面都会变化
-- $n$ 是随机正整数，每次刷新页面都会变化，且 $n$ 值较大
-
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression/imgs/01.png)
 
 ## 解题思路
 
-直观的做法是直接从 $U_0$ 开始代入递推公式，一直循环计算，直到算出 $U_n$ 为止。
-
-但是这是不可能的，因为题目所要求的 $n$ 值都很大，大到基本不可能在 2秒内 通过递推公式推算 $U_n$ 的结果。
-
-因此正确的做法是，<font color="red">根据**递推公式**求出**通项公式**</font>，这是高中的 **数列** 知识。
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression/imgs/02.png)
 
 ## 求通项公式
 
-求通项公式有很多种方法，这里使用 **累加法**， 求解过程如下：
-
-对 $U_{n+1} = ( A + U_n ) \quad op \quad ( n * B )$ 变形得到：
-
-$U_{n+1} - U_n = A \quad op \quad B * n$
-
-逐项作差，于是有：
-
-$$
-\small{
-\begin{cases}
-U_n - U_{n-1} = A \quad op \quad B * ( n - 1 ) \\\
-U_{n-1} - U_{n-2} = A \quad op \quad B * ( n - 2 ) \\\
-U_{n-2} - U_{n-3} = A \quad op \quad B * ( n - 3 ) \\\
-\text{...... } \\\
-U_3 - U_2 = A \quad op \quad B * 2 \\\
-U_2 - U_1 = A \quad op \quad B * 1 \\\
-U_1 - U_0 = A \quad op \quad B * 0
-\end{cases}
-}
-$$
-
-对等号的左右两边分别相加，有：
-
-　　$( U_n - U_{n-1} ) + ( U_{n-1} - U_{n-2} ) + ...... + ( U_2 - U_1 ) + ( U_1 - U_0 )$
-　　$ = A * n \quad op \quad B * [(n - 1) + (n - 2) + (n - 3) + ... + 2 + 1 + 0]$
-
-化简得：
-
-$U_n - U_0 = A * n \quad op \quad B * \dfrac{(n-1)*n}{2}$
-
-即通项公式为：
-
-$U_n = A * n \quad op \quad B * \dfrac{(n-1)*n}{2} + U_0$
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression/imgs/03.png)
 
 ## 解题代码
 
-得到通项公式，就可以在给定任意 $n$ 值的情况下，直接计算 $U_n$ 的值了。
-
-因此代码只需要从挑战页面的 html 源码中抠取实时的 $A$、 $B$、 $op$、$U_0$ 、$n$ 的值，再将其直接代入通项公式计算 $U_n$ 即可。
-
-详细代码如下：
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression/imgs/04.png)
 
 > 注：此代码是用 python 3.5.2 写的，运行前需确保已在浏览器登陆了 rootme 并打开过此挑战页面
 
