@@ -189,7 +189,7 @@ if __name__ == '__main__' :
 | IRC 命令 | 格式 | 样例 | 作用 |
 |:---:|:---:|:---:|:---:|
 | `NICK` | `NICK [username]\r\n` | `NICK EXP\r\n` | 设置在聊天室的昵称，连接到 IRC 服务器后必须首先发送此命令 |
-| `USER` | `USER [username] [username] `<br/>`[username] :[any_msg]\r\n` | `NICK EXP EXP EXP :Hi\r\n` | 我找不到关于这条命令的任何说明，但是它必须跟在 `NICK` 命令后 |
+| `USER` | `USER [username] [username] [username] :[any_msg]\r\n` | `NICK EXP EXP EXP :Hi\r\n` | 我找不到关于这条命令的任何说明，但是它必须跟在 `NICK` 命令后 |
 | `JOIN` | `JOIN [channel]\r\n` | `JOIN #root-me_challenge\r\n` | 加入某个聊天频道，<br/>频道名称必须以 # 开头 |
 | `PRIVMSG` | `PRIVMSG [somebody] :[any_msg]\r\n` | `PRIVMSG Candy :Hello\r\n` | 给某人发送私信 |
 
