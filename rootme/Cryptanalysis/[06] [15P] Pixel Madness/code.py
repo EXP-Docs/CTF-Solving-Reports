@@ -1,22 +1,3 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Pixel Madness](https://www.root-me.org/en/Challenges/Cryptanalysis/Pixel-Madness-86)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2699/)]
-
-------
-
-从题目就可以猜测，这题与像素图有关。
-
-但是题目提供的数据比较奇怪，我最开始以为是用十六进制数表示的像素点，但是 `1x1` 这种数据明显不是十六进制，而且如果是十六进制，每行的像素个数也不同，不可能构成图片。
-
-题目 Clue 提示了 `0 = #FFFFFF（白色）` ， `1 = #000000（黑色）` ，亦即说明图片只有黑白两种颜色，很可能所给的数据应该只有 0 和 1 两种有效像素。
-
-结合考虑，判断 `0xa` 应该是表示连续 a 个 0，而 `1xb` 则表示 连续 b 个 1 。
-
-以这种方式数了一下每行的 01 总个数，都是刚好 100 个，就可以确定判断没错了，这种编码方式实际上就是 `游程长度编码`（注意第 8 行其实是 101 个，多了一个像素，我删掉了末尾的 0 使其对齐，不然无法绘图）。
-
-知道编码方式，那么只需要对其解码，然后绘制成图片就可以了。绘制图片后密码就在里面，图片很多噪点，但还是能勉强看到密码是 `SOLUTION` （注意密码要全大写字母）。
-
-我简单写了个 python 程序对题目给出的图片数据进行解码，并将其还原成图片，贴在下面：
-
-```python
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
@@ -65,19 +46,3 @@ img = Image.new("RGB", (IMAGE_WIDTH, IMAGE_HEIGHT))
 img.putdata(pixels)
 img.save('SOLUTION.png')
 img.show()
-```
-
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B06%5D%20%5B15P%5D%20Pixel%20Madness/imgs/01.png)
-
-------
-
-## 版权声明
-
-　[![Copyright (C) 2016-2019 By EXP](https://img.shields.io/badge/Copyright%20(C)-2006~2019%20By%20EXP-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-  
-
-- Site: [http://exp-blog.com](http://exp-blog.com) 
-- Mail: <a href="mailto:289065406@qq.com?subject=[EXP's Github]%20Your%20Question%20（请写下您的疑问）&amp;body=What%20can%20I%20help%20you?%20（需要我提供什么帮助吗？）">289065406@qq.com</a>
-
-
-------

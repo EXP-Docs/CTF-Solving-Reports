@@ -1,5 +1,4 @@
-# CTF-Solving-Reports
-　[[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Shift cipher](https://www.root-me.org/en/Challenges/Cryptanalysis/Shift-cipher)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2881/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Shift cipher](https://www.root-me.org/en/Challenges/Cryptanalysis/Shift-cipher)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2881/)]
 
 ------
 
@@ -14,6 +13,9 @@
 代码比较简单，贴在下面：
 
 ```python
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
 # ch7.bin 的文件内容
 ch7_bin = 'L|k€y+*^*zo‚*€kvsno|*k€om*vo*zk}}*cyvksr'
 
