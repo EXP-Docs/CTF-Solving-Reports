@@ -89,7 +89,7 @@ Pid      Process              Block      Variable                       Value
 ```
 从返回信息可以找到一个变量名为 `COMPUTERNAME` ，其值就是工作站的名称，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/d5efa3e37d16dfeec6c7d1b5ccbf8ad3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Forensic/%5B01%5D%20%5B15P%5D%20Command%20%26%20Control%20-%20level%202/imgs/01.png)
 
 ------
 
