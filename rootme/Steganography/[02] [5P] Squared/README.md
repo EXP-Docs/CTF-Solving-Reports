@@ -11,8 +11,8 @@
 
 查看图片源码的最末尾，可以找到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/31ee0d2c220e5f16d2956ba9a44d797f.png)
-![](http://exp-blog.com/wp-content/uploads/2018/12/047743e556f56ed2a96445b660356898.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Steganography/%5B02%5D%20%5B5P%5D%20Squared/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Steganography/%5B02%5D%20%5B5P%5D%20Squared/imgs/02.png)
 
 ------
 

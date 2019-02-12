@@ -6,7 +6,7 @@
 
 所谓大隐隐于市，不需要借助任何工具，睁大眼睛看图片右上附近的位置就可以找到密码了。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/8337d54ce8e022ca291ff450ac8ce992.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Steganography/%5B01%5D%20%5B5P%5D%20Gunnm/imgs/01.png)
 
 ------
 
