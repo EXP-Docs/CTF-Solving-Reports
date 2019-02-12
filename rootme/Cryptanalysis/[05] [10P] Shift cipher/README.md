@@ -43,7 +43,7 @@ for offset in range(1, 256) :
 		pass # ascii overflow
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c7f1540bc9452cda69ab7b78283b4c1f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B05%5D%20%5B10P%5D%20Shift%20cipher/imgs/01.png)
 
 ------
 

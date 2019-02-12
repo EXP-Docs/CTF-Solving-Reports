@@ -7,7 +7,7 @@
 
 网上有很多 [MD5 的逆向爆破工具](https://www.md5online.org/md5-decrypt.html)，直接解码即可得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/415483e78c614fd50d110404b6c9b6ed.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B03%5D%20%5B5P%5D%20Hash%20-%20Message%20Digest%205/imgs/01.png)
 
 ------
 

@@ -65,7 +65,7 @@ img.save('SOLUTION.png')
 img.show()
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/ab5a011457ee39bcc1d4578df1e26932.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B06%5D%20%5B15P%5D%20Pixel%20Madness/imgs/01.png)
 
 ------
 

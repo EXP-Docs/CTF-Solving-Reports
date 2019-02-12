@@ -9,7 +9,7 @@
 
 对 `begin` 和 `end` 之间的内容解码，得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/9c5e6a5e5cfb3eddd941e0705d1cd04c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B02%5D%20%5B5P%5D%20Encoding%20-%20UU/imgs/01.png)
 
 ------
 

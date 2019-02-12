@@ -15,7 +15,7 @@
 
 最后不要忘记，真正的答案还需要对 `4dM1n` 进行 SHA-1 加密，随便搜一个 [SHA-1 在线加密工具](http://www.ttmd5.com/hash.php?type=5)即可，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c6721cba86f306dfd7bf3fd1ce4a8515.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B04%5D%20%5B5P%5D%20Hash%20-%20SHA-2/imgs/01.png)
 
 ------
 

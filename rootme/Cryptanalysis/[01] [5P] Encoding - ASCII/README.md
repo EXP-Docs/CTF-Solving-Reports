@@ -1,4 +1,4 @@
-# CTF-Solving-Reports
+# CTF-Solving-Reports [[Encoding - ASCII](http://exp-blog.com/2019/01/13/pid-2872/)]
 　[[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Encoding - ASCII](https://www.root-me.org/en/Challenges/Cryptanalysis/Encoding-ASCII)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2872/)]
 
 ------
@@ -11,7 +11,7 @@
 
 冒号后面的就是密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/74633a0e8bdad2afde4b0c4ffaeb12b3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B01%5D%20%5B5P%5D%20Encoding%20-%20ASCII/imgs/01.png)
 
 ------
 
