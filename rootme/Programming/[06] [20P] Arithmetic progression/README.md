@@ -19,6 +19,7 @@ $U_{n+1} = ( A + U_n ) \quad op \quad ( n * B )$
 - $U_0$ 是随机整数，每次刷新页面都会变化
 - $n$ 是随机正整数，每次刷新页面都会变化，且 $n$ 值较大
 
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Programming/%5B06%5D%20%5B20P%5D%20Arithmetic%20progression/imgs/01.png)
 
 ## 解题思路
 
