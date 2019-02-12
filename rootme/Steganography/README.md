@@ -3,8 +3,8 @@
 
 ------
 
-- [\[5P\] Gunnm](http://exp-blog.com/2019/01/02/pid-2692/)
-- [\[5P\] Squared](http://exp-blog.com/2019/01/02/pid-2688/)
+- [\[5P\] Gunnm](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Steganography/%5B01%5D%20%5B5P%5D%20Gunnm)
+- [\[5P\] Squared](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Steganography/%5B02%5D%20%5B5P%5D%20Squared)
 - [Dot and next line](#)
 - [Steganomobile](#)
 - [Twitter Secret Messages](#)
