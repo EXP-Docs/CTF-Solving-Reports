@@ -14,7 +14,7 @@
 
 这行代码与上下文无任何关系，但是它给出了一个提示：`fromCharCode` 表示 ASCII 解码，而后面是一串 `\x` 的十六进制数。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/be7303a84a8e2109a5096e4d832d377d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B08%5D%20%5B30P%5D%20Javascript%20-%20Obfuscation%203/imgs/01.png)
 
 先手工把所有 `\x` 替换为空格，打开 Burp Suite -> Decoder ，进行 ASCII hex 解码。
 
@@ -22,14 +22,14 @@
 
 `5 5 , 5 6 , 5 4 , 7 9 , 1 1 5 , 6 9 , 1 1 4 , 1 1 6 , 1 0 7 , 4 9 , 5 0`。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/019105a1509cb01f280461d151238851.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B08%5D%20%5B30P%5D%20Javascript%20-%20Obfuscation%203/imgs/02.png)
 
 手工将其整理下，得到真正的十进制 ASCII 编码： `55 56 54 79 115 69 114 116 107 49 50` 。
 由于 Burp Suite **不支持**直接对**十进制 ASCII** 进行解码，先编码成十六进制，再进行 ASCII hex 解码，最后得到 `7 8 6 O s E r t k 1 2` 。
 
 去掉空格串接起来就是真正的密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/cae028df11093759e7c598429779f781.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B08%5D%20%5B30P%5D%20Javascript%20-%20Obfuscation%203/imgs/03.png)
 
 ------
 

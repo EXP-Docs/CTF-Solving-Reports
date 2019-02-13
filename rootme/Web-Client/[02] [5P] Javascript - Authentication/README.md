@@ -10,7 +10,7 @@
 
 明显密码被写死在 `if` 的判断条件了，把密码拷过去，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/8ea629cabf56ab698504d251915d5d1e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B02%5D%20%5B5P%5D%20Javascript%20-%20Authentication/imgs/01.png)
 
 ------
 

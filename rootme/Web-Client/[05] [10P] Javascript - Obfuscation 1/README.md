@@ -6,14 +6,14 @@
 
 打开浏览器开发者工具，切到 Network 找到名为 `ch4.html` 中的一段 js 代码。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/9ebcd939a5813e1ddc8214a1b819c0b4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B05%5D%20%5B10P%5D%20Javascript%20-%20Obfuscation%201/imgs/01.png)
 
 稍微分析下代码，发现密码被调用了`unescape`方法，即**密码被URL编码**了。
 
 打开 Burp Suite -> Decoder ，直接**对密码进行URL解码**，得到真正的密码，完成挑战（注：使用其他在线的URL解码器也是一样的，一搜一大堆；甚至自己写代码进行解码也是OK的）。
 
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/d7c4edc517a01f3bc11d3fbd1f4a8c08.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B05%5D%20%5B10P%5D%20Javascript%20-%20Obfuscation%201/imgs/02.png)
 
 ------
 

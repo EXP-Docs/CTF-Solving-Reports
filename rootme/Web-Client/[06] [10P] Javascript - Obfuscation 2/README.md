@@ -12,7 +12,7 @@
 
 其中两次 `unescape` 表示要做**两次 URL 解码**，`fromCharCode`表示要做**一次 ASCII 解码**。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/92013c264eb15262fe6d74baa97aa03a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B06%5D%20%5B10P%5D%20Javascript%20-%20Obfuscation%202/imgs/01.png)
 
 打开 Burp Suite -> Decoder ，做**两次 URL 解码**得到 ：
 
@@ -26,7 +26,7 @@
 
 去掉逗号串起来就是真正的密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/352b3bca6ca584555c073491bd09c564.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B06%5D%20%5B10P%5D%20Javascript%20-%20Obfuscation%202/imgs/02.png)
 
 ------
 

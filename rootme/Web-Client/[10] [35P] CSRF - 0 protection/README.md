@@ -15,7 +15,7 @@
 
 很明显 Contact 就是注入点，且通过抓取 HTTP 请求发现， Email 虽然会校验格式，但是可以不填，而且也不会作为 HTTP 请求的参数发送出去，因此注入点就是 Comment 输入框。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/6532721c759fa34ea51e271bdcc5e3b2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B10%5D%20%5B35P%5D%20CSRF%20-%200%20protection/imgs/01.png)
 
 至此，解此题有两种思路：
 
@@ -32,7 +32,7 @@
 
 等了一会， [RequestBin](https://requestbin.fullcontact.com/) 服务器收到了消息，说明我们注入 XSS 成功，但是消息中并没有 admin 的 Cookie ，很可能是 Cookie 启用了 HttpOnly 的缘故，因此第 ① 种思路不可行，改用第 ② 种思路，即 CSRF。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/a2a24d3939e02322bf5d37aee224ccef.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B10%5D%20%5B35P%5D%20CSRF%20-%200%20protection/imgs/02.png)
 
 要执行 CSRF ，即需要令 admin 在读取 Comment 的时候触发一个激活账号的 POST，因此需要先获得这个 POST 请求的格式，再构造我们期望的内容。
 
@@ -40,7 +40,7 @@
 
 打开浏览器开发者工具，切到 Elements ，把 Status 的 `disabled` 属性删掉。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/d959e62f5b5ab3f36a5c907140f63a2f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B10%5D%20%5B35P%5D%20CSRF%20-%200%20protection/imgs/03.png)
 
 打开 Burp Suite -> Proxy -> HTTP history ，然后点击页面的 submit 按钮，即可捕获到激活账号的 POST 请求。
 
@@ -56,7 +56,7 @@
 
 多刷新几次 Private 选项卡，等待 robot-admin 触发 payloads，最终得到 flag，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/b25b5202d4c5075d9d1ff46cd635e983.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B10%5D%20%5B35P%5D%20CSRF%20-%200%20protection/imgs/04.png)
 
 ------
 

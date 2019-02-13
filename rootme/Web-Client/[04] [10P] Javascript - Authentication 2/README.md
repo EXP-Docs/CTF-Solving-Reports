@@ -10,7 +10,7 @@
 
 把密码拷过去，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/32bf11d403e5c3f2da8e21fc961a943c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B04%5D%20%5B10P%5D%20Javascript%20-%20Authentication%202/imgs/01.png)
 
 ------
 

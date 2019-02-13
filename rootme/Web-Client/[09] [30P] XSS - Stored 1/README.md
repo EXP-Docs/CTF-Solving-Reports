@@ -6,7 +6,7 @@
 
 页面需要提交一个表单，在 Message 区测试注入一个 html 代码 `<img src=0 />`，提交后发现直接作为图片元素渲染。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/43a015747645978f753bfad075713162.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B09%5D%20%5B30P%5D%20XSS%20-%20Stored%201/imgs/01.png)
 
 打开浏览器的开发者工具查看，不难发现 Cookie 并没有标注 `HttpOnly` 属性，说明可以利用 `document.cookie` 发起 XSS 攻击。
 
@@ -20,7 +20,7 @@
 
 （注：此 payloads 建议直接在页面提交，若使用 Burp Suite 提交注意需要先把 `+` 编码成 `%2B` ，否则会导致服务器报错收不到消息）
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/5a92b5f080e48c015052423cb1054cc5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B09%5D%20%5B30P%5D%20XSS%20-%20Stored%201/imgs/02.png)
 
 提交 payloads 消息后，就登录到 `${HOST}` 服务器守株待兔即可 (大概需要等5分钟)，只要机器人读取了这条消息，就能收到其 Cookie 。
 
@@ -30,12 +30,12 @@
 
 当然你也可以选择自己实现一个 HTTP 服务器，但是必须有公网 IP。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/41d1e1b7fc5375712a24987dc4c95044.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B09%5D%20%5B30P%5D%20XSS%20-%20Stored%201/imgs/03.png)
 
 最终收到的 Cookie 为：`ADMIN_COOKIE=NkI9qe4cdLIO2P7MIsWS8ofD6`，其值就是 flag，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/888d7862b49ef095959ecf916b5fd29d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B09%5D%20%5B30P%5D%20XSS%20-%20Stored%201/imgs/04.png)
 
 ------
 

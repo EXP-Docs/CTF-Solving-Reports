@@ -6,7 +6,7 @@
 
 切到 Profile 选项卡，打开浏览器开发者工具，切到 Elements ，可以看到激活表单多了一个实时刷新的 `token`，而且在本地找不到关于这个 `token` 的生成代码，因此可以推断这个 `token` 是与登录账号绑定、且由 web 服务器生成的。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/0ccd76e90df4766845293dfbcd463196.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B12%5D%20%5B45P%5D%20CSRF%20-%20token%20bypass/imgs/01.png)
 
 于是我们的目的就是需要在原本利用 robot-admin 的 Cookie 的基础上，再同时利用其 `token` 。
 
@@ -37,11 +37,11 @@
 
 多刷新几次 Private 选项卡，等待 robot-admin 触发 payloads，最终得到 flag，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/29dc07d802cc95b3f21efc60cc99d41a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B12%5D%20%5B45P%5D%20CSRF%20-%20token%20bypass/imgs/02.png)
 
 > 注：查看页面源码发现有一个隐藏的选项卡 Search 被注释了 `<!--| <a href="?action=search">Search</a> -->`，打开该选项卡，里面有一个 XSS 漏洞，但是暂时没发现这个漏洞对于本题有什么用（可能只是用来方便我们调试，但应该没那么好心，应该是用来误导的）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/3fd41fa348e9beba41cce2342fa4ebee.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B12%5D%20%5B45P%5D%20CSRF%20-%20token%20bypass/imgs/03.png)
 
 ------
 
