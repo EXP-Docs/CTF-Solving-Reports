@@ -18,7 +18,7 @@ guest failed to authenticate.     # guest 认证成功
 
 在登录框随便输入一些内容，日志会刷新一行： `${username} failed to authenticate.`，而 password 的内容不会打印到日志，亦即我们可以控制的输入位置为 `${username}` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/1078efe77ef5fbf04a8024b879b8ee65.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B13%5D%20%5B20P%5D%20CRLF/imgs/01.png)
 
 到此可以基本推断出：我们需要在 username 的输入框中进行注入某个 payloads，使得日志中打印一行 `guest  authenticated.` 进行欺骗。
 
@@ -31,7 +31,7 @@ guest failed to authenticate.     # guest 认证成功
 提交后成功欺骗，获得密码，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/687bdb22580261b31cac6e7b52672965.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B13%5D%20%5B20P%5D%20CRLF/imgs/02.png)
 
 ------
 

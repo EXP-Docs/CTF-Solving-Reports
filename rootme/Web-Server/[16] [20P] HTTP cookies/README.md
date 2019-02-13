@@ -4,14 +4,14 @@
 
 输入任意 email 后，点击 `Saved email adresses` 后提示 `You need to be admin` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/7250ce9e9f47888933402de4382dde2f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B16%5D%20%5B20P%5D%20HTTP%20cookies/imgs/01.png)
 
 在页面源码发现注释了一行代码 `<!--SetCookie("ch7","visiteur");-->`，检查 Cookie 发现当前 `ch7=visiteur` 。
 
 使用 Burp Suite -> Repeater 模拟 `Saved email adresses` 提交行为，修改 Cookie 为 `ch7=admin` ，提交后得到密码，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/720e7c65e4bee1128d50f4a69ab60659.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B16%5D%20%5B20P%5D%20HTTP%20cookies/imgs/02.png)
 
 ------
 

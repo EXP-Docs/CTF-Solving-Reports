@@ -8,7 +8,7 @@
 
 > 注：根据 Burp Suite 分析可知当前页面遵循 HTTP/1.1 版本规范，这个版本支持 8 个动词：` GET`、`HEAD`、`POST`、`OPTIONS`、`PUT`、`DELETE`、`TRACE`、`CONNECT`，逐个试就行。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/e97ee1f76b30bacd8451617a88b40cb9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B10%5D%20%5B15P%5D%20HTTP%20verb%20tampering/imgs/01.png)
 
 ------
 

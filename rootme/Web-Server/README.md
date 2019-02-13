@@ -21,7 +21,7 @@
 - [\[20P\] HTTP cookies](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B16%5D%20%5B20P%5D%20HTTP%20cookies)
 - [\[25P\] Directory traversal](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B17%5D%20%5B25P%5D%20Directory%20traversal)
 - [\[25P\] File upload - null byte](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B18%5D%20%5B25P%5D%20File%20upload%20-%20null%20byte)
-- [\[25P\] PHP assert()](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert())
+- [\[25P\] PHP assert()](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert)
 - [PHP filters](#)
 - [PHP register globals](#)
 - [File upload - ZIP](#)

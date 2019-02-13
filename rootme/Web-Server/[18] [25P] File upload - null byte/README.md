@@ -20,7 +20,7 @@
 上传成功后获得 `exp.php%00.png` 文件的完整 URI，手工去掉末尾的 `%00.png` 后拼接到 URL，即可获得密码，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/efd52fe863e3a5389f0a2733c29b7adc.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B18%5D%20%5B25P%5D%20File%20upload%20-%20null%20byte/imgs/01.png)
 
 ------
 

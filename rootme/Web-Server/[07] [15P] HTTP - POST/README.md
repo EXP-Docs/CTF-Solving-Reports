@@ -10,8 +10,8 @@
 
 可以直接在浏览器修改，也可用 Burp Suite -> Repeater 修改提交表单的值，得到 flag 完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/ec91b1a48d4a350284658c310cd646d5.png)
-![](http://exp-blog.com/wp-content/uploads/2019/01/96e5010f661cac3963f34ab5eda4bbbf.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B07%5D%20%5B15P%5D%20HTTP%20-%20POST/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B07%5D%20%5B15P%5D%20HTTP%20-%20POST/imgs/02.png)
 
 ------
 

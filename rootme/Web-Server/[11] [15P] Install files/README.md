@@ -6,11 +6,11 @@
 
 打开页面什么都没有，查看页面源码发现有一行注释：`<!--  /web-serveur/ch6/phpbb -->` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/d78ebccc9af4282dbaad77deff7b64d9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B11%5D%20%5B15P%5D%20Install%20files/imgs/01.png)
 
 在页面 URL 后面补充 `phpbb` ，再打开页面依然什么也没有。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c167852f0a183aa6b24dc52b3a2f65ef.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B11%5D%20%5B15P%5D%20Install%20files/imgs/02.png)
 
 搜索一下 phpbb，知道这是一个曾经很火 BBS 开源论坛软件。
 
@@ -18,8 +18,8 @@
 
 测试了几个可能的安装目录名称，最终发现在 URL 后面补充  `phpbb/install/` 可以查看安装目录，里面有个 `install.php` 文件，打开后找到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/528fc3e4f76ea3db1d9bb91fb0c1d49c.png)
-![](http://exp-blog.com/wp-content/uploads/2019/01/73701037ac49ab1e68467b1125e943d8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B11%5D%20%5B15P%5D%20Install%20files/imgs/03.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B11%5D%20%5B15P%5D%20Install%20files/imgs/04.png)
 
 > install.php 里面用法文描述了这个挑战的故事背景，翻译一下就是：
 <br/>　　　恭喜，您刚刚发现了phpBB中的众多缺陷之一。

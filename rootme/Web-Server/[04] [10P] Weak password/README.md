@@ -14,8 +14,8 @@
 
 在爆破时需要注意账密不是明文提交的，用 Burp Suite 拦截请求时，可以发现提交的的账密被本地加密到了 `Authorization` 参数中，稍微分析后知道加密方式为 `Authorization="Basic " + to_base64(username:password)` 。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/7f8d359ce5b5071eed4af1da35a801e8.png)
-![](http://exp-blog.com/wp-content/uploads/2018/12/6626a67c622ea01ed7809f6fc1b114ed.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B04%5D%20%5B10P%5D%20Weak%20password/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B04%5D%20%5B10P%5D%20Weak%20password/imgs/02.png)
 
 ------
 

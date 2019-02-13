@@ -16,7 +16,7 @@ bool assert ( mixed $assertion [, string $description ] )
 
 点击挑战页面上的超链，发现 URL 上的请求参数会随之变化 `?page=${input}`，尝试直接打开 .passwd 文件，构造 GET 请求参数为 `?page=.passwd`，页面会回显报错：`'includes/.passwd.php'File does not exist` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/3dc15ffed9be63d9c934cb857b981d35.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/01.png)
 
 根据这个报错可以知道两个信息：
 
@@ -27,7 +27,7 @@ bool assert ( mixed $assertion [, string $description ] )
 
 `Warning: assert(): Assertion "strpos('includes/../.passwd.php', '..') === false" failed in /challenge/web-serveur/ch47/index.php on line 8 Detected hacking attempt!`
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c232ee0a73b0d77f2919411ed319df2e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/02.png)
 
 根据这个报错可以再推断两个信息：
 
@@ -51,7 +51,7 @@ if (assert("strpos('includes/${input}.php', '..') === false")) {
 
 为了注入代码，先尝试绕过路径穿越的检测逻辑，为此构造 `${input}` 的 payloads 为 `','exp') || strpos('` 令到 `if` 条件恒真，于是发现新的报错信息 `'includes/','exp') || strpos('.php'File does not exist` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/b058d22d2708fda931c3fd247f0bb382.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/03.png)
 
 由此可以再进一步推断代码逻辑如下：
 
@@ -74,17 +74,17 @@ if (assert("strpos('includes/${input}.php', '..') === false")) {
 
 首先构造 `${input}` 的 payloads 为 `','exp') || phpinfo() || strpos('` ，页面打印了 PHP 版本为 5.3.17，说明注入成功。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/72490c3599fb7fa1e6d22ccf0a62713f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/04.png)
 
 而后只需要替换 `phpinfo()` 为查看 `.passwd` 内容的 PHP 语句，即可达到目的。
 
 修改 payloads 为 `','exp') || file_get_contents("../.passwd") || strpos('`，尝试直接读取文件内容，却发现页面报错 `file_get_contents()` 函数无法找到文件。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/af8a11ddc69cc177017be3a146592a63.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/05.png)
 
 再次调整 payloads 为 `','exp') || file_get_contents(".passwd") || strpos('`，即去掉路径穿越，发现报错没有了，推断 `file_get_contents()` 函数是从 web 应用根目录开始找文件的。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/77ab0b262593a5173fdf6a5956af6c10.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/06.png)
 
 但是页面没有打印出 `.passwd` 文件的内容，说明还缺一个输出函数，此处使用 `print_r()` 函数（注意不能使用 `echo()`函数，因为它无返回值无法嵌入 `if`；也不能使用 `print()` 函数，因为它无法输出内容到页面）。
 
@@ -92,7 +92,7 @@ if (assert("strpos('includes/${input}.php', '..') === false")) {
 
 注入后得到 flag，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/a6906b0416e3cc746b2135c3c0420185.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert/imgs/07.png)
 
 ------
 

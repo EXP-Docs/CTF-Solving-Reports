@@ -1,0 +1,1 @@
+| cat index.php

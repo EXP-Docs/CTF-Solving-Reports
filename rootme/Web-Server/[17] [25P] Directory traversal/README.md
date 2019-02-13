@@ -8,15 +8,15 @@
 
 多次测试，当 `${dir}` 为空、即 `?galerie=` 时，会出现有一个展示所有子目录的漏洞。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/0edb2255c55641c54d108383969ac766.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B17%5D%20%5B25P%5D%20Directory%20traversal/imgs/01.png)
 
 不难发现多了一个目录 `86hwnX2r` （注意渲染显示的目录名称不全，需要打开源码查看）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/7d337fa1cbefda88fcfb4504dfbb9790.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B17%5D%20%5B25P%5D%20Directory%20traversal/imgs/02.png)
 
 修改 URL 请求参数为 `?galerie=86hwnX2r` ，发现下面有一个文件 `password.txt`，查看源码知道该文件位置为 `galerie/86hwnX2r/password.txt`，拼接路径到根 URL （注意不要拼接到 URL 参数）即可查看到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/92370b4407ec1bc7cecb12e1aae2f14b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B17%5D%20%5B25P%5D%20Directory%20traversal/imgs/03.png)
 
 ------
 

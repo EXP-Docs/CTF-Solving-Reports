@@ -6,7 +6,7 @@
 
 打开浏览器开发者工具，切到 Elements ，在最后面有一段注释，密码就在那。。。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/5db0f24e317248631fd6547b187a03de.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B01%5D%20%5B5P%5D%20HTML/imgs/01.png)
 
 ------
 

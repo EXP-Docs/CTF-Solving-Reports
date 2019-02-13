@@ -9,7 +9,7 @@
 
 上传一个图片测试一下，页面会给出图片的 URL 地址，点开后可以打开原图，猜测这或许是一个可利用点。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/88e6de58b673e929eeef8dd62cf77932.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B14%5D%20%5B20P%5D%20File%20upload%20-%20double%20extensions/imgs/01.png)
 
 又从给出的 URL 地址知道，上传的文件距离 web 服务根目录的位置，因此可以构造一个路径穿越的 payloads 文件，文件名为 `exp.php`：
 
@@ -24,12 +24,12 @@
 
 但因为上传会检测文件后缀，无法直接上传。把文件更名为 `exp.php.png` 尝试绕过检测机制，上传成功。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/db22bfb2ff40248475e4ac4db7139479.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B14%5D%20%5B20P%5D%20File%20upload%20-%20double%20extensions/imgs/02.png)
 
 上传成功后，打开这个伪造的图片文件，发现它被作为 php 文件解析了（应该是 web 设置的问题），成功获得密码，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/5172811e726ff7a69fb2881080ce4755.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B14%5D%20%5B20P%5D%20File%20upload%20-%20double%20extensions/imgs/03.png)
 
 ------
 

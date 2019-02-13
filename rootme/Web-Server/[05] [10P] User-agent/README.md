@@ -4,7 +4,7 @@
 
 水题，打开挑战页面后提示：`Wrong user-agent: you are not the "admin" browser!` 。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/45d51290c064e91d83e5c26234edafbd.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B05%5D%20%5B10P%5D%20User-agent/imgs/01.png)
 
 自然联想到修改 Request 参数的 User-Agent 值。
 
@@ -13,7 +13,7 @@
 从返回页面获得了密码，挑战完成。
 
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/7c7ad7495b5579b2cac0c2faafe3010c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B05%5D%20%5B10P%5D%20User-agent/imgs/02.png)
 
 ------
 

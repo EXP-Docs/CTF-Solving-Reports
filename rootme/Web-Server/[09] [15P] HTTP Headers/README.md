@@ -6,11 +6,11 @@
 
 这个提示已经很直白了，除了 Content 还有的就是 Header，然后查一下 Respone Header 发现有个参数 `Header-RootMe-Admin: none` ， 很可能目标就是为这个参数设置值。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/e1ebdc28e820a1c6b55814cf02a474a7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B09%5D%20%5B15P%5D%20HTTP%20Headers/imgs/01.png)
 
 使用 Burp Suite -> Repeater 打开页面，修改 Request 的 Header ，添加属性 `Header-RootMe-Admin` ，**值为任意值**，然后发起请求，得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/7efa93bf97563230f914571a8b59eb04.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B09%5D%20%5B15P%5D%20HTTP%20Headers/imgs/02.png)
 
 ------
 

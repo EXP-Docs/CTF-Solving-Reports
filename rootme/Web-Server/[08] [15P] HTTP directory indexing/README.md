@@ -4,19 +4,19 @@
 
 题目有个提示 `CTRL+U`，这个快捷键是查看源码的，在源码发现注释掉一行代码：`include("admin/pass.html")` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/dd9823e984f142982f5dda5c0909be29.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B08%5D%20%5B15P%5D%20HTTP%20directory%20indexing/imgs/01.png)
 
 在URL补全路径打开这个页面，用法语+英语双重嘲讽你被逗了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/5b02df762c64541ec03ded9467f4d368.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B08%5D%20%5B15P%5D%20HTTP%20directory%20indexing/imgs/02.png)
 
 再想想题目是路径索引，或者是存在路径穿越一类的漏洞的，去掉URL中的 `pass.html` 看看有没有权限查看 `admin/` 目录。
 
 结果猜中了，`admin` 目录下有个 `backup` 目录，然后有个 `admin.txt` 文件，密码就在里面，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/47197d6a21e08b1d69b4a73305086f97.png)
-![](http://exp-blog.com/wp-content/uploads/2019/01/b78afce8eca3ceb1c905b0b94f60052e.png)
-![](http://exp-blog.com/wp-content/uploads/2019/01/fe44f10207591deed4c359dc93c33430.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B08%5D%20%5B15P%5D%20HTTP%20directory%20indexing/imgs/03.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B08%5D%20%5B15P%5D%20HTTP%20directory%20indexing/imgs/04.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B08%5D%20%5B15P%5D%20HTTP%20directory%20indexing/imgs/05.png)
 
 ------
 

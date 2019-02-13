@@ -6,7 +6,7 @@
 
 最开始想到用 Burp Suite -> Intruder 或者 hydra 做登录账密爆破，但是无果，应该不是弱密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/c91ecb7cfbf58fa2b78635744c465db5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B06%5D%20%5B10P%5D%20Backup%20file/imgs/01.png)
 
 其实题目本身就是提示：`Backup file`（备份文件）。
 
@@ -24,8 +24,8 @@
 
 于是尝试在 URL 末尾补 `index.php~` ， Bingo !!! 下载了该备份文件，打开之后找到了密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/15917d731b29db8614cefa6f65beed8c.png)
-![](http://exp-blog.com/wp-content/uploads/2018/12/76f00b01cfc8aacbc8d4fb749f7fc70c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B06%5D%20%5B10P%5D%20Backup%20file/imgs/02.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B06%5D%20%5B10P%5D%20Backup%20file/imgs/03.png)
 
 ------
 

@@ -8,7 +8,7 @@
 
 打开浏览器开发者工具，切到 Elements ，可以看到这3个按钮分别触发一组URL参数： `?url=xxx&h=yyy` 。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/e5a7ac80673271cbf46ae5f81796b066.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B02%5D%20%5B10P%5D%20HTTP%20-%20Open%20redirect/imgs/01.png)
 
 分析一下发现，页面会校验 `h` 的值后，再跳转到 `url`，而 `h` 的值是 `url` 的MD5 。
 
@@ -16,16 +16,16 @@
 
 MD5可以通过 Burp Suite -> Decoder 工具构造（也可以使用其他在线的MD5构造器）。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/cfaf344f797a30392568a8c12d74931b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B02%5D%20%5B10P%5D%20HTTP%20-%20Open%20redirect/imgs/02.png)
 
 发现在跳转过程中发现有个页面一闪而过，终止跳转或截图可以发现 flag 就在这个页面。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/e0f376d3d62b385c610430b88be8278b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B02%5D%20%5B10P%5D%20HTTP%20-%20Open%20redirect/imgs/03.png)
 
 此处推荐使用 Burp Suite -> Repeater 工具，直接拦截页面跳转，页面就不会一闪而过了。
 
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/e1f1c4b4e5ea653f11910720bab97bb3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B02%5D%20%5B10P%5D%20HTTP%20-%20Open%20redirect/imgs/04.png)
 
 ------
 

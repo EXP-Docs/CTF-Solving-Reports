@@ -9,19 +9,19 @@
 
 打开页面后，输入 127.0.0.1 提交，可以看见回显。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/3e7979125646a744cc779bcbb00ffd97.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B03%5D%20%5B10P%5D%20Command%20injection/imgs/01.png)
 
 从回显结果来看，代码实现应该是调用了 系统命令，因此这里可以考虑使用管道 `|` 注入命令。
 
 输入 `| ls -al` 提交，回显打印了当前目录的文件列表，从中发现了 `index.php` 文件。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/bd2d6cef9a20a0939602e6a57f873f9a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B03%5D%20%5B10P%5D%20Command%20injection/imgs/02.png)
 
 构造 payloads 为  `| cat index.php` 提交，发现页面嵌套渲染了另一个 `index.php` 页面。
 
 打开浏览器开发者工具，切到 Elements，看到嵌套页面的 PHP源码，其中有个 `$flag` 变量，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2018/12/01ad307c1238ac7b067d934e2b0d1c2b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B03%5D%20%5B10P%5D%20Command%20injection/imgs/03.png)
 
 ------
 

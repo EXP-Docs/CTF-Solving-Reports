@@ -6,7 +6,7 @@
 
 上传一个文件测试一下，发现这次无法再利用双重后缀绕过了，只能上传图片后缀的文件。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/5126813b6ad02d2685cbc997c643aab4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B15%5D%20%5B20P%5D%20File%20upload%20-%20MIME%20type/imgs/01.png)
 
 题目提示是使用 MIME type 实现绕过。
 
@@ -23,12 +23,12 @@
 
 使用 Burp Suite -> Repeater 进行上传，同时要修改 `Content-Type` 的值为 `image/png` 即可实现绕过（原值为 `application/octet-stream`）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/3f1bae6492ff78bce96aece7d2f9dc32.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B15%5D%20%5B20P%5D%20File%20upload%20-%20MIME%20type/imgs/02.png)
 
 上传成功后刷新 upload 分类页面，找到 `exp.php` 打开即可获得密码，完成挑战。
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/a8807e2fe4d8a906e359cae4257a2d7e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B15%5D%20%5B20P%5D%20File%20upload%20-%20MIME%20type/imgs/03.png)
 
 ------
 
