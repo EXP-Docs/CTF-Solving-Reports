@@ -1,0 +1,86 @@
+## [[Root-Me](https://www.root-me.org/)] [[Cracking](https://www.root-me.org/en/Challenges/Web-Client/)] [[Flash - Authentication](https://www.root-me.org/en/Challenges/Web-Client/Flash-Authentication)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2930/)]
+
+------
+
+推理题。没错，这题的答案我是推理出来的。
+
+打开挑战页面只有一个 flash 动画，里面只有 1、2、3、4 四个数字，通过点击数字进行输入密码。
+
+通过连续输入某同一个数字测试发现，输入的规律如下：
+
+- 最多输入 6 个数字，就会自动触发密码校验
+- 仅数字 1、2、3 是有效输入，数字 4 是对前一个数字的某个操作
+- 数字 4 前面如果没有其他数字，相当于没有数字 4 （即一开始就输入数字 4 是没意义的）
+- 连续输入数字 4，等价于一个数字 4】
+
+查看网页源码，可以发现在最后面隐藏了一段 JS 代码， 其作用是判断 Flash 的输出值是否等于 `dbbcd6ee441aa6d2889e6e3cae6adebe` ，很明显，只要我们输入某组数字得到这个值，那么这组数字就是最终密码。换言之，我们最终目标是反推 `dbbcd6ee441aa6d2889e6e3cae6adebe` 对应的输入值。
+
+不难发现， `dbbcd6ee441aa6d2889e6e3cae6adebe` 很像一个 MD5 码，使用 [MD5Online](https://www.md5online.org/md5-decrypt.html) 进行解码，果然得到 6 个十六进制数 `41 41 95 51 95 AA` 。
+
+只要对这段 JS 代码增加一个断点进行 DEBUG，可以在每次输入数字后，得到其对应的 MD5输出。
+
+![](http://exp-blog.com/wp-content/uploads/2019/01/41aca7fdd56fd8777fd071981e4f5842.png)
+
+然后再使用 [MD5Online](https://www.md5online.org/md5-decrypt.html) 对每一次 DEBUG 得到的输出进行解码，最终我记录了这样的一个表（注意某些 MD5 码因为未被录入到解码表，无法解码，所以某些组合无法进行记录）：
+
+| Flash输入 | DEBUG得到的Flash输出（MD5码） | MD5解码（Hex） |
+|:---:|:---:|:---:|
+| 111111 | fb86fbf268caac98db28f43acf074761 | BA BA BA BA BA BA |
+| 14111111 | ebf17f28a242305db18bb9fbc69117c0 | BA BA BA BA BA BA A |
+| 141411111 | c730a2449b24b5e5f0eb85d475b69338 | BA BA BA BA BA AA |
+| 144111111 | ebf17f28a242305db18bb9fbc69117c0 | BA BA BA BA BA BA A |
+| 1444111111 | ebf17f28a242305db18bb9fbc69117c0 | BA BA BA BA BA BA A |
+| 4111111 | fb86fbf268caac98db28f43acf074761 | BA BA BA BA BA BA |
+| 44111111 | fb86fbf268caac98db28f43acf074761 | BA BA BA BA BA BA |
+| 22222 | 35e479a04fc03bb46654894acf742eea | 41 41 41 41 41 41 |
+| 24222222 | 5aadf0f50aede2610eeb761bf3d52ea9 | 41 41 41 41 41 41 1 |
+| 333333 | 7e137ba035238babe49ef64259e26513 | 95 95 95 95 95 95 |
+| 123321 | 3f25d525a24dad071f17b93a2e1896d2 | BA 41 95 95 41 BA |
+| 123123 | 4fc9d8d098b30fd9e3a1f8042b7f38c7 | 95 41 BA 95 41 BA |
+
+通过分析输入和输出，可以得到这样的规律：
+
+- 输入 `数字1` 会得到十六进制输出 `BA`
+- 输入 `数字2` 会得到十六进制输出 `41`
+- 输入 `数字3` 会得到十六进制输出 `95`
+- `数字4` 会与前一个数字进行某种运算，改变其十六进制输出
+- 输入 `数字14` 会得到十六进制输出 `BAA`
+- 输入 `数字1414` 会得到十六进制输出 `AA`
+- 输入 `数字24` 会得到十六进制输出 `411`
+- 改变的是输入头部，输出变化的位置是尾部，说明输出是输入的逆序
+
+由于最终的目标输出是 `41 41 95 51 95 AA`，根据此规律已经可以知道对应的输入数字串是 `2 2 3 ? 3 1414` 。
+
+又由于输入和输出顺序是相反的，逆转输入数字串顺序得到 `1414 3 ? 3 2 2` 。
+
+现在剩下的问题是：输出中的十六进制 `51` 应该对应输入的 `?` 是什么。
+
+到这里开始只能靠脑洞联想，幸好组合情况不多。我一直在怀疑 `数字4` 的其中一个功能是截取十六进制数的 高位 或 低位 进行某个运算，不然无法解释输出的十六进制位数的变化情况，因此我又有以下猜测：
+
+- （已知）输入 `数字14` 会得到十六进制输出 `BAA`
+- （已知）输入 `数字1414` 会得到十六进制输出 `AA`
+- （已知）输入 `数字24` 会得到十六进制输出 `411`
+- （推测）输入 `数字2424` 会得到十六进制输出 `11`
+- （推测）输入 `数字34` 会得到十六进制输出 `955`
+- （推测）输入 `数字3434` 会得到十六进制输出 `55`
+- （猜测）实际上 `数字14` = `A`，`数字24` = `1`，`数字34` = `5`
+- （猜测）因有顺逆序问题，输入 `数字2434` 或 `数字3424` 会得到十六进制输出 `51`
+
+至此我推测，真正的密码只有两种可能： `1414 3 2434 3 2 2` 或 `1414 3 3424 3 2 2` 。输入测试发现，前者 `141432434322` 就是正确答案，完成挑战。
+
+> 其实这种解法有点取巧，因为刚好真正的密码组合比较简单而已，若是更复杂一点就会因为可能性过多而无法推测了。这题更靠谱的解法是反编译 Flash 的源码进行分析：可以下载题中的 Flash 得到 `RootMe.swf` 文件，然后使用 SWF 反编译工具 [jpexs-decompiler](https://github.com/jindrapetrik/jpexs-decompiler/releases) 查看其源码进行分析，具体分析步骤见 [这里](https://offsecresearch.com/blog/2017/03/flash-authentication-brigandage/) （注意里面部分截图的说明是错的，例如 XOR 的原理，参考下思路就好） 。
+
+![](http://exp-blog.com/wp-content/uploads/2019/01/8b9164468ae46f4e7cf1aa24c3918ec0.png)
+
+------
+
+## 版权声明
+
+　[![Copyright (C) 2016-2019 By EXP](https://img.shields.io/badge/Copyright%20(C)-2016~2019%20By%20EXP-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+  
+
+- Site: [http://exp-blog.com](http://exp-blog.com) 
+- Mail: <a href="mailto:289065406@qq.com?subject=[EXP's Github]%20Your%20Question%20（请写下您的疑问）&amp;body=What%20can%20I%20help%20you?%20（需要我提供什么帮助吗？）">289065406@qq.com</a>
+
+
+------
