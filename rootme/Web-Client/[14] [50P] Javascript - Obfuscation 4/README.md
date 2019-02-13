@@ -27,7 +27,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- 
-                But du jeu: trouver le bon mdp ! Il vous faudra de la patience et de l'intuition!
+                But du jeu: trouver le bon mdp ! Il vous faudra de la patience et de l intuition!
                 Si vous avez des problèmes, contactez aaSSfxxx sur #root-me
         -->
         <script>
@@ -489,11 +489,11 @@ if (checksum == 8932) {
 - [`document.write(exp1,exp2,exp3,....)`](http://www.w3school.com.cn/htmldom/met_doc_write.asp)：**可向页面写入 HTML 表达式或 JavaScript 代码**
 
 其中 [`window.open`](http://www.w3school.com.cn/htmldom/met_win_open.asp) 的参数说明为 ：
-　　　○ URL：可选，声明了要在新窗口中显示的页面的 URL。
-　　　　　　　**如果省略了这个参数，或者它的值是空字符串，那么新窗口就不会显示任何页面内容**
-　　　○ name：可选，声明了新窗口的名称
-　　　○ features：可选，声明了新窗口要显示的标准浏览器的特征
-　　　○ replace：可选，本题代码中并没有使用这个参数
+<br/>　　　○ URL：可选，声明了要在新窗口中显示的页面的 URL。
+<br/>　　　　　　　**如果省略了这个参数，或者它的值是空字符串，那么新窗口就不会显示任何页面内容**
+<br/>　　　○ name：可选，声明了新窗口的名称
+<br/>　　　○ features：可选，声明了新窗口要显示的标准浏览器的特征
+<br/>　　　○ replace：可选，本题代码中并没有使用这个参数
 
 
 ------------
@@ -502,7 +502,7 @@ if (checksum == 8932) {
 
 因为这两个值校验和均为 8932 ，所以必定会触发弹窗。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/fba4ab11d82fdec665dacfccbff1180d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B14%5D%20%5B50P%5D%20Javascript%20-%20Obfuscation%204/imgs/01.png)
 
 使用浏览器的开发者工具查看弹窗源码，我发现几件很有意思的事情：
 
@@ -599,7 +599,7 @@ if (checksum == 8932) {
 
 （其实 `?` 不用爆破也能猜到不是 `s` 就是 `S`，因为很明显 `MyP4sS` 就是 `MyPass` 的变体）
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/02e3a0b57cf5f94d5bee9b9556ef99a6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B14%5D%20%5B50P%5D%20Javascript%20-%20Obfuscation%204/imgs/02.png)
 
 ------------
 
@@ -609,7 +609,7 @@ if (checksum == 8932) {
 
 说明前面的猜测是正确。
 
-![](http://exp-blog.com/wp-content/uploads/2019/01/3dbfaead230cf5141090b4f3eb22b383.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B14%5D%20%5B50P%5D%20Javascript%20-%20Obfuscation%204/imgs/03.png)
 
 ------
 
