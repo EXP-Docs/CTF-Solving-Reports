@@ -3,12 +3,12 @@
 
 ------
 
-- [Level 1](http://exp-blog.com/2019/02/15/pid-3299/)
-- [Level 2](http://exp-blog.com/2019/02/15/pid-3333/)
-- [Level 3](http://exp-blog.com/2019/02/15/pid-3331/)
-- [Level 4](http://exp-blog.com/2019/02/15/pid-3329/)
-- [Level 5](http://exp-blog.com/2019/02/15/pid-3327/)
-- [Level 6](http://exp-blog.com/2019/02/15/pid-3322/)
+- [Level 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-1)
+- [Level 2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-2)
+- [Level 3](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-3)
+- [Level 4](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-4)
+- [Level 5](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-5)
+- [Level 6](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-6)
 
 ------
 
