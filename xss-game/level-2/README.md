@@ -1,14 +1,16 @@
-# CTF-Solving-Reports
-　【XSS-Game 专题】 [[官网入口](https://xss-game.appspot.com/)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3316/)]
+## [[XSS-Game](https://xss-game.appspot.com/)] [[Level-2](https://xss-game.appspot.com/level2)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3333/)]
 
 ------
 
-- [Level 1](http://exp-blog.com/2019/02/15/pid-3299/)
-- [Level 2](http://exp-blog.com/2019/02/15/pid-3333/)
-- [Level 3](http://exp-blog.com/2019/02/15/pid-3331/)
-- [Level 4](http://exp-blog.com/2019/02/15/pid-3329/)
-- [Level 5](http://exp-blog.com/2019/02/15/pid-3327/)
-- [Level 6](http://exp-blog.com/2019/02/15/pid-3322/)
+水题，明显是存储型 XSS 。
+
+提交 `<img src=0 />`发现页面直接解析了
+
+直接构造 payload 即可：
+
+`<img src=0 onerror=alert("exp") />`
+
+![](http://exp-blog.com/wp-content/uploads/2019/02/cc2f1d9e680a2ae6ba5345eb7634a58d.png)
 
 ------
 
