@@ -6,7 +6,7 @@
 
 输入一个较大的数值让页面停留在计时页面，然后查看页面源码可以看到 JS 代码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/4f106e3d99806d309a5496dd5fe57c9e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-4/imgs/01.png)
 
 从 JS 代码可以找到注入点在这里：
 
@@ -16,7 +16,7 @@
 
 即相当于变成这样： `startTimer('1');alert('exp');` ，成功突破。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/72abb7c08a91b19dc2f407ec78dc4157.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-4/imgs/02.png)
 
 ------
 

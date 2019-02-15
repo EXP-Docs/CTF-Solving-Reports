@@ -6,17 +6,17 @@
 
 在 Search 框输入任意内容，如 `exp`，会跳转到输出页面 `?query=exp`，并把搜索内容回显到页面。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c95e752d91d60d894e291486c03a7547.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/01.png)
 
 测试输入 `<img src=0 />`，发现页面未经过滤直接输出：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/078ca27eee91c6411e007419abe7243f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/02.png)
 
 这就好办了，直接构造 payload 即可：
 
 `<script>alert("exp")</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/730df9fe5a19ff45bcead1ea5a2e0dcc.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/03.png)
 
 ------
 

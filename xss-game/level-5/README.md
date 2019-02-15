@@ -6,7 +6,7 @@
 
 真正的注入点是 URL 的 `?next=` 参数，输入对应的内容，会改变 `Next >>` 超链的 href 属性值。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/4f0be3afe89e620741659bfadbefba0b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-5/imgs/01.png)
 
 测试发现双引号和单引号均被过滤，即无法通过闭合引号注入属性。
 
@@ -14,7 +14,7 @@
 
 然后点击 Next 即可触发 alert ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c9a01c229424d276d6ffcc4ffd4132be.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-5/imgs/02.png)
 
 ------
 

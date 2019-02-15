@@ -10,7 +10,7 @@
 
 `<img src=0 onerror=alert("exp") />`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/cc2f1d9e680a2ae6ba5345eb7634a58d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-2/imgs/01.png)
 
 ------
 

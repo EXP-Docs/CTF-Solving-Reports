@@ -10,19 +10,19 @@
 
 `<img src="/static/level3/cloud注入点.jpg">`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c93937753069e859ef8afe20874d249b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-3/imgs/01.png)
 
 尝试构造 payload 闭合 img 的双引号：`" onerror=alert(1) "`
 
 但是不起作用，明显双引号被过滤了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/a65cfe80e7fe8c90590de02d5def5986.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-3/imgs/02.png)
 
 测试发现单引号没有被过滤，于是可以用单引号闭合，成功构造 payload 如下：
 
 `' onerror=alert("exp") '`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/a9f7f8b2c5d018c97d60c7f9f93501c8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-3/imgs/03.png)
 
 ------
 
