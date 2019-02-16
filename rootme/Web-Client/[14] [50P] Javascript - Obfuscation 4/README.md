@@ -597,7 +597,7 @@ if (checksum == 8932) {
 
 逐个代入到 `?` 在挑战页面校验，最终发现只有 `MyP4sS` 会使得弹窗内容完全变成明文，即是真正的 `key`，完成挑战。
 
-（其实 `?` 不用爆破也能猜到不是 `s` 就是 `S`，因为很明显 `MyP4sS` 就是 `MyPass` 的变体）
+（其实 `?` 不用爆破也能猜到不是 `s` 就是 `S`，因为很明显 `MyP4sS` 就是 `MyPASS` 的变体）
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B14%5D%20%5B50P%5D%20Javascript%20-%20Obfuscation%204/imgs/02.png)
 

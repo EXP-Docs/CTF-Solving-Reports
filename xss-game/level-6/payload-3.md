@@ -1,0 +1,1 @@
+//www.google.com/jsapi?callback=alert

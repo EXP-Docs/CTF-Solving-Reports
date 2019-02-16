@@ -1,0 +1,1 @@
+data:text/javascript,alert('exp')
