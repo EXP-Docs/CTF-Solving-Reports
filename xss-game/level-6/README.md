@@ -25,9 +25,9 @@
 
 因为我一开始没看题目的 Mission Objective 变成了这样：
 
-Find a way to make the application request an external file which will cause it to execute an alert().
+**Find a way to make the application request an external file which will cause it to execute an alert().**
 
-即作者期望我们利用 script 的 src 去调用其他站点的 恶意 js 脚本，再由该脚本回调当前网页 的 alert，估计作者也没想到可以被钻了空子。
+即作者期望我们利用 script 标签的 src 属性去调用其他站点的 恶意 js 脚本，再由该脚本回调当前网页 的 alert，估计作者也没想到可以被钻了空子。
 
 ------------
 
