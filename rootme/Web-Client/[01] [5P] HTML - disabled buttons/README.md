@@ -12,6 +12,8 @@
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B01%5D%20%5B5P%5D%20HTML%20-%20disabled%20buttons/imgs/01.png)
 
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B01%5D%20%5B5P%5D%20HTML%20-%20disabled%20buttons/imgs/02.png)
+
 ------
 
 ## 版权声明
