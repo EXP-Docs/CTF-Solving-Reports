@@ -42,7 +42,7 @@
 
 我找了一张图，很清楚了画出了 反向代理 和 正向代理 的区别：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/e2e7a6dde0a0a0466ade27a1200edcb9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/01.png)
 
 
 简单来说，**反向代理** 是服务端搭建的，角色定位是防御，主要作用包括：隐藏服务端集群的具体机器、通过缓存加速客户端访问等，常见的反向代理如 Nginx。
@@ -70,12 +70,12 @@
 
 从页面源码可知，只有 `lang=fr` 和 `lang=en` 两种语言可供选择。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/04db44aae586c22b3e7dcda2752f73a5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/02.png)
 
 
 但是使用 Burp Suite -> Repeater 工具构造 payload，可以发现修改请求参数 `lang=any_value` 为任意值，都会在响应头的 `Cookie-Set` 中回显。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/76f839a73daa7115678b29770e760610.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/03.png)
 
 
 换言之这很可能就是注入点，而且从形式上看，应该就是 HRS 。
@@ -84,7 +84,7 @@
 
 可以发现注入成功，这样就具备攻击条件了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/cc5b3fea016bfc5b91aa50ed6c23f767.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/04.png)
 
 ------------
 
@@ -178,7 +178,7 @@ http://challenge01.root-me.org:58002/user/param?lang=fr%0D%0AContent-%20Length%3
 
 现在尝试通过 Burp 把 payload 发送到服务器，看看效果如何：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/45743aea122ae7c2bc474c0416d1f830.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/05.png)
 
 ------------
 
@@ -207,7 +207,7 @@ http://challenge01.root-me.org:58002/user/param?lang=fr%0D%0AContent-%20Length%3
 - 反向代理缓存的过期时间是 15 分钟，亦即在绑定 `/admin` 与 payload 响应失败后，要么等 15 分钟再试，要么重置挑战环境参数（这个是真的烦，繁琐的重置步骤能重置到吐血）。
 - 由于这是一个沙盒，且 Robot 管理员是通过 SessionId 区分每个用户的挑战环境的，因此可以考虑通过代码并行操作来提高污染缓存的成功率。
 - Chrome 和 Firefox 浏览器因自身的安全机制，是无法某些渗透攻击的，包括这个挑战在内。因为这个挑战的 payload 会不断用到重定向，导致多试几次就会报错并拦截攻击：
-![](http://exp-blog.com/wp-content/uploads/2019/02/277b2bd69525399c144631405d430fd5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/06.png)
 
 
 由此可知，这题除了题目表面的描述提示，其实还隐藏了很多解题要点，先了解的话可以少走很多弯路。
@@ -226,25 +226,25 @@ http://challenge01.root-me.org:58002/user/param?lang=fr%0D%0AContent-%20Length%3
 
 经过孜孜不倦的重试，我最后是通过 IE 浏览器完成挑战的。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/1c0148d7245dba24d659399a654f33d3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/07.png)
 
 我用 IE 浏览器预先打开两个标签，一个准备发送 payload ，一个准备请求 `/admin` 页面。
 
 然后就是和时间赛跑：在提交 payload 的一瞬间，马上发送 `/admin` 请求。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/33b644e44e0aafdbcf535111fe621a61.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/08.png)
 
 重复 N 次后，终于使得 `/admin` 请求成功地与我们构造的 payload 页面绑定到一起：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/2fb255c252f75c8c9247c719d87584c1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/09.png)
 
 此时几乎同一时间，我就在 [RequestBin](http://requestbin.fullcontact.com) 服务器收到 Robot 访问 payload 页面后被窃取的 `admin_session` ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/be01d773656c7237b56cfb8f4d7e0dbf.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/10.png)
 
 利用 `admin_session` 访问  `/admin` 页面，被告知 `admin_session` 的值 `946a0b2d-c590-46f9-86fd-f7e76062779d` 就是 flag ，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/99df706ae4285e4b4d2777f4647d76b1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting/imgs/11.png)
 
 ------
 
