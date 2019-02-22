@@ -37,8 +37,6 @@
 - [WebGoat教程解析——HTTP Response Splitting](https://blog.csdn.net/eatmilkboy/article/details/8061159)
 - [HTTP Response Splitting - Divide and Conquer](http://repository.root-me.org/Exploitation%20-%20Web/EN%20-%20HTTP%20Response%20Splitting%20-%20Divide%20and%20Conquer.pdf)
 
-------------
-
 
 而有 反向代理 必定有 正向代理，虽然 正向代理 与本题无关，但最好还是了解一下。
 
@@ -68,8 +66,6 @@
 这就导致有些同学很容易就把这个页面忽略了，一直在 **主页** 和 **管理页面** 之间徘徊找注入点，浪费了大量时间而却只是无用功。
 
 
-------------
-
 其实真正的注入点恰恰就在 **选择语言页面** 。
 
 从页面源码可知，只有 `lang=fr` 和 `lang=en` 两种语言可供选择。
@@ -98,8 +94,6 @@
 
 换言之我们可以尝试使用 **HRS + 反向代理** 实现 **缓存污染** 。
 
-
-------------
 
 总结而言，攻击分五步：
 
@@ -160,8 +154,6 @@ Content-Length: 0
 - `[10]` 是一个空行，这很重要，用于分隔第二个响应的响应头和页面内容。
 - `[11]` 页面内容，这里我只构造了一个 JS 脚本，其功能是向预设的 [RequestBin](http://requestbin.fullcontact.com) 服务器发送访问这个页面的用户的 Cookie ，这样当管理员浏览这个页面时，就会被窃取 Cookie 。
 
-
-------------
 
 
 回到前面的 `[注入点]` ，根据我们期望的响应内容，将其转换成 URL 编码，因此在 `[注入点]` 的位置构造 payload 应该是这样的：

@@ -18,7 +18,7 @@
 - [\[45P\] XSS - Reflected](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Client/%5B13%5D%20%5B45P%5D%20XSS%20-%20Reflected)
 - [\[50P\] Javascript - Obfuscation 4](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Client/%5B14%5D%20%5B50P%5D%20Javascript%20-%20Obfuscation%204)
 - [\[50P\] XSS - Stored 2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Client/%5B15%5D%20%5B50P%5D%20XSS%20-%20Stored%202)
-- [\[70P\] HTTP Response Splitting](#)
+- [\[70P\] HTTP Response Splitting](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Client/%5B16%5D%20%5B70P%5D%20HTTP%20Response%20Splitting)
 - [Javascript - Obfuscation 5](#)
 - [XSS - Stored - filter bypass](#)
 - [XSS - DOM Based](#)
