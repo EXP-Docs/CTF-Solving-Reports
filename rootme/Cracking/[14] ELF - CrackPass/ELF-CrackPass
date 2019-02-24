@@ -1,0 +1,93 @@
+soal:
+https://www.root-me.org/en/Challenges/Cracking/ELF-CrackPass
+http://challenge01.root-me.org/cracking/ch8/ch8.zip
+
+----------------------------------------------------------
+
+Entry point: 0x8048440
+
+anti debug:
+.text:0804868A                 test    eax, eax
+
+flag here:
+.text:08048617                 call    _strcmp
+.text:0804861C                 test    eax, eax
+
+----------------------------------------------------------
+
+gdb-peda$ info file
+Symbols from "/root/bin/Crack".
+Local exec file:
+        `/root/bin/Crack', file type elf32-i386.
+        Entry point: 0x8048440
+        ....
+        0x0804836c - 0x0804839c is .init
+        0x0804839c - 0x0804843c is .plt
+        0x08048440 - 0x0804877c is .text
+        0x0804877c - 0x08048798 is .fini
+        ....
+
+gdb-peda$ break *0x8048440
+Breakpoint 1 at 0x8048440
+
+gdb-peda$ run ander
+
+   0x8048437 <strcmp@plt+11>:   jmp    0x804839c
+   0x804843c:   add    BYTE PTR [eax],al
+   0x804843e:   add    BYTE PTR [eax],al
+=> 0x8048440:   xor    ebp,ebp
+   0x8048442:   pop    esi
+   0x8048443:   mov    ecx,esp
+   0x8048445:   and    esp,0xfffffff0
+   0x8048448:   push   eax
+
+gdb-peda$ break *0x0804868A
+Breakpoint 2 at 0x804868a
+
+gdb-peda$ c
+
+   0x8048676:   mov    DWORD PTR [esp+0x4],0x0
+   0x804867e:   mov    DWORD PTR [esp],0x0
+   0x8048685:   call   0x80483dc <ptrace@plt>
+=> 0x804868a:   test   eax,eax
+   0x804868c:   jns    0x804869f
+   0x804868e:   mov    DWORD PTR [esp],0x80487cf
+   0x8048695:   call   0x804841c <puts@plt>
+   0x804869a:   call   0x80483ac <abort@plt>
+
+gdb-peda$ info reg $eax
+eax            0xffffffff       0xffffffff
+
+# BYPASS anti debug
+gdb-peda$ set $eax=0
+
+# Breakflag!
+gdb-peda$ break *0x08048617
+Breakpoint 3 at 0x8048617
+
+gdb-peda$ c
+
+   0x804860b:   call   0x804851c
+   0x8048610:   mov    DWORD PTR [esp+0x4],esi
+   0x8048614:   mov    DWORD PTR [esp],ebx
+=> 0x8048617:   call   0x804842c <strcmp@plt>
+   0x804861c:   test   eax,eax
+   0x804861e:   jne    0x8048632
+   0x8048620:   mov    DWORD PTR [esp+0x4],ebx
+   0x8048624:   mov    DWORD PTR [esp],0x80487e8
+Guessed arguments:
+arg[0]: 0xbfffe690 ("ff07031d6fb052490149f44b1d5e94f1592b6bac93c06ca9")
+arg[1]: 0xbfffe710 ("ander")
+
+gdb-peda$ x/s $esi
+0xbfffe710:      "ander"
+
+gdb-peda$ x/s $ebx
+0xbfffe690:      "ff07031d6fb052490149f44b1d5e94f1592b6bac93c06ca9"
+
+----------------------------------------------------------
+
+root@kali:~/bin# ./Crack ff07031d6fb052490149f44b1d5e94f1592b6bac93c06ca9
+Good work, the password is :
+
+ff07031d6fb052490149f44b1d5e94f1592b6bac93c06ca9

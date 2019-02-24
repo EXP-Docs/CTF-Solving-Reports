@@ -1,0 +1,67 @@
+Soal = http://challenge01.root-me.org/cracking/ch4/ch4.zip
+
+
+$ unzip -x ch4.zip
+$ gdb ./crackme
+
+gdb$ set disassembly-flavor intel
+gdb$ disas main
+   0x080486a4 <+336>:	call   edx
+gdb$ b*0x080486a4
+gdb$ run
+gdb$ run aa
+=> 0x80486a4 <main+336>:	call   edx
+   0x80486a6 <main+338>:	mov    edx,DWORD PTR [ebp-0xc]
+   0x80486a9 <main+341>:	xor    edx,DWORD PTR gs:0x14
+   0x80486b0 <main+348>:	je     0x80486b7 <main+355>
+   0x80486b2 <main+350>:	call   0x804845c <__stack_chk_fail@plt>
+   0x80486b7 <main+355>:	add    esp,0xb0
+   0x80486bd <main+361>:	pop    ecx
+   0x80486be <main+362>:	pop    edi
+gdb$  dis
+=> 0x080486a4 <+336>:	call   edx
+gdb$ i r $edx
+edx            0x80486c4	0x80486c4
+gdb$ b*0x80486c4
+gdb$ ni
+=> 0x80486c4 <WPA>:	push   ebp
+   0x80486c5 <WPA+1>:	mov    ebp,esp
+   0x80486c7 <WPA+3>:	sub    esp,0x8
+   0x80486ca <WPA+6>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x80486cd <WPA+9>:	add    eax,0xb
+   0x80486d0 <WPA+12>:	mov    BYTE PTR [eax],0xd
+   0x80486d3 <WPA+15>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x80486d6 <WPA+18>:	add    eax,0xc
+gdb$ dis
+   0x080486fa <+54>:	test   eax,eax
+gdb$ b*0x080486fa
+gdb$ c
+=> 0x80486fa <WPA+54>:	test   eax,eax
+   0x80486fc <WPA+56>:	jne    0x804870f <WPA+75>
+   0x80486fe <WPA+58>:	call   0x804872c <blowfish>
+   0x8048703 <WPA+63>:	mov    DWORD PTR [esp],0x0
+   0x804870a <WPA+70>:	call   0x804848c <exit@plt>
+   0x804870f <WPA+75>:	call   0x8048803 <RS4>
+   0x8048714 <WPA+80>:	mov    DWORD PTR [esp],0x8048964
+   0x804871b <WPA+87>:	call   0x804846c <puts@plt>
+gdb$ i r
+eax            0x1	0x1
+gdb$ set $eax = 0
+gdb$ ni
+=> 0x80486fc <WPA+56>:	jne    0x804870f <WPA+75>
+   0x80486fe <WPA+58>:	call   0x804872c <blowfish>
+   0x8048703 <WPA+63>:	mov    DWORD PTR [esp],0x0
+   0x804870a <WPA+70>:	call   0x804848c <exit@plt>
+   0x804870f <WPA+75>:	call   0x8048803 <RS4>
+   0x8048714 <WPA+80>:	mov    DWORD PTR [esp],0x8048964
+   0x804871b <WPA+87>:	call   0x804846c <puts@plt>
+   0x8048720 <WPA+92>:	mov    DWORD PTR [esp],0x1
+--------------------------------------------------------------------------------
+0x080486fc in WPA ()
+gdb$ c
+Continuing.
+'+) Authentification réussie...
+ U'r root! 
+
+ sh 3.0 # password: liberté!
+

