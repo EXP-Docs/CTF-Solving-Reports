@@ -12,13 +12,13 @@
 
 尝试输入任意密码执行，提示密码错误。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/a1a478588531ab279e91874b86b9aaa1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/01.png)
 
 初步判断可能密码以常量方式存储在代码中。
 
 使用文本编辑器打开，尝试搜索关键字 `password` ，发现一段常量文字，但是密码被隐藏其中：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/b1d9217b919ba27b2c221781ae1bb29c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/02.png)
 
 看来只能 **反编译** 了。
 
@@ -31,7 +31,7 @@ Linux 下的反汇编可以直接使用 `objdump` 工具，执行以下命令生
 
 `objdump ch25.bin -S >> ch25-src.asm`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/e801b4f7e9ea4025f98adcad3463a894.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/03.png)
 
 
 ```asm
@@ -613,7 +613,7 @@ Disassembly of section .fini:
 
 这里改用 Windows 的 IDA 工具打开 `ch25.bin` 文件（注意使用 `ELF for Intel 386` 方式打开）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/b3e024fc2b1d10c48538af5e44d43365.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/04.png)
 
 从左侧的 `Fouction name` 列表找到 `main` 函数，定位到 `main` 函数的代码块。
 
@@ -621,13 +621,13 @@ Disassembly of section .fini:
 
 根据图例可知，当 `loc_8048AEE <= 0` 时，代码会走红色分支；而当 `loc_8048AEE > 0` 时，代码会走绿色分支。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c0f3ac91c50c72c55cdd370df9d1df30.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/05.png)
 
 跟踪红色分支，发现分支代码中的一些常量字符串就是前面在 Linux 运行脚本时，没有给定 password 入参时的使用说明，说明这个红色分支不是我们的目标分支。
 
 由此也可以推断，绿色分支的功能就是当我们给定 password 入参时，进行密码比较的代码分支。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/9c43caff1c30dd68df500850fccf4bec.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/06.png)
 
 
 ------------
@@ -642,15 +642,15 @@ Disassembly of section .fini:
 
 分析可知该函数作用是比较两个字符串是否相同，其中入参 1 是一个字符串变量（推断就是脚本输入的 password），而入参 2 是一个字符串常量（推断就是真正的 password）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/2c68b95c6e9cfb533f4082db16e21802.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/07.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/781de59bbb72707aa47012261fd6365c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/08.png)
 
 很明显，真正的密码就隐藏在 `_ZSteqIcSt11char_traitsIcESaIcEEbRKSbIT_T0_T1_EPKS3_` 函数前面的代码块。
 
 发现这部分代码块中用到了两个变量 `unk_8048DC4` 和 `unk_8048DCC` ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/8e0cb2ffe4ba304c661dd204753d0ce0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/09.png)
 
 跟踪这两个变量到数据段，发现不是直接可读的字符串，推测是做了某些运算。
 
@@ -658,7 +658,7 @@ Disassembly of section .fini:
 
 在 `_ZSteqIcSt11char_traitsIcESaIcEEbRKSbIT_T0_T1_EPKS3_` 函数做断点，直接通过 debug 从内存获取函数参数 2 （即真正 password ）的值。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/2fef59ffd1416dac5310f25d50d29514.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/10.png)
 
 
 ------------
@@ -669,11 +669,11 @@ Disassembly of section .fini:
 
 输入命令 `gdb ch25.bin` 进入 debug 模式：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/25399a4420dd280643c8abdce5468852.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/11.png)
 
 通过输入 `layout asm` 命令可以查看反汇编源码，此时通过键盘的 `↑` 或 `↓` 按键可以查看汇编代码，找到 `_ZSteqIcSt11char_traitsIcESaIcEEbRKSbIT_T0_T1_EPKS3_` 函数，发现该函数的地址为 `0x8048b92` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/b491639e37d05689c37a4a903d9c5d51.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/12.png)
 
 知道地址就可以添加断点了，输入命令：`break *0x8048b92` （注意 `*` 不能丢，表示地址指针）。
 
@@ -681,12 +681,12 @@ Disassembly of section .fini:
 
 此时输入命令 `info break` 可以查看当前的断点信息。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/4985b2bb17cd2fab2660ed7e9efd239a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/13.png)
 
 
 执行命令 `r www.exp-blog.com` ，其中 `r` 表示运行代码，后面的是给代码的入参，任意值均可，如此处为 `www.exp-blog.com` ，然后代码运行到前面设置的断点处暂停了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/bd1c7d49f79fa2e91ec11afd1ec96cce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/14.png)
 
 
 ------------
@@ -699,7 +699,7 @@ Disassembly of section .fini:
 
 输入命令 `x/50wx $esp` 查看栈指针 ESP 所指向的栈当前存储的内容（均是地址值，需要知道这些地址每次运行程序都会变化的）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c6364a6844cf967f3390bdde98da16c9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/15.png)
 
 输入命令 `x/s address` 可以查看特定地址中存储的值，如：`x/s 0x08050c8c` 。
 
@@ -709,7 +709,7 @@ Disassembly of section .fini:
 
 第一行第二列的地址，存储的就是入参 2 的值，亦即前面我们推测的真正的密码，发现值为 `Here_you_have_to_understand_a_little_C++_stuffs` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/48b7a58e98c049ff6a5177d286fa80ea.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/16.png)
 
 为了验证猜想，我们退出 `gdb` 模式执行脚本，输入命令：
 
@@ -717,7 +717,7 @@ Disassembly of section .fini:
 
 提示密码正确，猜测是对的。完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/34708234298c245b50c1f4b6d5091f26.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/17.png)
 
 
 
