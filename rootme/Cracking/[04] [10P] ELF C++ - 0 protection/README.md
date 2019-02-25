@@ -684,7 +684,7 @@ Disassembly of section .fini:
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/13.png)
 
 
-执行命令 `r www.exp-blog.com` ，其中 `r` 表示运行代码，后面的是给代码的入参，任意值均可，如此处为 `www.exp-blog.com` ，然后代码运行到前面设置的断点处暂停了。
+执行命令 `r www.exp-blog.com` （其中 `r` 是命令 `run` 的缩写，表示运行代码，后面的是给代码的入参，任意值均可，如此处为 `www.exp-blog.com` ），代码运行到前面设置的断点处暂停了。
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/14.png)
 
@@ -697,17 +697,31 @@ Disassembly of section .fini:
 
 需知道函数内存是存储在【栈】的，因此我们需要查看【栈指针】 ESP（Extended stack pointer） 的内容。
 
-输入命令 `x/50wx $esp` 查看栈指针 ESP 所指向的栈当前存储的内容（均是地址值，需要知道这些地址每次运行程序都会变化的）。
+输入命令 `x/50wx $esp` 查看栈指针 ESP 当前所指向的栈中，从栈顶开始向后 50 个单位所存储的内容。
+
+> `x/50wx` 命令释义：
+<br/>　　　　*x ： examine 命令的缩写，用于查看内存地址中的值*
+<br/>　　　　*/ ： 分隔符，前面是命令名称，后面是控制输出内容的格式*
+<br/>　　　　*50 ： 表示取 50 个单位（数值任意控制均可）*
+<br/>　　　　*w ： 表示每个单位的长度为 4 字节*
+<br/>　　　　*x ： 表示按十六进制显示*
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/15.png)
 
-输入命令 `x/s address` 可以查看特定地址中存储的值，如：`x/s 0x08050c8c` 。
+不难发现均是地址值（需要知道这些地址每次运行程序都会变化的），为了查看真正的内容，
+
+再输入命令 `x/s address` 查看特定地址中存储的值，如：`x/s 0x08050c8c` 。
+
+> `x/s` 命令释义：
+<br/>　　　　*x ： examine 命令的缩写，用于查看内存地址中的值*
+<br/>　　　　*/ ： 分隔符，前面是命令名称，后面是控制输出内容的格式*
+<br/>　　　　*s ： 表示按字符串形式显示*
 
 有兴趣可以每个地址都查一下内容是什么，这里我就不逐个看了。
 
 第一行第二列的地址，存储的就是入参 1 的值，亦即前面我们随意输入的 `www.exp-blog.com` 。
 
-第一行第二列的地址，存储的就是入参 2 的值，亦即前面我们推测的真正的密码，发现值为 `Here_you_have_to_understand_a_little_C++_stuffs` 。
+第二行第二列的地址，存储的就是入参 2 的值，亦即前面我们推测的真正的密码，可以发现其值为 `Here_you_have_to_understand_a_little_C++_stuffs` 。
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection/imgs/16.png)
 
