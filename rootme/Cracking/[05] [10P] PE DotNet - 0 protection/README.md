@@ -8,11 +8,11 @@
 
 随意输入一个 password ，点击 `Valider` 按钮后，提示密码错误。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/3816b96a8d8b384f9db40eb241351fcb.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B05%5D%20%5B10P%5D%20PE%20DotNet%20-%200%20protection/imgs/01.png)
 
 使用 IDA 打开这个文件，尝试反汇编（注意使用 Microsoft.NET. assembly 方式打开）：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/4c3ce5c007d1e7cf37f56f46523717df.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B05%5D%20%5B10P%5D%20PE%20DotNet%20-%200%20protection/imgs/02.png)
 
 从左侧 `Function name` 可以找到 UI 程序每个组件模块的代码。
 
@@ -24,11 +24,11 @@
 
 不难注意到在 `compare` 函数前面有一个常量 `DotNetOP` ，很容易就会猜到这是硬编码到代码里面的真正密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/adc2fa6fd3382711904d9d2382e98cf5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B05%5D%20%5B10P%5D%20PE%20DotNet%20-%200%20protection/imgs/03.png)
 
 尝试使用这个密码验证，挑战成功。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/ea285ecaeecfd2d733e9fa6393223bd0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B05%5D%20%5B10P%5D%20PE%20DotNet%20-%200%20protection/imgs/04.png)
 
 ------
 

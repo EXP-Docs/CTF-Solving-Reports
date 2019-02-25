@@ -7,7 +7,7 @@
 - [\[5P\] ELF - x86 Basic](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B02%5D%20%5B5P%5D%20ELF%20-%20x86%20Basic)
 - [\[5P\] PE - 0 protection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B03%5D%20%5B5P%5D%20PE%20-%200%20protection)
 - [\[10P\] ELF C++ - 0 protection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B04%5D%20%5B10P%5D%20ELF%20C%2B%2B%20-%200%20protection)
-- [\[10P\] PE DotNet - 0 protection](#)
+- [\[10P\] PE DotNet - 0 protection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B05%5D%20%5B10P%5D%20PE%20DotNet%20-%200%20protection)
 - [ELF - Fake Instructions](#)
 - [ELF - Ptrace](#)
 - [ELF MIPS - Basic Crackme](#)
