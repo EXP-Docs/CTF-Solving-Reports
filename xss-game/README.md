@@ -3,12 +3,12 @@
 
 ------
 
-- [Level 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-1)
-- [Level 2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-2)
-- [Level 3](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-3)
-- [Level 4](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-4)
-- [Level 5](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-5)
-- [Level 6](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-6)
+- [Level 1 - Hello, world of XSS](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-1)
+- [Level 2 - Persistence is key](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-2)
+- [Level 3 - That sinking feeling...](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-3)
+- [Level 4 - Context matters](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-4)
+- [Level 5 - Breaking protocol](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-5)
+- [Level 6 - Follow the 🐇](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game/level-6)
 
 ------
 

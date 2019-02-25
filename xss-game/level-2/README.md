@@ -1,4 +1,4 @@
-## [[XSS-Game](https://xss-game.appspot.com/)] [[Level-2](https://xss-game.appspot.com/level2)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3333/)]
+## [[XSS-Game](https://xss-game.appspot.com/)] [[Level-2 ： Persistence is key](https://xss-game.appspot.com/level2)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3333/)]
 
 ------
 
