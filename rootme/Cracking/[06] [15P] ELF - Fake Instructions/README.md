@@ -10,7 +10,7 @@
 
 题目已经提示了这是用 gcc 编译的 ELF 32-bit 文件，即使没提示，也可在 Linux 通过命令 `file crackme` 查看：
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/a8a8cc1366f19e55e8ac70507dffaa80.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/01.png)
 
 ------------
 
@@ -39,21 +39,21 @@ le voie de la sagesse te guidera, tache de trouver le mot de passe petit padawaa
 
 在数据段找到变量名 `aLeVoieDeLaSage` ，右击，选择 `Jump to xref to operand...` 跳转到引用位置。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/30278399f93d91be47fc9e223308d3b6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/02.png)
 
 
 当前跳转到 `RSA` 函数，未发现的比较关键代码。
 
 再次右击 `RSA` 函数，选择 `Jump to xref to operand...` 跳转到引用位置。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/4308a159bf421c0c45f5996ec21bcc6a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/03.png)
 
 这次跳转到 `WPA` 模块的关键位置，在执行字符串比较语句 `call _strcmp` 之后：
 
 - `test eax, eax` ： 利用 `eax` 寄存器的值对 `ZF` 标志位置位
 - `jnz` ： 当 `ZF == 0 ` 时走 `blowfish` 红色分支，当 `ZF != 0 ` 时走 `RSA` 绿色分支
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/a6f4b9979e4544c44233bf16043cac54.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/04.png)
 
 而 `RSA` 绿色分支是我们前面利用密码错误的提示逆向找到的分支。
 
@@ -63,7 +63,7 @@ le voie de la sagesse te guidera, tache de trouver le mot de passe petit padawaa
 
 因此这里转换思路：尝试让脚本跑起来，再通过 debug 查看内存值，看看能否找到密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/1f55a16e9a581c3eff5389061bbafd20.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/05.png)
 
 ------------
 
@@ -75,7 +75,7 @@ le voie de la sagesse te guidera, tache de trouver le mot de passe petit padawaa
 
 执行命令 `break *0x80486f5` 在此处添加断点。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/e1466b82bdb817991cef85a91a6cb1ff.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/06.png)
 
 再执行命令 `r www.exp-blog.com` 开始调试代码，代码在断点位置中断。
 
@@ -83,7 +83,7 @@ le voie de la sagesse te guidera, tache de trouver le mot de passe petit padawaa
 
 虽然可以找到其中的一个参数为输入的密码 `www.exp-blog.com` ，但是验证过另一个可疑的参数 `_0cGjc5m_.5\r\nÇ8CJ0À9` 并不是真正的密码，估计是经过某种加密处理的字符串。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/72cd59ad521366ded269ca379245f50c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/07.png)
 
 ------------
 
@@ -99,17 +99,17 @@ le voie de la sagesse te guidera, tache de trouver le mot de passe petit padawaa
 
 因为 `0x1 AND 0x1 = 0x1` ，所以在执行 `test eax, eax` 后 `ZF` 标志位会被置 1 ，即通过 `jnz` 或 `jne` 语句判定后都不会跳转到  `blowfish` 分支。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c7d9bd0a7f21e46d935f98d5645eb1c5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/08.png)
 
 为了使得代码走向  `blowfish` 分支，此时我们只需要改变 `eax` 寄存器的值为 0 即可：
 
 执行命令 `set $eax=0` ，再次通过命令 `info reg` 查看当前所有寄存器的值，发现 `eax` 寄存器的值被置为 `0x0` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/05a55b8a6d2fba70c441296e08c92f92.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/09.png)
 
 此时直接执行命令 `c` 使得代码执行到最后就可以执行  `blowfish` 分支了，发现其作用就是打印真正的密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/415a23208e91fc71073d2edd04833b07.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B06%5D%20%5B15P%5D%20ELF%20-%20Fake%20Instructions/imgs/10.png)
 
 验证获得的密码 `liberté!` ，挑战成功。
 
