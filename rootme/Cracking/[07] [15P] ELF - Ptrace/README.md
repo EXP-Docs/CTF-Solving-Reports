@@ -17,7 +17,7 @@
 
 开启挑战后下载了文件 `ch3.bin` ，在 Linux 直接运行，随便输入一个密码，提示错误。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/ad43db36497f8696c4dc364049e51105.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/01.png)
 
 尝试使用 gdb 工具进行调试，执行命令 `gdb ch3.bin` 进入调试模式。
 
@@ -27,7 +27,7 @@
 
 很明显这程序被加壳了，看来要先找到加壳位置绕过去。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/802c814034671dfcc584d46435d3711e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/02.png)
 
 ------------
 
@@ -46,7 +46,7 @@ jns     short loc_8048436       ; 当符号位 SF != 0 时跳转
 
 那么要绕过也不难，在调试代码的时候，即时修改寄存器 eax 的内存值，改变 SF 符号位，从而诱导 `jns` 跳转到正常执行分支即可。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/c3beacc4ab62cd881aa9ef648285d3c6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/03.png)
 
 
 继续使用 IDA 分析其他部分的代码，通过 Search -> text ... 搜索前面运行代码时得到的关键字 `Wrong password` 。
@@ -67,7 +67,7 @@ jnz     short loc_80484E4
 
 那么只要在这 4 个位置做断点，就能把密码字符逐个找出来了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/e6e61871d789664ec30f5dd423bb562b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/04.png)
 
 ------------
 
@@ -82,9 +82,9 @@ jnz     short loc_80484E4
 - `break *0x80484bf`
 - `break *0x80484ce`
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/914af3d6f819be2531a7c2c9b18e96c4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/05.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/552cd75e4a2d30bf0ef9a168c8a09e2a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/06.png)
 
 执行命令 `r` 开始调试，程序在第一个断点位置 `test eax, eax` 中断了。
 
@@ -96,7 +96,7 @@ jnz     short loc_80484E4
 
 这样执行 `test eax, eax` 语句之后就可以使得符号位 `SF = 0` ，从而流转到正常的代码分支了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/7f1f4470c324299687d51dfc6b73ad9c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/07.png)
 
 修改 eax 寄存器的值后，输入命令 `c` 继续执行代码，提示输入密码，说明我们成功绕过了加壳。
 
@@ -110,7 +110,7 @@ jnz     short loc_80484E4
 
 > `p/c` 命令解析：`p` 表示打印变量值，`c` 表示按字符格式输出。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/8d6145f854d7f3775b5921b95ea07a84.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/08.png)
 
 输入命令 `c` 继续执行代码，代码流转到下一个断点，即比较第二个密码字符的地方 `cmp %al, %dl` 。
 
@@ -118,13 +118,13 @@ jnz     short loc_80484E4
 
 这次运气就没那么好了，不过此时已经可以知道 `al` 存储的就是真正的密码，而 `dl` 存储的是我们输入的密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/e63ff5fc8198eec6b9bd650f54a7c6f1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/09.png)
 
 至此我们已经知道真正密码的前两个字符为 `ea` ，因此我们可以通过逐字符构造密码，重复前面的步骤，让程序不断流转到到下一个判断分支，从而获得完整的密码。
 
 最终试出来的密码是 `easy` ，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/02/6df4abd6b29f774f9ee2a5cabce8deca.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B07%5D%20%5B15P%5D%20ELF%20-%20Ptrace/imgs/10.png)
 
 
 ------
