@@ -16,7 +16,7 @@
 - [PYC - ByteCode](#)
 - [ELF - No software breakpoints](#)
 - [MachO x64 - keygenme or not](#)
-- [\[30P\] ELF - CrackPass](#)
+- [\[30P\] ELF - CrackPass](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass)
 - [ELF - ExploitMe](#)
 - [ELF - Random Crackme](#)
 - [ELF ARM - crackme 1337](#)

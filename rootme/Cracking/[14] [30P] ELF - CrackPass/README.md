@@ -23,12 +23,12 @@
 - 若密码有特殊字符，如执行命令 `./Crack exp-blog.com`， 提示 `Bad password !`
 - 若密码无特殊字符，如执行命令 `./Crack exp`， 提示 `Is not the good password !`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/bc0505723c03881d08bc57eb1f35c061.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/01.png)
 
 
 执行命令 `gdb Crack` 开启调试器，但是输入命令 `layout asm` 后却没有显示汇编源码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7fdaa8dd3c05644ebfde1b6c09f8737a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/02.png)
 
 执行命令 `r` 开始调试代码，此时才显示汇编源码，但是提示 `Don't use a debuguer !` 。
 
@@ -38,7 +38,7 @@
 - 程序被加壳了，需要绕过调试器检测
 - 一个常量字符串  `Don't use a debuguer !`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/fc071e08f995cfb03559375e09fd98b7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/03.png)
 
 ------------
 
@@ -50,7 +50,7 @@
 
 可以看到代码段的地址范围为 `0x08048440 - 0x0804877c`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9c9de1183bc6fc4be48f119198430ad3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/04.png)
 
 执行命令 `break *0x08048440` 在入口地址打个断点，然后输入命令 `r exp` 开始调试 。
 
@@ -58,7 +58,7 @@
 
 明显程序在入口位置中断了，我们看到了 main 函数入口 `__libc_start_main@plt` ，且还没有提示 `Don't use a debuguer !` ，说明我们在检测点之前刹车了。问题是，检测点在哪 ？
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/dc25aff3e4cd7b8e4eedd1ac6112fe02.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/05.png)
 
 此时同步在 Windows 下用 IDA 打开 `Crack` 文件。
 
@@ -70,7 +70,7 @@
 
 因其地址为 `0x804868a` ，输入命令 `break *0x804868a` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d31b4683688b628f494384668edef724.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/06.png)
 
 执行命令 `c` 让代码继续运行，在语句 `test %eax,%eax` 处中断。
 
@@ -92,7 +92,7 @@
 
 从 IDA 查看代码，接下来应该是会流转到 `call sub_80485A5` 模块，双击可以跳转到这个模块。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1c0b902742ee9b037228a13976baae61.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/07.png)
 
 在这个模块里，很快就发现 `call _strcmp` 语句，以及其后的正确 / 错误密码的分支。
 
@@ -102,7 +102,7 @@
 
 但是我们找到在其前面不远处的子模块入口地址 `loc_80485E8` ，即 `0x080485E8` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0befe283985c92508de537124339a5fe.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/08.png)
 
 回到 Linux 的 gdb ，输入命令 `break *0x080485E8` 打上断点，然后执行命令 `c` 让程序继续运行。
 
@@ -118,9 +118,9 @@
 
 其中一个是输入的密码，另一个是真正的密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0d019fe52f2983769660e1d904408ec4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/09.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9d4e5ac2c2334ed0f9d4b6be0e147da5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cracking/%5B14%5D%20%5B30P%5D%20ELF%20-%20CrackPass/imgs/10.png)
 
 
 ------
