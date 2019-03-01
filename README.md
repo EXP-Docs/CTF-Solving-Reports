@@ -8,6 +8,7 @@
 - [[Prompt](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt)] （[http://prompt.ml](http://prompt.ml)）
 - [[alert](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/alert)] （[https://alf.nu/alert1](https://alf.nu/alert1)）
 - [[RedTiger's Hackit](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/redtigers-hackit)] （[http://redtiger.labs.overthewire.org/](http://redtiger.labs.overthewire.org/)）
+- [[sqli-labs](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/sqli-labs)] （[https://github.com/Audi-1/sqli-labs](https://github.com/Audi-1/sqli-labs)）
 - [[CG-CTF](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/cg-ctf)] （[https://cgctf.nuptsast.com/challenges](https://cgctf.nuptsast.com/challenges)）
 
 ------
