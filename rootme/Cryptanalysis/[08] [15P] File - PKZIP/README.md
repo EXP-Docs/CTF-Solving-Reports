@@ -6,19 +6,18 @@
 
 开启挑战后下载了一个加密的压缩包，让我们破解压缩包的密码。
 
-题目提示是 PKZIP 压缩格式，而且给了一份 [PDF](http://repository.root-me.org/Cryptographie/EN%20-%20Cracking%20PKZIP%20file's%20password.pdf) 指引。
+题目提示是 PKZIP 压缩格式，而且给了一份 [PDF](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B08%5D%20%5B15P%5D%20File%20-%20PKZIP/EN%20-%20Cracking%20PKZIP%20file's%20password.pdf) 指引。
 
 通篇意思就是让我们去了解一下 PKZIP 的文件格式，然后找到一份足够大的密码字典表，暴力破解。。。
 
 还很贴心在末尾提供了一份 C++ 代码。
 
 
-
 题目是 2010 年出的了，现在已经过了 9 年了，，，现成的暴力破解工具多的是。。。
 
 例如我找到的这个工具 【[PackageCrack.exe](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B08%5D%20%5B15P%5D%20File%20-%20PKZIP/PackageCrack.zip)】，直接就破解成功了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/b15569615090594547f7d3a6aabaf256.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B08%5D%20%5B15P%5D%20File%20-%20PKZIP/imgs/01.png)
 
 
 > Linux 下可使用工具 【[fcrackzip](https://github.com/hyc/fcrackzip)】 破解
