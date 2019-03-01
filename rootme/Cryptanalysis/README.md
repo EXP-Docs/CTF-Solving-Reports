@@ -14,7 +14,7 @@
 - [Monoalphabetic substitution - Caesar](#)
 - [Known plaintext - XOR](#)
 - [Code - Pseud- Random Number Generator](#)
-- [File - Insecure storage 1](#)
+- [\[20P\] File - Insecure storage 1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Cryptanalysis/%5B12%5D%20%5B20P%5D%20File%20-%20Insecure%20storage%201)
 - [Polyalphabetic substitution - Vigenère](#)
 - [System - Android lock pattern](#)
 - [Transposition - Rail Fence](#)

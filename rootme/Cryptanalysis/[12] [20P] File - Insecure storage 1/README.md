@@ -8,7 +8,7 @@
 
 在 `.mozilla\firefox\o0s0xxhl.default` 目录下找到很多 sqlite 数据库，使用 Navicat 逐个打开查看，发现只有 `signons.sqlite` 这个库存储了账密，但是都被加密过了，而且加密算法不明。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/cc9e4904971dc14c852242cea66632f0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B12%5D%20%5B20P%5D%20File%20-%20Insecure%20storage%201/imgs/01.png)
 
 
 ------------
@@ -53,7 +53,7 @@ This tool does not try to crack or brute-force the Master Password in any way. I
 
 Bingo ! 得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/688ca5aa7acb8a29caa43ddff4283f9f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B12%5D%20%5B20P%5D%20File%20-%20Insecure%20storage%201/imgs/02.png)
 
 
 ------
