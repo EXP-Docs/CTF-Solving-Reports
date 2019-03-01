@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【实验吧 专题】 [[官网入口](http://www.shiyanbar.com/ctf/)] [[解题报告](#)]
+　【Prompt 专题】 [[官网入口](http://redtiger.labs.overthewire.org/)] [[解题报告](#)]
 
 ------
 

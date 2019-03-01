@@ -16,7 +16,7 @@
 - [PYC - ByteCode](#)
 - [ELF - No software breakpoints](#)
 - [MachO x64 - keygenme or not](#)
-- [ELF - CrackPass](#)
+- [\[30P\] ELF - CrackPass](#)
 - [ELF - ExploitMe](#)
 - [ELF - Random Crackme](#)
 - [ELF ARM - crackme 1337](#)
