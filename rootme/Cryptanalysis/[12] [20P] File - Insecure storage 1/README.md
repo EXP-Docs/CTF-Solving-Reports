@@ -51,7 +51,7 @@ This tool does not try to crack or brute-force the Master Password in any way. I
 
 运行过程中要求输入主密码，我们碰下运气看看是不是没有主密码，直接回车。
 
-Bingo ! 得到密码，完成挑战。
+Bingo ! 果然主密码为空~ 得到密码，完成挑战。
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Cryptanalysis/%5B12%5D%20%5B20P%5D%20File%20-%20Insecure%20storage%201/imgs/02.png)
 
