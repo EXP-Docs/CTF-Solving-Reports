@@ -26,7 +26,7 @@
 - [\[25P\] PHP register globals](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B21%5D%20%5B25P%5D%20PHP%20register%20globals)
 - [File upload - ZIP](#)
 - [Command injection - Filter bypass](#)
-- [\[30P\] Local File Inclusion](#)
+- [\[30P\] Local File Inclusion](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion)
 - [Local File Inclusion - Double encoding](#)
 - [PHP - Loose Comparison](#)
 - [PHP preg_replace()](#)
