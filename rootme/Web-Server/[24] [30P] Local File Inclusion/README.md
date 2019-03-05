@@ -16,13 +16,13 @@
 - 页面 URL 会随着点击变成 `http://challenge01.root-me.org/web-serveur/ch16/?files=目录&f=文件`
 - 当点击【文件】时，会在页面输出文件内容
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/13ab4067b29520f1b8c6ae110f09c45b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion/imgs/01.png)
 
 特别地，我发现如果点击【文件】后若没有输出文件内容，则这可能是【子目录】而非文件，
 
 如： [http://challenge01.root-me.org/web-serveur/ch16/?files=crypto&f=archives](http://challenge01.root-me.org/web-serveur/ch16/?files=crypto&f=archives)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0218f295af045b566285be1364e4f974.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion/imgs/02.png)
 
 此时可以把页面路径中代表【文件】的 `f` （实际上是【子目录】）拼接到代表【目录】的 `files` 串成路径：
 
@@ -30,7 +30,7 @@
 
 这样就可以查看【子目录】下的文件了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/088f203e035844af2405950af4eaba0d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion/imgs/03.png)
 
 ------------
 
@@ -42,7 +42,7 @@
 
 得到上级目录下的文件列表，发现其中存在 `admin` ，但是点击后没有打印内容，怀疑 `admin` 其实是【子目录】：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5003839c713a9d4fa0de40619f8044ad.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion/imgs/04.png)
 
 
 ------------
@@ -51,7 +51,7 @@
 
 发现 `admin` 目录下的的 `index.php` 文件，打开后得到密码，完成挑战：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8fcd8238f1c00b6d2a6c966393a90dce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion/imgs/05.png)
 
 ------
 
