@@ -13,7 +13,7 @@
 - [Challenges => Realist （1/27）](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Realist)
 - [Challenges => Steganography （2/17）](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Steganography)
 - [Challenges => Web-Client （16/19） ](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Client)
-- [Challenges => Web-Server （20/57）](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server)
+- [Challenges => Web-Server （21/57）](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server)
 
 
 ------

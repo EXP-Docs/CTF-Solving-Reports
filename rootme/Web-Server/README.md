@@ -23,7 +23,7 @@
 - [\[25P\] File upload - null byte](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B18%5D%20%5B25P%5D%20File%20upload%20-%20null%20byte)
 - [\[25P\] PHP assert()](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B19%5D%20%5B25P%5D%20PHP%20assert)
 - [\[25P\] PHP filters](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters)
-- [PHP register globals](#)
+- [\[25P\] PHP register globals](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B21%5D%20%5B25P%5D%20PHP%20register%20globals)
 - [File upload - ZIP](#)
 - [Command injection - Filter bypass](#)
 - [Local File Inclusion](#)

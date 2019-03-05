@@ -30,7 +30,7 @@
 
 最终猜到备份页面名称为 `index.php.bak` （其实我真的很不喜欢猜文件名。。变成全凭运气解题好无语）
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/3968bd131631f5ea8eeca9563f71c340.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B21%5D%20%5B25P%5D%20PHP%20register%20globals/imgs/01.png)
 
 下载 [`index.php.bak`](http://challenge01.root-me.org/web-serveur/ch17/index.php.bak)  后得到页面的 PHP 代码为：
 
@@ -126,7 +126,7 @@ if (( isset ($password) && $password!="" && auth($password,$hidden_password)==1)
 
 挟持变量成功，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/46b65eb105b200812afcfe7b578d3f18.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B21%5D%20%5B25P%5D%20PHP%20register%20globals/imgs/02.png)
 
 ------
 
