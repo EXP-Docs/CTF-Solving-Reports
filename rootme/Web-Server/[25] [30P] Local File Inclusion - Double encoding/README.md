@@ -4,7 +4,7 @@
 
 PHP 的 LFI 漏洞，前置知识参考这篇文章：【[Local File Inclusion (LFI) — Web Application Penetration Testing](https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601)】
 
-这题是 【[PHP filters](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters)】 的进阶版（未做的建议先做），除了掌握 LFI 之外，还需掌握 **双重编码** 的知识，相关知识点可查看 [这里](https://www.owasp.org/index.php/Double_Encoding) 。
+这题是 【[PHP filters](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B20%5D%20%5B25P%5D%20PHP%20filters)】 的进阶版（未做的建议先做），除了掌握 LFI 之外，还需掌握 **双重编码** 的知识，相关知识点可查看 [这里](https://www.owasp.org/index.php/Double_Encoding) 
 
 
 ------------
