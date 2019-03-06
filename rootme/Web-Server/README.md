@@ -29,7 +29,7 @@
 - [\[30P\] Local File Inclusion](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B24%5D%20%5B30P%5D%20Local%20File%20Inclusion)
 - [\[30P\] Local File Inclusion - Double encoding](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding)
 - [PHP - Loose Comparison](#)
-- [\[30P\] PHP preg_replace()](#)
+- [\[30P\] PHP preg_replace()](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace)
 - [PHP type juggling](#)
 - [Remote File Inclusion](#)
 - [Server-side Template Injection](#)
