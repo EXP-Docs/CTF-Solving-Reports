@@ -66,7 +66,7 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int
 
 简而言之，要触发 `preg_replace()` 漏洞有两个前置条件：
 
-- 第一个参数 `$pattern` 需要 `/e` 模式，使得第二个参数 `replacement` 可以作为命令代码执行
+- 第一个参数 `$pattern` 需要 `/e` 模式，使得第二个参数 `replacement` 在替换前可以作为命令代码执行
 - 第一个参数 `$pattern` 必能能够匹配到第三个参数 `subject` （否则 `preg_replace()` 函数会返回 `subject` 而不会执行 `replacement` 命令）
 
 ------------
