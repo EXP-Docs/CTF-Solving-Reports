@@ -18,11 +18,11 @@ PHP 的 LFI 漏洞，前置知识参考这篇文章：【[Local File Inclusion (
 
 开启挑战后，发现随着点击 `Home` 、`CV` 、`Contact` ， 页面 URL 的参数也会随之变化为 `index.php?page=home` 、 `index.php?page=cv` 、 `index.php?page=contact` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d277a5e2510de85de5ce0c9797cdec1c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/01.png)
 
 尝试输入不存在的参数值 `index.php?page=admin` ，从页面提示的 Warning 知道代码使用了 `include` 特性，而且会自动把输入的参数拼接 `.inc.php` 后缀作为文件名，再由 `include` 包含进页面。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1e868c850d4419c54b521d5651ff2fce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/02.png)
 
 从这种种迹象来看，其实已经满足了 LFI 的条件。
 
@@ -32,7 +32,7 @@ PHP 的 LFI 漏洞，前置知识参考这篇文章：【[Local File Inclusion (
 
 但是很不幸地，这题应该是对某些字符做了过滤，马上就提示检测到攻击：`Attack detected.`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/784fca65cc004464d4782c0d7974db03.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/03.png)
 
 尝试多次发现，在 `index.php?page=` 后面的内容如果有 `.` 或 `/` 就会触发 `Attack detected.` ，看样子应该是防止路径穿越。
 
@@ -42,7 +42,7 @@ PHP 的 LFI 漏洞，前置知识参考这篇文章：【[Local File Inclusion (
 
 但依然会触发 `Attack detected.`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/13153c233dbb265fdb4c2528c121d05c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/04.png)
 
 此时联想到题目的提示 **双重编码**，亦即对 `.` 和 `/` 字符进行两次 URL 编码处理（其实第二次编码是针对字符 `%`） ，于是有这样的编码表：
 
@@ -61,7 +61,7 @@ PHP 的 LFI 漏洞，前置知识参考这篇文章：【[Local File Inclusion (
 PD9waHAgaW5jbHVkZSgiY29uZi5pbmMucGhwIik7ID8+CjwhRE9DVFlQRSBodG1sPgo8aHRtbD4KICA8aGVhZD4KICAgIDxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KICAgIDx0aXRsZT5KLiBTbWl0aCAtIEhvbWU8L3RpdGxlPgogIDwvaGVhZD4KICA8Ym9keT4KICAgIDw/PSAkY29uZlsnZ2xvYmFsX3N0eWxlJ10gPz4KICAgIDxuYXY+CiAgICAgIDxhIGhyZWY9ImluZGV4LnBocD9wYWdlPWhvbWUiIGNsYXNzPSJhY3RpdmUiPkhvbWU8L2E+CiAgICAgIDxhIGhyZWY9ImluZGV4LnBocD9wYWdlPWN2Ij5DVjwvYT4KICAgICAgPGEgaHJlZj0iaW5kZXgucGhwP3BhZ2U9Y29udGFjdCI+Q29udGFjdDwvYT4KICAgIDwvbmF2PgogICAgPGRpdiBpZD0ibWFpbiI+CiAgICAgIDw/PSAkY29uZlsnaG9tZSddID8+CiAgICA8L2Rpdj4KICA8L2JvZHk+CjwvaHRtbD4K
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f9b7cc056b13701ab8f99b768a67bb2a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/05.png)
 
 解码后得到页面源码：
 
@@ -107,7 +107,7 @@ PD9waHAgaW5jbHVkZSgiY29uZi5pbmMucGhwIik7ID8+CjwhRE9DVFlQRSBodG1sPgo8aHRtbD4KICA8
 PD9waHAKICAkY29uZiA9IFsKICAgICJmbGFnIiAgICAgICAgPT4gIlRoMXNJc1RoM0ZsNGchIiwKICAgICJob21lIiAgICAgICAgPT4gJzxoMj5XZWxjb21lPC9oMj4KICAgIDxkaXY+V2VsY29tZSBvbiBteSBwZXJzb25hbCB3ZWJzaXRlICE8L2Rpdj4nLAogICAgImN2IiAgICAgICAgICA9PiBbCiAgICAgICJnZW5kZXIiICAgICAgPT4gdHJ1ZSwKICAgICAgImJpcnRoIiAgICAgICA9PiA0NDE3NTk2MDAsCiAgICAgICJqb2JzIiAgICAgICAgPT4gWwogICAgICAgIFsKICAgICAgICAgICJ0aXRsZSIgICAgID0+ICJDb2ZmZWUgZGV2ZWxvcGVyIEBNZWdhdXBsb2FkIiwKICAgICAgICAgICJkYXRlIiAgICAgID0+ICIwMS8yMDEwIgogICAgICAgIF0sCiAgICAgICAgWwogICAgICAgICAgInRpdGxlIiAgICAgPT4gIkJlZCB0ZXN0ZXIgQFlvdXJNb20ncyIsCiAgICAgICAgICAiZGF0ZSIgICAgICA9PiAiMDMvMjAxMSIKICAgICAgICBdLAogICAgICAgIFsKICAgICAgICAgICJ0aXRsZSIgICAgID0+ICJCZWVyIGRyaW5rZXIgQE5lYXJlc3RCYXIiLAogICAgICAgICAgImRhdGUiICAgICAgPT4gIjEwLzIwMTQiCiAgICAgICAgXQogICAgICBdCiAgICBdLAogICAgImNvbnRhY3QiICAgICAgID0+IFsKICAgICAgImZpcnN0bmFtZSIgICAgID0+ICJKb2huIiwKICAgICAgImxhc3RuYW1lIiAgICAgID0+ICJTbWl0aCIsCiAgICAgICJwaG9uZSIgICAgICAgICA9PiAiMDEgMzMgNzEgMDAgMDEiLAogICAgICAibWFpbCIgICAgICAgICAgPT4gImpvaG4uc21pdGhAdGhlZ2FtZS5jb20iCiAgICBdLAogICAgImdsb2JhbF9zdHlsZSIgID0+ICc8c3R5bGUgbWVkaWE9InNjcmVlbiI+CiAgICAgIGJvZHl7CiAgICAgICAgYmFja2dyb3VuZDogcmdiKDIzMSwgMjMxLCAyMzEpOwogICAgICAgIGZvbnQtZmFtaWx5OiBUYWhvbWEsVmVyZGFuYSxTZWdvZSxzYW5zLXNlcmlmOwogICAgICAgIGZvbnQtc2l6ZTogMTRweDsKICAgICAgfQogICAgICBkaXYjbWFpbnsKICAgICAgICBwYWRkaW5nOiAyMHB4IDEwcHg7CiAgICAgIH0KICAgICAgbmF2ewogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYigxMDEsIDEwMSwgMTAxKTsKICAgICAgICBmb250LXNpemU6IDA7CiAgICAgIH0KICAgICAgbmF2IGF7CiAgICAgICAgZm9udC1zaXplOiAxNHB4OwogICAgICAgIHBhZGRpbmc6IDVweCAxMHB4OwogICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7CiAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTsKICAgICAgICBjb2xvcjogIzU1NTsKICAgICAgfQogICAgICBuYXYgYS5hY3RpdmV7CiAgICAgICAgY29sb3I6ICNmZmY7CiAgICAgICAgYmFja2dyb3VuZDogcmdiKDExOSwgMTM4LCAxNDQpOwogICAgICB9CiAgICAgIG5hdiBhOmhvdmVyewogICAgICAgIGNvbG9yOiAjZmZmOwogICAgICAgIGJhY2tncm91bmQ6IHJnYigxMTksIDEzOCwgMTQ0KTsKICAgICAgfQogICAgICBoMnsKICAgICAgICBtYXJnaW4tdG9wOjA7CiAgICAgIH0KICAgICAgPC9zdHlsZT4nCiAgXTsK
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/075f209f05fe29290d7196e98bac4932.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B25%5D%20%5B30P%5D%20Local%20File%20Inclusion%20-%20Double%20encoding/imgs/06.png)
 
 解码后得到真正的源码，其中的 `flag` 就是密码，完成挑战：
 
