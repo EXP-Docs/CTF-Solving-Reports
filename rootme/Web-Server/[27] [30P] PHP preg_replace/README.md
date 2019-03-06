@@ -43,11 +43,11 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int
 - `replace` => `$replacement`
 - `content` => `$subject`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a1fe10665a86bf053970bf39dfc3e9e9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace/imgs/01.png)
 
 尝试输入正常的参数，发现页面输出了替换后的字符串，但是**会对特殊字符做过滤**，说明函数的输出不是利用点。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ff0cad91a3d91286b26c2bbcd2405fca.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace/imgs/02.png)
 
 
 ------------
@@ -76,13 +76,13 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int
 
 `preg_replace('/test/e', 'phpinfo()', 'just exp');`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8676fa9e57909c62cadd428dd54525fd.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace/imgs/03.png)
 
 而构造这样的参数就**可以执行** `phpinfo()` 命令（因为 `/test/e` 匹配 `just test` ）：
 
 `preg_replace('/test/e', 'phpinfo()', 'just test');`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/107ff0a98690db6065b4a299878f71ce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace/imgs/04.png)
 
 
 ------------
@@ -99,7 +99,7 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int
 
 成功得到密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f9be4745a2eb34e742f19e70a4decff2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace/imgs/05.png)
 
 ------
 
