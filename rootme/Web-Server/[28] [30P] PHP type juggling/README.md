@@ -26,7 +26,7 @@
 
 开启挑战后，页面只要求输入账号和密码：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/388ec26de318b651d3f48dd1fffe1b04.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling/imgs/01.png)
 
 点击 `Authentication source code` 后可查看页面源码：
 
@@ -103,7 +103,7 @@ print json_encode($return);
 
 在`Your login` 输入 `0` ，在 `Your password` 输入 `[]` 。但是不起任何作用。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/cd7fe770d609928754cd19d413511ad1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling/imgs/02.png)
 
 使用 Burp Suite 捕获刚才的请求，发现我们输入的参数被转换成 Json ：
 
@@ -113,7 +113,7 @@ print json_encode($return);
 
 明显两个输入的参数都被转换成了字符串，甚至 `[]` 还被加密成 MD5 ，这样自然无法使我们的 payload 生效。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/dad92cf08b29c5d9bd57f87928aba78b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling/imgs/03.png)
 
 
 于是直接在 Burp Suite 修改 Json 的参数，即构造真正的 payload 如下 （注意**类型**分别是**数字**和**数组**）：
@@ -124,7 +124,7 @@ print json_encode($return);
 
 成功控制条件，得到 flag ，完成挑战：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9fede36e20bea6da2f530fed879d3b7d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling/imgs/04.png)
 
 ------------
 
