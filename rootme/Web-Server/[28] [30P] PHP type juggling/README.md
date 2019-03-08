@@ -53,6 +53,8 @@ if (isset($_POST["auth"]))  {
     }
 }
 print json_encode($return);
+
+?>
 ```
 
 很明显，只要能令 `$auth['data']['login'] == $USER` 和 `!strcmp($auth['data']['password'], $PASSWORD_SHA256)` 这两个条件为真，就可以令网页打印 `$FLAG` 。
