@@ -31,7 +31,7 @@
 - [PHP - Loose Comparison](#)
 - [\[30P\] PHP preg_replace()](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B27%5D%20%5B30P%5D%20PHP%20preg_replace)
 - [\[30P\] PHP type juggling](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling)
-- [Remote File Inclusion](#)
+- [\[30P\] Remote File Inclusion](#)
 - [Server-side Template Injection](#)
 - [SQL injection - authentication](#)
 - [SQL injection - authentication - GBK](#)
