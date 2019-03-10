@@ -13,7 +13,7 @@ SQLi 水题。关键是找到注入点。
 
 虽然三个页面都有数据库查询操作，但是测试发现注入点在 [`?action=recherche`](http://challenge01.root-me.org/web-serveur/ch19/?action=recherche) 页面。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f63c184e2b5cb9283d1f342d8b123101.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B33%5D%20%5B30P%5D%20SQL%20injection%20-%20string/imgs/01.png)
 
 ------------
 
@@ -21,7 +21,7 @@ SQLi 水题。关键是找到注入点。
 
 通过页面回显的异常信息，可以确认是 SQLite3 数据库。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/611677c2a3daa92daec162c413bea34d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B33%5D%20%5B30P%5D%20SQL%20injection%20-%20string/imgs/02.png)
 
 在 SQLite3 中只有一个系统隐藏表 sqlite_master ，其表结构如下：
 
@@ -41,7 +41,7 @@ CREATE TABLE sqlite_master (
 
 从中找到账户表及其表结构 `users (CREATE TABLE users(username TEXT, password TEXT, Year INTEGER))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/e3ca02b4c66138425e74cf21e57e3b45.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B33%5D%20%5B30P%5D%20SQL%20injection%20-%20string/imgs/03.png)
 
 进一步构造 payload 跨表查询 users 的账号信息：
 
@@ -49,7 +49,7 @@ CREATE TABLE sqlite_master (
 
 得到 admin 的密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/cb8269f9d12cacf8459a90d389200200.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B33%5D%20%5B30P%5D%20SQL%20injection%20-%20string/imgs/04.png)
 
 ------
 
