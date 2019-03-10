@@ -33,7 +33,7 @@
 - [\[30P\] PHP type juggling](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B28%5D%20%5B30P%5D%20PHP%20type%20juggling)
 - [\[30P\] Remote File Inclusion](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B29%5D%20%5B30P%5D%20Remote%20File%20Inclusion)
 - [\[30P\] Server-side Template Injection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection)
-- [SQL injection - authentication](#)
+- [\[30P\] SQL injection - authentication](#)
 - [SQL injection - authentication - GBK](#)
 - [SQL injection - string](#)
 - [XSLT - Code execution](#)
