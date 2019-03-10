@@ -35,7 +35,7 @@
 - [\[30P\] Server-side Template Injection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection)
 - [\[30P\] SQL injection - authentication](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication)
 - [SQL injection - authentication - GBK](#)
-- [SQL injection - string](#)
+- [\[30P\] SQL injection - string](#)
 - [XSLT - Code execution](#)
 - [LDAP injection - authentication](#)
 - [NoSQL injection - authentication](#)

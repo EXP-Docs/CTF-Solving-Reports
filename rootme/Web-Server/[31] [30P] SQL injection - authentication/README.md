@@ -51,17 +51,17 @@ CREATE TABLE sqlite_master (
 );
 ```
 
-虽然这张表不是用来存储用户账密的，但还是尝试看看里面有什么。
+虽然这张表不是用来存储用户账密的，但他存储了数据库中每个数据表的信息，可以通过它找到其他数据表。
 
 在 Password 构造 payload 跨表查询 （注意末尾 `--` 注释掉原 SQL 中多余的内容） ：
 
 `exp' or 1=1 union select name, sql from sqlite_master --`
 
-获得 administrator 的密码，挑战成功。
-
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/04.png)
+直接就获得 administrator 的密码，挑战成功。
 
 > 其实这题不像是真正的数据库环境，感觉就是一个沙箱根据输入的内容做出对应的预设反应。
+
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/04.png)
 
 ------
 
