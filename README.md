@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　CTF 解题报告
+　[CTF 解题报告](https://lyy289065406.github.io/CTF-Solving-Reports/)
 
 ------
 
