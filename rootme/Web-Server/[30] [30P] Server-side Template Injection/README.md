@@ -20,11 +20,11 @@ SSTI (服务侧模板注入) 题型，此挑战要用到的相关知识可以参
 
 开启挑战后只有一个输入框，首先试试能不能 XXS ，输入一个探针 `<img src=0 />` ，发现原文回显，即被过滤了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d4f352855ae12e7564dd839ac478ca18.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/01.png)
 
 然后尝试直接访问 【[http://challenge01.root-me.org/web-serveur/ch41/SECRET_FLAG.txt](http://challenge01.root-me.org/web-serveur/ch41/SECRET_FLAG.txt)】，理所当然报错：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/41036be7a94a32fe847143242da1dfc6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/02.png)
 
 ------
 
@@ -36,15 +36,15 @@ SSTI (服务侧模板注入) 题型，此挑战要用到的相关知识可以参
 
 在 [网上](https://www.freebuf.com/vuls/83999.html) 找到了 Burp Sutie 提供的一套 payload探针，用于快速确认模板引擎（其中绿色分支表示探针注入成功时的下一个步骤，红色表示注入失败时的下一个步骤）：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0ce12778d8bc0744daade4db1f4eb00f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/03.png)
 
 根据流程按部就班做就可以了。首先输入探针 `${7*7}` ，发现 WEB 计算成了 `49` ，即注入成功：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8ed5d5bfb7076c55ff4828cf55d90bdc.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/04.png)
 
 继续输入下一个探针 `a{*comment*}b` ，这次原文回显，即注入失败：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/24869cb70b7740e971f29620fb740065.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/05.png)
 
 继续输入下一个探针 `${"z".join("ab")}` ，这次直接返回异常，即注入失败。
 
@@ -54,7 +54,7 @@ SSTI (服务侧模板注入) 题型，此挑战要用到的相关知识可以参
 
 从网上找到 freemarker 是属于 Java 语言的模板引擎，因此可以针对性进行注入。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/cef4731f720908a537b2be4b9c37c7c8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/06.png)
 
 ------
 
@@ -71,8 +71,7 @@ SSTI (服务侧模板注入) 题型，此挑战要用到的相关知识可以参
 ${exp("any system cmd")}
 ```
 
-其中第一行的意思是：
-　　利用 `assign` 标签定义一个全局变量 `exp` ，这个全局变量是通过 `freemarker.template.utility.Execute` 类 `new` 出来的一个实例变量。而在 freemarker 中， `freemarker.template.utility.Execute` 类的功能是调用系统命令。
+其中第一行的意思是：利用 `assign` 标签定义一个全局变量 `exp` ，这个全局变量是通过 `freemarker.template.utility.Execute` 类 `new` 出来的一个实例变量。而在 freemarker 中， `freemarker.template.utility.Execute` 类的功能是调用系统命令。
 
 第二行的意思就更简单了：利用全局变量 `exp` 调用任意系统命令。
 
@@ -84,7 +83,7 @@ ${exp("any system cmd")}
 
 成功获取到了当前 Linux 用户的 id 信息。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/390b98e93fe0b676a1669e17c8bc8c34.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/07.png)
 
 ------
 
@@ -96,7 +95,7 @@ ${exp("any system cmd")}
 
 很幸运地，这个文件就在当前目录：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1a6c9bd0b513953271e5aad6c4a6b895.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/08.png)
 
 最后我们构造 payload 读取这个文件：
 
@@ -104,7 +103,7 @@ ${exp("any system cmd")}
 
 得到 flag ，完成挑战：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/280129866ccb07658b96578ec00c2de8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B30%5D%20%5B30P%5D%20Server-side%20Template%20Injection/imgs/09.png)
 
 ------
 
