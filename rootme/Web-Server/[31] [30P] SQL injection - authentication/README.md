@@ -17,7 +17,7 @@ Login 和 Password 都可以注入，注入任意一个即可。
 
 在 Password 输入任意值提交，报错 `Error : no such user/password` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5c3ddc307b7d4ec76ce4042ed86916c8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/01.png)
 
 尝试在 Password 构造探针 ：`exp' or '1'='1` 。
 
@@ -25,7 +25,7 @@ Login 和 Password 都可以注入，注入任意一个即可。
 
 > 不要着急用这个密码去验证，题目要求找到 administrator 的密码，而不是 user1 的密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/2d213a2216964eaaebb5f68e97028023.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/02.png)
 
 换言之可能 `account` 表里面只有普通用户的账号记录，我们需要把目标转移到 **系统表**。
 
@@ -37,7 +37,7 @@ Login 和 Password 都可以注入，注入任意一个即可。
 
 尝试在 Password 构造 payload ：`'exp error'` （即不闭合引号），前端抛出异常，发现这是 SQLite3 数据库。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6f29118a718734d8e21c61e84aff74e4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/03.png)
 
 在 SQLite3 中只有一个系统隐藏表 sqlite_master ，其表结构如下：
 
@@ -59,7 +59,7 @@ CREATE TABLE sqlite_master (
 
 获得 administrator 的密码，挑战成功。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/c35f37d43b03d7e6278fb10e23e9e0b2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B31%5D%20%5B30P%5D%20SQL%20injection%20-%20authentication/imgs/04.png)
 
 > 其实这题不像是真正的数据库环境，感觉就是一个沙箱根据输入的内容做出对应的预设反应。
 
