@@ -43,7 +43,7 @@
 
 `ERROR : Invalid LDAP syntax : (&(uid=admin))(userPassword=123456))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/35570a836b1667d478a427e73d4f5f40.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B35%5D%20%5B35P%5D%20LDAP%20injection%20-%20authentication/imgs/01.png)
 
 很明显，用于登陆验证的 LDAP 代码逻辑为：
 
@@ -79,7 +79,7 @@
 
  逐个账号试，发现 `ch25` 果然就是账号，得到密码（回显被加密，需要看源码），完成挑战：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/baa2d4fa5aeaffbb152d6b6b4af8fb1d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B35%5D%20%5B35P%5D%20LDAP%20injection%20-%20authentication/imgs/02.png)
 
 ------------
 
@@ -114,7 +114,7 @@
 
 在某些对 LDAP 语法校验不严谨的题型，依然会从左到右执行，直到报错为止，因此这个 payload 在某些环境是可以实现绕过的。但是很明显这题不行：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/c0a84e229c48a70a4450e2a869c43af0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B35%5D%20%5B35P%5D%20LDAP%20injection%20-%20authentication/imgs/03.png)
 
 ------------
 
@@ -131,7 +131,7 @@
 
 `%00` 是 C 或 PHP 的字符串终止符 `\0` 的 URL 编码，只要这个字符没有被过滤，在 LDAP 校验严谨的环境下也能对语法错误的 LDAP 进行截断。但是很明显这题不行：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/47500568d87fcafe4b3581056e17bad7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B35%5D%20%5B35P%5D%20LDAP%20injection%20-%20authentication/imgs/04.png)
 
 
 ------------
@@ -149,7 +149,7 @@
 
 而对于第一个过滤器，只要账号是正确的，就必定为真。不过此方式在本题也行不通：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1bf90a18c3ad45c4b4b56b77b18cf855.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B35%5D%20%5B35P%5D%20LDAP%20injection%20-%20authentication/imgs/05.png)
 
 ------
 
