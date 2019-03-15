@@ -49,7 +49,7 @@
 - [Java - Spring Boot](#)
 - [Local File Inclusion - Wrappers](#)
 - [PHP - Eval](#)
-- [\[40P\] SQL injection - Error](#)
+- [\[40P\] SQL injection - Error](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error)
 - [SQL injection - Insert](#)
 - [SQL injection - file reading](#)
 - [XPath injection - string](#)

