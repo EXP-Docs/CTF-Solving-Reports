@@ -213,8 +213,8 @@ ASC,(
 |:---:|:----------:|
 | 0 | pg_statistic |
 | 1 | pg_type |
-| 2 | <font color="red">m3mbr35t4bl3</font> |
-| 3 | <font color="blue">contents</font> |
+| 2 | **m3mbr35t4bl3** |
+| 3 | **contents** |
 | 4 | pg_authid |
 | 5 | pg_attribute |
 | 6 | pg_proc |
