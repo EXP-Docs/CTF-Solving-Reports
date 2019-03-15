@@ -49,7 +49,7 @@
 - [Java - Spring Boot](#)
 - [Local File Inclusion - Wrappers](#)
 - [PHP - Eval](#)
-- [SQL injection - Error](#)
+- [\[40P\] SQL injection - Error](#)
 - [SQL injection - Insert](#)
 - [SQL injection - file reading](#)
 - [XPath injection - string](#)
