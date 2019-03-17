@@ -11,7 +11,7 @@
 
 [http://challenge01.root-me.org/web-serveur/ch31/?action=members&id=1](http://challenge01.root-me.org/web-serveur/ch31/?action=members&id=1)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9f519dccc3108372e24710aebf15d284.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/01.png)
 
 通过 sqlmap 扫描发现这是 **MySQL** 数据库，且此处同时存在 4 个注入漏洞：
 
@@ -62,7 +62,7 @@ back-end DBMS: MySQL >= 5.0
 [*] ending @ 21:56:47 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/62b5cbb5027f9766ee2a53ba564e336c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/02.png)
 
 ------------
 
@@ -91,7 +91,7 @@ available databases [2]:
 [*] information_schema
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a0f2239b78da20c617cdce36a31314e8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/03.png)
 
 再查到当前数据库是 `c_webserveur_31` ：
 
@@ -106,7 +106,7 @@ back-end DBMS: MySQL >= 5.0
 current database: 'c_webserveur_31'
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/76b67e42714f69975fd5070a5f9210b3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/04.png)
 
 ------------
 
@@ -130,7 +130,7 @@ Database: c_webserveur_31
 | member |
 +--------+
 ```
-![](http://exp-blog.com/wp-content/uploads/2019/03/79b57e9dd8497bfcebf3ae6aa00aa2d5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/05.png)
 
 ------------
 
@@ -165,7 +165,7 @@ Table: member
 +-----------------+---------------+
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/c2289899c436b7fd65c893212d1b3ddb.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/06.png)
 
 ------------
 
@@ -216,7 +216,7 @@ Table: member
 
 访问页面 [http://challenge01.root-me.org/web-serveur/ch31/index.php](http://challenge01.root-me.org/web-serveur/ch31/index.php) 没有 404 报错，说明 index.php 文件是存在的。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/747a9352f73965abedaea9d475536701.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/07.png)
 
 但是要通过数据读取文件，是需要知道文件的绝对路径的。
 
@@ -229,11 +229,11 @@ Table: member
 
 但这还不是绝对路径，因为直接访问页面 [http://challenge01.root-me.org/](http://challenge01.root-me.org/) 列印了所有 RootMe 挑战的分类目录，其中还有一层 `Parent directory` 父目录，说明之前至少还有一级目录。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/193b44ddb946f4fcbeac245a9e698b22.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/08.png)
 
 虽然从 Web 页面无法查到这级父目录的名称，不过可以从需要通过 **WebSSH** 的其他挑战查到这个目录，例如这个挑战： [ELF x86 - Stack buffer overflow basic 1](https://www.root-me.org/en/Challenges/App-System/ELF32-Stack-buffer-overflow-basic-1) 。登陆 WebSSH 后，可以查到这两类挑战的共同父级目录名为 `/challenge` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/de0b3a61c96fdc22a8df96c4d3e2b83f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/09.png)
 
 
 ------------
@@ -263,7 +263,7 @@ files saved to [1]:
 [*] ending @ 22:50:16 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/df370a21a93db169a16f88e955c00117.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/10.png)
 
 
 查看下载到的文件内容如下：
@@ -394,11 +394,11 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 得到 `77be4fc97f77f5f48308942bb6e32aacabed9cef` ，即这是 sha1 加密后的值。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/b37d4151b0bcd2325ba6d9d2f019a361.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/11.png)
 
 最后再找一个 sha1 在线解码平台（如 [https://www.sha1online.org/](https://www.sha1online.org/)）对其逆向暴力破解，得到真正的密码 `superpassword` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/21450df9586fd3aaa59b4322f219410a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/12.png)
 
 ------------
 
@@ -406,7 +406,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 使用账号 `admin` 和密码 `superpassword` 登陆，知道这个密码就是 `flag` ，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7e8e1f1c36406937552772cf713f12ab.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/13.png)
 
 ------------
 
@@ -426,7 +426,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 先测试一下这个漏洞的探针效果：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5fc90daa0305915938ae55a7833f647a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/14.png)
 
 在 Mysql 中读取文件的函数为 `LOAD_FILE` ，只要把文件路径传参进去，就会返回文件内容。
 
@@ -438,7 +438,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 但是这个 payload 无法直接使用，测试发现原因是引号 `"`、`'` 和文件路径符 `/` 不能被直接注入：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/3631ab74d43bd9d4f5c783b45db864c8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/15.png)
 
 
 不过符号问题可以很简单绕过，只需要把 `/challenge/web-serveur/ch31/index.php` 编码成 16 进制再传参即可。
@@ -447,7 +447,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 `2f6368616c6c656e67652f7765622d736572766575722f636833312f696e6465782e706870` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/2b82955c778e56baf6cd8b5c9b436a2c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/16.png)
 
 将其作为 `LOAD_FILE` 的参数（因为是 16 进制，注意前面要补 `0x` 声明），重新构造 payload 如下：
 
@@ -457,7 +457,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 
 执行这个 payload ，成功得到 `index.php` 页面的文件源码：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/51a3ebc3e96e11cb5ce086ebf8fc9459.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/17.png)
 
 ------
 
