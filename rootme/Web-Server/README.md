@@ -54,7 +54,7 @@
 - [SQL injection - file reading](#)
 - [XPath injection - string](#)
 - [NoSQL injection - blind](#)
-- [\[45P\] SQL injection - Time based](#)
+- [\[45P\] SQL injection - Time based](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based)
 - [Server Side Request Forgery](#)
 - [SQL injection - blind](#)
 - [LDAP injection - blind](#)

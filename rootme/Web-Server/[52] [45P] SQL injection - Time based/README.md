@@ -26,15 +26,15 @@
 
 `http://challenge01.root-me.org/web-serveur/ch40/?action=member&member=2;[注入点]`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/69c831464002e2c0ab08d6d88102221d.png)
-![](http://exp-blog.com/wp-content/uploads/2019/03/ba20c58be1bb7b86a5859d33bcb6e339.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/02.png)
 
 
 ------------
 
 其中 sqlmap 可以通过 Burp Suite 直接调用，由 Burp Suite 把捕获到的 HTTP 请求转发到 sqlmap 进行测试会方便很多。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/949b0adb6cee6e51ac781f22bcc9c9b1.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/03.png)
 
 Burp Suite 会把疑似注入点的 HTTP 请求存储到临时文件，例如：
 
@@ -140,7 +140,7 @@ back-end DBMS: PostgreSQL
 
 > **堆叠注入** 是指可以通过分号 `;` 拼接多条 SQL 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a94edfaa4c1ff79aa04125bdd4bd170e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/04.png)
 
 ## 构造通用 payload
 
@@ -267,7 +267,7 @@ sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552787207472.req
 [09:46:50] [CRITICAL] unable to connect to the target URL. sqlmap is going to retry the request(s)
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6d143c4a8df509f5f1683c0942f9f709.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/05.png)
 
 目前 Rootme 还没有加 WAF ，所以这个错误不是 WAF 引起的，不需要考虑绕过。
 
@@ -308,7 +308,7 @@ back-end DBMS: PostgreSQL
 [*] ending @ 09:47:42 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6f6b0ae49df8628350aa95977d5dabce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/06.png)
 
 ## 通过 sqlmap 获取数据库信息
 
@@ -374,7 +374,7 @@ available databases [3]:
 
 而 `CURRENT_DATABASE()` 得到的是 database 名称，sqlmap 得到的是三个 schema 名称（schema 即数据库模式）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/458d44d95440276f779c75d4d22843f5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/07.png)
 
 ------------
 
@@ -422,7 +422,7 @@ current schema (equivalent to database on PostgreSQL): 'public'
 [*] ending @ 09:58:49 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1cf20dc81c22b059111149eff10828a3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/08.png)
 
 ------------
 
@@ -474,7 +474,7 @@ Database: public
 [*] ending @ 10:03:59 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/fc8b7468c3c3c89566f962efc78b89f9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/09.png)
 
 ------------
 
@@ -547,7 +547,7 @@ Table: users
 [*] ending @ 10:25:00 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/2a0371707463b9d47e24b1aa6375b952.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/10.png)
 
 ------------
 
@@ -622,7 +622,7 @@ Table: users
 [*] ending @ 11:00:41 /2019-03-17/
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/3847c6b316c4a35f5bedc58068546d2b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/11.png)
 
 ## 完成挑战
 
@@ -630,11 +630,11 @@ Table: users
 
 但是 [http://challenge01.root-me.org/web-serveur/ch40/?action=memberlist](http://challenge01.root-me.org/web-serveur/ch40/?action=memberlist) 这个页面早就告诉了我们每个用户名和其 id 的对应关系了，其中 `admin` 的 id 是 1 ，所以其密码是 `T!m3B@s3DSQL!` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/54d2d41f7026ffca9a6ad8600450ac65.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/12.png)
 
 登陆后得知 `admin` 的密码就是 flag ，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1b89b686d2a83a9a32469eac575c325d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/13.png)
 
 ------
 
