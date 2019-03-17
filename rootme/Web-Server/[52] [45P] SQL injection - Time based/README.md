@@ -18,6 +18,8 @@
 - [PostgreSQL 布尔类型注入](http://0535code.com/article/20170907_1934.shtml)
 
 
+------------
+
 ## 确认注入点
 
 首先确认注入点。
@@ -29,8 +31,6 @@
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/01.png)
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/02.png)
 
-
-------------
 
 其中 sqlmap 可以通过 Burp Suite 直接调用，由 Burp Suite 把捕获到的 HTTP 请求转发到 sqlmap 进行测试会方便很多。
 
@@ -55,7 +55,6 @@ Connection: close
 
 然后通过 sqlmap 的 `-r` 参数读取这 HTTP 请求文件即可。
 
-------------
 
 这是使用 sqlmap 的测试记录：
 
@@ -142,6 +141,8 @@ back-end DBMS: PostgreSQL
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/04.png)
 
+------------
+
 ## 构造通用 payload
 
 对探针稍微改造下，可以构造这样的通用 payload ：
@@ -151,6 +152,8 @@ back-end DBMS: PostgreSQL
 其中 `[注入点]` 替换成用于获取信息的**布尔注入 SQL** ，当布尔结果为 true 时，页面延时 5 秒，否则延时 0 秒。
 
 > 可能是题目做过延时上限限制，**最长的延时时间实际只有 3 秒**。
+
+------------
 
 ## 布尔注入 + 二分法获取数据库信息
 
@@ -178,8 +181,6 @@ back-end DBMS: PostgreSQL
 // 验证数据库名称的长度等于 15，页面发生延时，说明猜测正确
 2;(SELECT (CASE WHEN (SELECT LENGTH(CURRENT_DATABASE()) = 15) THEN PG_SLEEP(5) ELSE PG_SLEEP(0) END))--
 ```
-
-------------
 
 
 知道长度后，可以开始逐字符猜解数据库名称。
@@ -243,13 +244,11 @@ ASCII 表的十进制范围为 0~127 ，因此要确定一个字符，最多需�
 2;(SELECT (CASE WHEN (ASCII(SUBSTR(CURRENT_DATABASE(),2,1)) = 95) THEN PG_SLEEP(5) ELSE PG_SLEEP(0) END))--
 ```
 
-由于前面已经得知数据库名称长度为 15 ，要通过二分法全部猜解出来，最坏的情况要发起 15 * 7 = 105 次猜测请求，非常繁琐且耗时，所以这里我就不再逐一罗列 payload 了。按照前面的步骤逐个字符猜下去，最终得到的数据库名称为 `c_webserveur_40` 。
+由于前面已经得知数据库名称长度为 15 ，若要通过二分法全部猜解出来，最坏的情况要发起 15 * 7 = 105 次猜测请求，非常繁琐且耗时，所以这里我就不再逐一罗列 payload 了。按照前面的步骤逐个字符猜下去，最终得到的数据库名称为 `c_webserveur_40` 。
+
+通过这个方法，完全可以实现拖库（即得到数据库中所有表名称、每个表的列、每一列的数据）。但是效率太低了，所以现在开始改用 sqlmap 完成这个过程。
 
 ------------
-
-通过这个方法，完全可以实现拖库（即得到数据库中所有表名称、每个表的列、每一列的数据）。
-
-但是效率太低了，所以现在开始改用 sqlmap 完成这个过程。
 
 ## 可选：设置 sqlmap 代理
 
@@ -273,7 +272,6 @@ sqlmap.py -r C:\Users\ADMINI~1\AppData\Local\Temp\\1552787207472.req
 
 这是因为天朝网络的缘故，虽然 Rootme 还不在墙后，但是最好还是通过科学代理加速一下，例如 [shadowsocks](https://github.com/shadowsocks) 。
 
-------------
 
 sqlmap 可以通过 `--proxy` 添加科学代理，这次命令就正常执行了：
 
@@ -309,6 +307,8 @@ back-end DBMS: PostgreSQL
 ```
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/06.png)
+
+------------
 
 ## 通过 sqlmap 获取数据库信息
 
@@ -478,8 +478,6 @@ Database: public
 
 ------------
 
-
-
 ### 获得指定表的表结构
 
 很明显，`public` 模式下只有一张表 `users` 。
@@ -623,6 +621,8 @@ Table: users
 ```
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B52%5D%20%5B45P%5D%20SQL%20injection%20-%20Time%20based/imgs/11.png)
+
+------------
 
 ## 完成挑战
 
