@@ -74,18 +74,18 @@ Basic Auth 认证方式也允许在访问网站 `http://host `时，直接在 UR
 
 由于我们构造的 Basic Auth 是无效的，所以这个输出等价于：`<script src="http://"></script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/b2ad39d513cf2b71144df5b245b1826e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/01.png)
 
 这里我们可以利用 XSS 平台构造一个站点执行 `prompt(1)` ，然后把这个站点地址放到 `<script>` 标签即可。
 
 
 XSS 平台推荐使用 [http://xss.tf](http://xss.tf) ，新建一个项目，自定义代码为 `prompt(1)` ，得到项目地址： `http://xss.tf/RVO` （注意每个人的项目地址都是不同的）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/88017554908cc309e40ec3eb09a1a4d7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/02.png)
 
 利用 XXS 平台的项目地址，构造最终的 payload 为：`http://prompt.ml%2f:pwd@xss.tf/RVO`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/2436571a3d26f9da280710c5d62b0105.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/03.png)
 
 
 ------------
@@ -98,7 +98,7 @@ XSS 平台推荐使用 [http://xss.tf](http://xss.tf) ，新建一个项目，�
 
 最终**只有 Firefox 浏览器可以通过**。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6cf762727af6af48e5c7348c935658a4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/04.png)
 
 ------
 

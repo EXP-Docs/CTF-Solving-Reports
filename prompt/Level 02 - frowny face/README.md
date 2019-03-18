@@ -34,7 +34,7 @@ function escape(input) {
 - 但是 `<svg>` 标签属于 Foreign Elements ，即使在HTML语境下也不会受到 HTML 规则的影响，而是遵循 `<svg>` 自身的解析规则。
 - 而 `<svg>` 直接继承自 XML，一般情况下，它的解析规则为：除非被 CDATA 包围，否则实体编码都会被转义。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d21bb8b01590c54ab1c05392e1c74a40.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2002%20-%20frowny%20face/imgs/01.png)
 
 
 这题也可以利用 javascript 的 eval 函数实现绕过，payload 如下：
@@ -43,7 +43,7 @@ function escape(input) {
 <script>eval.call`${'prompt\x281)'}`</script>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8957a9b0255422234f926ee3800e7996.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2002%20-%20frowny%20face/imgs/02.png)
 
 ------
 

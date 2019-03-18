@@ -25,7 +25,7 @@ function escape(input) {
 
 `<img src=0 onerror=prompt(1) ` （**注意末尾有一个空格**）
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/accd9b1c3fb286c6ed3b9f4397b21e33.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2001%20-%20tags%20stripping/imgs/01.png)
 
 ------
 

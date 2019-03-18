@@ -24,7 +24,7 @@ function escape(input) {
 
 因此构造这样的 payload 即可实现绕过：`--!><script>prompt(1)</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8c6abaa3793d56b7ba03c8e602401451.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2003%20-%20HTML%20Comment/imgs/01.png)
 
 ------
 

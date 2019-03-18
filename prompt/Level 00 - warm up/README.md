@@ -20,7 +20,7 @@ function escape(input) {
 
 payload : `"><script>prompt(1)</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ce464cfe08916a3488b01d603044f324.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2000%20-%20warm%20up/imgs/01.png)
 
 ------
 
