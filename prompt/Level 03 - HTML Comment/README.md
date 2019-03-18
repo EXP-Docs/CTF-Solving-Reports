@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 0 - warm up](http://prompt.ml/0)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3613/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 3 - HTML Comment](http://prompt.ml/3)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3631/)]
 
 ------
 
@@ -6,9 +6,11 @@
 
 ```javascript
 function escape(input) {
-    // warm up
-    // script should be executed without user interaction
-    return '<input type="text" value="' + input + '">';
+    // filter potential comment end delimiters
+    input = input.replace(/->/g, '_');
+
+    // comment the input to avoid script execution
+    return '<!-- ' + input + ' -->';
 }
 ```
 
@@ -16,11 +18,13 @@ function escape(input) {
 
 ## 解题报告
 
-水题。直接闭合双引号和标签即可注入。
+正则把 `->` 过略了，导致我们无法闭合注释。
 
-payload : `"><script>prompt(1)</script>`
+但是 HTML 注释还有另一种闭合方式：`<!--  xxxxx  --!>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ce464cfe08916a3488b01d603044f324.png)
+因此构造这样的 payload 即可实现绕过：`--!><script>prompt(1)</script>`
+
+![](http://exp-blog.com/wp-content/uploads/2019/03/8c6abaa3793d56b7ba03c8e602401451.png)
 
 ------
 

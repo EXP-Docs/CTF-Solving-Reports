@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 0 - warm up](http://prompt.ml/0)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3613/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 2 - frowny face](http://prompt.ml/2)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3626/)]
 
 ------
 
@@ -6,21 +6,44 @@
 
 ```javascript
 function escape(input) {
-    // warm up
-    // script should be executed without user interaction
-    return '<input type="text" value="' + input + '">';
-}
+    //                      v-- frowny face
+    input = input.replace(/[=(]/g, '');
+
+    // ok seriously, disallows equal signs and open parenthesis
+    return input;
+}     
 ```
 
-------
+------------
 
 ## 解题报告
 
-水题。直接闭合双引号和标签即可注入。
+正则把输入内容中所有 `=` 和 `(` 过滤了。
 
-payload : `"><script>prompt(1)</script>`
+ `=` 被过滤了不是什么大问题，XSS 直接放在 `<script>` 标签一样可以执行，关键是 `(` 被过略了。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ce464cfe08916a3488b01d603044f324.png)
+此处可以利用 `<svg>` 标签【会对标签中的内容优先做实体编码解析】的原理进行绕过。
+
+> 在网页编码中，以 `&#ASCII;` 称为实体编码，其中 ASCII 可以用十进制或十六进制表示。如 `(` 的 ASCII 编码为 40 （或十六进制 0x28） ，那么 `&#40;` 或 `&#x28;` 就是 `(` 的实体编码。
+
+因此这题可构造这样的 payload 实现绕过：`<svg><script>prompt&#40;1)</script>` 。
+
+它的工作原理为：
+
+- 在 HTML 中，原本 `<script>` 标签属于 Raw text elements ，其内部文本遵循着不转义的规则。
+- 但是 `<svg>` 标签属于 Foreign Elements ，即使在HTML语境下也不会受到 HTML 规则的影响，而是遵循 `<svg>` 自身的解析规则。
+- 而 `<svg>` 直接继承自 XML，一般情况下，它的解析规则为：除非被 CDATA 包围，否则实体编码都会被转义。
+
+![](http://exp-blog.com/wp-content/uploads/2019/03/d21bb8b01590c54ab1c05392e1c74a40.png)
+
+
+这题也可以利用 javascript 的 eval 函数实现绕过，payload 如下：
+
+```javascript
+<script>eval.call`${'prompt\x281)'}`</script>
+```
+
+![](http://exp-blog.com/wp-content/uploads/2019/03/8957a9b0255422234f926ee3800e7996.png)
 
 ------
 
