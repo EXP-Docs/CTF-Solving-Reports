@@ -24,7 +24,7 @@ function escape(input) {
 
 [查表](http://www.w3school.com.cn/tags/att_input_type.asp) 知道 input 的可用类型如下：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/56de779e7dfde9213b8fa09c07220327.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2005%20-%20Input%20Type/imgs/01.png)
 
 **从中发现比较容易利用的类型是 button 和 image** 。
 
@@ -46,7 +46,7 @@ exp" type="button" onclick
 
 不过似乎是 BUG ，构造的按钮无法点击，导致无法触发 js。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/e60fd2a05623c3b5f9dfeb22efb6797f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2005%20-%20Input%20Type/imgs/02.png)
 
 ------------
 
@@ -59,7 +59,7 @@ exp" type="image" src=0 onerror
 
 成功完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/491b2c70972afcf3f0c745b8a7fe5638.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2005%20-%20Input%20Type/imgs/03.png)
 
 ------
 
