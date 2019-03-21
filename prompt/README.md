@@ -8,7 +8,7 @@
 - [Level 02 - frowny face](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2002%20-%20frowny%20face)
 - [Level 03 - HTML Comment](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2003%20-%20HTML%20Comment)
 - [Level 04 - Basic Auth](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2004%20-%20Basic%20Auth)
-- [Level 05](#)
+- [Level 05 - Input Type](#)
 - [Level 06](#)
 - [Level 07](#)
 - [Level 08](#)
