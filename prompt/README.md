@@ -9,7 +9,7 @@
 - [Level 03 - HTML Comment](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2003%20-%20HTML%20Comment)
 - [Level 04 - Basic Auth](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2004%20-%20Basic%20Auth)
 - [Level 05 - Input Type](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2005%20-%20Input%20Type)
-- [Level 06 - Action](#)
+- [Level 06 - Action](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2006%20-%20Action)
 - [Level 07](#)
 - [Level 08](#)
 - [Level 09](#)

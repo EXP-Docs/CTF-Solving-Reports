@@ -48,7 +48,7 @@ function escape(input) {
 - 右侧内容是 json 格式，每一对 key-val 构造成 `<form>` 内的一个 `<input>` 子标签，其中 key 作为 `<input>` 的 `name` 属性值、val 作为 `<input>` 的 `value` 属性值
 - 只要 `<form>` 的 `action` 属性值通过正则校验，则会调用 `<form>` 的 `submit()` 函数触发 `action` 行为
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1340530308516c0123551d299f81b24b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2006%20-%20Action/imgs/01.png)
 
 要在 `<form>` 的 `action` 属性执行 javascript 代码，可以构造这样的 payload：
 
@@ -56,7 +56,7 @@ function escape(input) {
 
 但是由于 `document.forms[0].action` 的内容被正则过滤了，导致 `javascript:alert(1)` 无法执行：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d87bf0657e2f6bf0a216f05fc2e05b64.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2006%20-%20Action/imgs/02.png)
 
 但是这个过滤是不完善的，可以绕过。关键在于 `document.forms[0].action` 的指向。
 
@@ -77,11 +77,11 @@ function escape(input) {
 
 显然成功触发了 alert 事件：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ccd55a34d3256026acf24ceeeebc0c84.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2006%20-%20Action/imgs/03.png)
 
 至此，只需要把 alert 改成 prompt 即可完成挑战，最终 payload 为：`javascript:prompt(1)#{"action":"EXP"}`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ca2e645438c16813d5624be1e9401dfd.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2006%20-%20Action/imgs/04.png)
 
 ------
 
