@@ -27,7 +27,7 @@ function escape(input) {
 
 `11#2222#333333#44444444#5555555555#6666666666666666666666666#"><img src=0`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7b44355f75aab959370bc80041a01139.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2007%20-%20Length/imgs/01.png)
 
 
 ------------
@@ -51,13 +51,13 @@ function escape(input) {
 
 > 注意： `<script>` 和 `</script>` 标签用于声明 js 代码的范围，唯独这两个标签不能从中间断开到两行，否则多行注释 `/* */` 就不会起作用了。另外我在测试 payload 的时候，也尝试过 `<!-- -->` HTML 注释，但是尖括号会造成标签错位导致注入失败，有兴趣的同学可以研究下。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/42277d652f8ad5b803f8bdcc5252460e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2007%20-%20Length/imgs/02.png)
 
 从前面构造的 HTML 代码中提取每一行的 `title` 属性值，使用 `#` 拼接，就得到最终 payload 如下，完成挑战：
 
 `"><script>/*#*/prompt/*#*/(1)/*#*/</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/739ae71f620beb54a48306fc13552f93.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2007%20-%20Length/imgs/03.png)
 
 ------
 

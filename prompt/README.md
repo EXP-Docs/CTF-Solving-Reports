@@ -10,7 +10,7 @@
 - [Level 04 - Basic Auth](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2004%20-%20Basic%20Auth)
 - [Level 05 - Input Type](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2005%20-%20Input%20Type)
 - [Level 06 - Action](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2006%20-%20Action)
-- [Level 07 - Length](#)
+- [Level 07 - Length](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2007%20-%20Length)
 - [Level 08](#)
 - [Level 09](#)
 - [Level 10](#)
