@@ -27,7 +27,7 @@ function escape(input) {
 
 很明显要想办法把我们注入的内容换行，但是又题目把 回车换行符 `\r\n` 都过滤掉了，无法直接换行：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/7a07cf2aea8298ae5dcab7015556448f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/01.png)
 
 虽然 **ASCII** 字符的换行符被过滤了，但是在 JS 里面是可以直接使用 Unicode 字符的，即可以使用 **Unicode** 的换行符进行绕过。查一下 Unicode 空字符的编码表，其中换行符的编码是 `\u000A` 和 `\u2028`。
 
@@ -74,7 +74,7 @@ prompt(1)
 </script>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ce3c567fed17527537c893749e7cdbe7.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/02.png)
 
 ------------
 
@@ -99,7 +99,7 @@ prompt(1)
 </script>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0562dbdab6a030b3520f9cc5a67e1cef.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/03.png)
 
 
 ------------
@@ -110,7 +110,7 @@ prompt(1)
 
 但是题目并不会帮我们把 Unicode 编码 `\u2028` 直接转换为换行符，所以我们需要直接输入这个换行符。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/64dba5b140e5f00b2a7ec6bd0a25ca58.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/04.png)
 
 但是使用键盘是无法输入这个换行符的，这里我借助了 python 将其直接打印出来。
 
@@ -123,7 +123,7 @@ python 代码为：
 print('exp-payload:\u2028prompt(1)\u2028-->(after run, copy this line)')
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/3998be10f6d1624dcfe784515a8bb77f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/05.png)
 
 最终得到真正的 payload 如下（注意这个 payload 已经有 Unicode 换行符了，只是看不见罢了）：
 
@@ -131,7 +131,7 @@ print('exp-payload:\u2028prompt(1)\u2028-->(after run, copy this line)')
 
 输入这个 payload 即可完成挑战（但是题目输出依然看不见换行效果...）
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1d3ac9e7d4bade52b1333d03c335cbd4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2008%20-%20Unicode/imgs/06.png)
 
 ------
 
