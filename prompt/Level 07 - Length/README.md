@@ -35,7 +35,7 @@ function escape(input) {
 需知道 javascript 代码有个特点：
 
 - 在 HTML 语境中，`<script>` 和 `</script>` 标签之间的内容默认视为 js 代码
-- js 代码换行后依然会自动拼接并生效
+- js 代码换行后依然会自动拼接并生效（但是函数名/变量名要完整，不能破开到两行）
 - js 代码内容之间的注释会被自动忽略
 
 因此对于这种限制长度的注入点，可以搭配 `<script>` 和多行注释 `/* */` 进行绕过。
@@ -44,16 +44,16 @@ function escape(input) {
 
 ```html
 <p class="comment" title=""><script>/*"></p>
-<p class="comment" title="*/prompt/*"></p>
-<p class="comment" title="*/(1)/*"></p>
+<p class="comment" title="*/  prompt/*"></p>
+<p class="comment" title="*/(1)     /*"></p>
 <p class="comment" title="*/</script> "></p>
 ```
 
-> 注意： `<script>` 和 `</script>` 标签用于声明 js 代码的范围，唯独这两个标签不能从中间断开到两行，否则多行注释 `/* */` 就不会起作用了。另外我在测试 payload 的时候，也尝试过 `<!-- -->` HTML 注释，但是尖括号会造成标签错位导致注入失败，有兴趣的同学可以研究下。
+> 注意： `<script>` 和 `</script>` 标签用于声明 js 代码的范围，这两个标签不能从中间任何位置破开到两行，否则多行注释 `/* */` 就不会起作用了。另外我在测试 payload 的时候，也尝试过 `<!-- -->` HTML 注释，但是尖括号会造成标签错位导致注入失败，有兴趣的同学可以研究下。
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2007%20-%20Length/imgs/02.png)
 
-从前面构造的 HTML 代码中提取每一行的 `title` 属性值，使用 `#` 拼接，就得到最终 payload 如下，完成挑战：
+从前面构造的 HTML 代码中提取每一行的 `title` 属性值，使用 `#` 拼接，就得到最终 payload 如下（*注意此处去掉了前面测试时的全部空格，那些空格只是为了便于对齐观察注入点，没有什么作用，保留或删除均可*），完成挑战：
 
 `"><script>/*#*/prompt/*#*/(1)/*#*/</script>`
 
