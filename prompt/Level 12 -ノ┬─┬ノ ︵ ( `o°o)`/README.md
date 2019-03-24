@@ -30,7 +30,7 @@ function escape(input) {
 eval(String.fromCharCode(112).concat(String.fromCharCode(114)).concat(String.fromCharCode(111)).concat(String.fromCharCode(109)).concat(String.fromCharCode(112)).concat(String.fromCharCode(116)).concat(String.fromCharCode(40)).concat(String.fromCharCode(49)).concat(String.fromCharCode(41)))
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/8fa55dfbf21eda615a9d4e8d9f1489c3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2012%20-%E3%83%8E%E2%94%AC%E2%94%80%E2%94%AC%E3%83%8E%20%EF%B8%B5%20%28%20%60o%C2%B0o%29%60/imgs/01.png)
 
 
 ------------
@@ -47,13 +47,13 @@ eval(String.fromCharCode(112).concat(String.fromCharCode(114)).concat(String.fro
 
 于是我们可以把 `prompt`  字符串转换成十进制数：`parseInt("prompt", 36)` ，得到 `1558153217` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a43377aa5be66084263005a782b9d068.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2012%20-%E3%83%8E%E2%94%AC%E2%94%80%E2%94%AC%E3%83%8E%20%EF%B8%B5%20%28%20%60o%C2%B0o%29%60/imgs/02.png)
 
 而要将十进制数字还原成字符串，则可以使用另一个函数 `toString(radix)` （默认情况下 `radix = 10` ）。
 
 即可以使用此方法 `(1558153217).toString(36)` 还原得到 `prompt` 字符串：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/85b16301a4c69f8e65057c0e757daf53.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2012%20-%E3%83%8E%E2%94%AC%E2%94%80%E2%94%AC%E3%83%8E%20%EF%B8%B5%20%28%20%60o%C2%B0o%29%60/imgs/03.png)
 
 于是最开始的 payload 就开始简化成这样：
 
@@ -63,7 +63,7 @@ eval((1558153217).toString(36).concat(String.fromCharCode(40)).concat(1).concat(
 
 >  注：【[Level A – (╯°□°）╯︵ ┻━┻](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2010%20-%20%28%E2%95%AF%C2%B0%E2%96%A1%C2%B0%EF%BC%89%E2%95%AF%EF%B8%B5%20%E2%94%BB%E2%94%81%E2%94%BB)】 同样可以使用这个 payload 完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/c914d38fa8e27544a0f70ae8fbd018c4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2012%20-%E3%83%8E%E2%94%AC%E2%94%80%E2%94%AC%E3%83%8E%20%EF%B8%B5%20%28%20%60o%C2%B0o%29%60/imgs/04.png)
 
 ------
 
