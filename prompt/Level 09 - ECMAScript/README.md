@@ -26,7 +26,7 @@ function escape(input) {
 
 一般情况下这个方法只对 ASCII 小写字母起作用，但是根据 [ECAMScript 定义](http://ecma-international.org/ecma-262/5.1/#sec-15.5.4.18)，这个方法对部分 Unicode 字符也会起作用，即它有意把某些 Unicode 字符映射到某些 ASCII 字符（串）。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2009%20%E2%80%93%20ECMAScript/imgs/01.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2009%20-%20ECMAScript/imgs/01.png)
 
 但是我们不清楚这个具体的映射表是什么，是否可利用。
 
@@ -59,7 +59,7 @@ for (i = 0; i < UNICODE_RANGE; i++) {
 }
 ```
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2009%20%E2%80%93%20ECMAScript/imgs/02.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2009%20-%20ECMAScript/imgs/02.png)
 
 用运行结果来看，有两个字符的映射是明显对我们有用的：
 
@@ -87,7 +87,7 @@ for (i = 0; i < UNICODE_RANGE; i++) {
 
 原因是 JS 对函数名是大小写敏感的，而 `prompt` 也被转换成了大写。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2009%20%E2%80%93%20ECMAScript/imgs/03.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2009%20-%20ECMAScript/imgs/03.png)
 
 此时我想到可以利用 `<svg>` **运行时才解析实体编码**的特性，对大写转换进行绕过。
 
@@ -99,13 +99,13 @@ for (i = 0; i < UNICODE_RANGE; i++) {
 
 `<ſvg><ımg src=0 onerror=&#112;&#114;&#111;&#109;&#112;&#116;(1) /></svg>`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2009%20%E2%80%93%20ECMAScript/imgs/04.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2009%20-%20ECMAScript/imgs/04.png)
 
 这个 payload 也是可以完成挑战的，相对简单点：
 
 `<ſvg><ſcript>&#112;&#114;&#111;&#109;&#112;&#116;(1)</script></svg>`
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2009%20%E2%80%93%20ECMAScript/imgs/05.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2009%20-%20ECMAScript/imgs/05.png)
 
 ------
 
