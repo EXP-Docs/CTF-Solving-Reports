@@ -33,11 +33,11 @@ function escape(input) {
 
 我起初期望使用这个 payload  `eval(String.fromCharCode(112,114,111,109,112,116,40,49,41)` 绕过 `replace` 以在前端直接构造 `prompt(1)` ，但是 `,` 被 `encodeURIComponent` 转码成了 `%2C` ，失败。。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5352c353743e4b57d04f804ae513cd02.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2010%20-%20%28%E2%95%AF%C2%B0%E2%96%A1%C2%B0%EF%BC%89%E2%95%AF%EF%B8%B5%20%E2%94%BB%E2%94%81%E2%94%BB/imgs/01.png)
 
 后来又想到，JS 解析器在解析标识符名称时（如函数名、属性名）等，若遇到 Unicode 会直接进行解码，并使得标识符依旧生效。于是又构造了这个 payload `\u0070\u0072\u006f\u006d\u0070\u0074(1)` 绕过 `replace` , 但是 `\` 被 `encodeURIComponent` 转码成了 `%5C` ，还是失败。。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/6d88d536960ad3cdc1e4f56efd883b7f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2010%20-%20%28%E2%95%AF%C2%B0%E2%96%A1%C2%B0%EF%BC%89%E2%95%AF%EF%B8%B5%20%E2%94%BB%E2%94%81%E2%94%BB/imgs/02.png)
 
 
 ------------
@@ -59,7 +59,7 @@ function escape(input) {
 
 因为这些字符本身属于保留字符，不会被 `encodeURIComponent` 编码；其次 `prompt` 中间有单引号 `'` 的时候，也不满足 `replace` 的条件；最后题目还很贴心地帮我们把所有单引号 `'` 删掉了，，，，所以有时其实真是我们想太多了。。。(╯°□°）╯︵ ┻━┻
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/886fc299dc9fedfbce46aaf65bb0894c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2010%20-%20%28%E2%95%AF%C2%B0%E2%96%A1%C2%B0%EF%BC%89%E2%95%AF%EF%B8%B5%20%E2%94%BB%E2%94%81%E2%94%BB/imgs/03.png)
 
 ------
 
