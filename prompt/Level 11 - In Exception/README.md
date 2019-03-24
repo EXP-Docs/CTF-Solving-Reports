@@ -47,7 +47,7 @@ function escape(input) {
 
 也就是说， JS 会把 `()` 前面的字符串识别是 函数名，但由于函数不存在，所以抛出异常。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/b79e49a9cf70ba390b7cd6dfa9ffc9e3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/01.png)
 
 换言之， `()` 里面可能会被识别为函数的参数表，可以不妨再测试下。
 
@@ -61,7 +61,7 @@ function escape(input) {
 
 这次异常信息又重新变成为： `"fun" is not a function`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/34dbf351d9e73e6474a04721e72212be.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/02.png)
 
 利用这个特性，如果参数表是函数调用、或表达式计算，那么就可以在抛出 `"fun" is not a function` 异常之前就先被执行了。
 
@@ -73,9 +73,9 @@ function escape(input) {
 
 很明显，参数 `alert(1)` 会先被解析执行触发，在关闭 alert 窗口后，才抛出异常。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/19cfebfef4506d6f64a49b4fb28d4f60.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/03.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f730eaf644c472e564070745206e7333.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/04.png)
 
 这个特性或许可以用于解决这题。
 
@@ -87,7 +87,7 @@ function escape(input) {
 
 据此我们就可以反推出 payload 应该为 `"(prompt(1))"` （注意要闭合双引号）
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/71a76aad3238a303af1674e34049f01c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/05.png)
 
 ------------
 
@@ -101,7 +101,7 @@ function escape(input) {
 
 而这个小尾巴最致命的地方，就是它先于参数表的 `prompt(1)` 被解析，导致先抛出了一个 `SyntaxError` 语法错误的异常， `prompt(1)` 则无法被执行。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/aa0906fb08fb21166d51d31b36aec0d8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/06.png)
 
 那么接下来就需要处理掉这个语法错误的问题，使得参数表可以被解析。
 
@@ -111,7 +111,7 @@ function escape(input) {
 
 虽然 `in` 对 object 类型有要求，但是即使是类型错误，也只会在运行时抛出，而不会在最开始解析时就直接报语法错误，从而可以解决前面语法错误导致参数表的 `prompt(1)` 没有被解析的问题。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d024a2d1b4aef46f0dd36849a8bf4948.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/07.png)
 
 所以最终的 payload 为 `"(prompt(1))in"` ，构造成的 JS 代码为：
 
@@ -123,7 +123,7 @@ function escape(input) {
 - 抛出 `Welcome back, ` 函数未定义异常
 - 抛出 `in` 操作符的 `TypeError` 异常
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/58b73117375cfd61693f7f600ac87071.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2011%20-%20In%20Exception/imgs/08.png)
 
 ------
 
