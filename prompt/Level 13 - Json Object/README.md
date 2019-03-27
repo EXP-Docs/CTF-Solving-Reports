@@ -123,7 +123,7 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 当  `source`  是正常的图片 URL 时，不妨在浏览器控制台调试一下代码，看一下效果：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1d68a20145e47ee21b9736714c8e0ebe.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/01.png)
 
 正常情况下，如果要在 `<img>` 标签注入 JS ，一般是可以通过诸如 `<img src="0" onerror=prompt(1) >` 的方式。
 
@@ -133,7 +133,7 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 但是根据 JS 的 [`replace('{{source}}', source)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E8%AF%AD%E6%B3%95) 函数的语法，第二个由我们控制的参数 `source` 时可以插入**特殊变量名**以达到某些效果的，详见 [这里](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E6%8F%8F%E8%BF%B0) 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9fc7ce8f70d9c75d1046f66c3c7ab41b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/02.png)
 
 而我们要使用的特殊变量名，就是 <code>$`</code> ，这个变量名的效果是【插入当前匹配的子串左边的内容】。
 
@@ -151,7 +151,7 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 即 `src` 属性值等于 `"<img src="` ，被成功闭合了，同时因为是一个无效值，会触发到 `onerror` 的 JS 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a9f3f2f0b9ef7f53f2780030275ce70c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/03.png)
 
 
 ------------
@@ -184,7 +184,7 @@ if (/[^\w:\/.]/.test(config.source)) {
 
 在浏览器控制台测试了一下，同名属性果然是会覆盖的：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/683a24ffa051579a5458bbd2f02e5b81.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/04.png)
 
 不过也并非一无所获，从控制台里面注意到，所构造的 JSON 对象具有一个隐藏属性 `__proto__` 。
 
@@ -206,7 +206,7 @@ if (/[^\w:\/.]/.test(config.source)) {
 
 不但如此，此时 JSON 还同时支持 `json.source` 和 `json.__proto__.source` 两种访问属性方式，且他们是等价的：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/58cd298ef94c825c5f8b0e8fc2fa32b8.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/05.png)
 
 ------------
 
@@ -224,7 +224,7 @@ if (/[^\w:\/.]/.test(config.source)) {
 -  `json.source`  会通过 `__proto__` 访问器得到 `M02` 的值
 -  `json.__proto__.source` 依旧会得到全路径 `M02` 的值
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f06d96bdb2bf84babb690cc438e8a80c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/06.png)
 
 回到这题，我们可以利用这个 JSON 特性进行欺骗，在 input 构造一个类似这样的 JSON ：
 
@@ -243,7 +243,7 @@ if (/[^\w:\/.]/.test(config.source)) {
 {"source": "--EXP : Delete Me--", "__proto__": {"source": "$` onerror=prompt(1) >"}}
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/a8176cb90c7c9237591c8fa0dff3ecbe.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/07.png)
 
 ------
 
