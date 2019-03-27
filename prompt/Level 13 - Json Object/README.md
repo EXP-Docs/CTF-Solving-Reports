@@ -135,15 +135,23 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/02.png)
 
-而我们要使用的特殊变量名，就是 <code>$`</code> ，这个变量名的效果是【插入当前匹配的子串左边的内容】。
+而我们要使用的特殊变量名，就是 
 
-就这题而言，因为 `<img src="{{source}}">'.replace('{{source}}', source)` 第一个参数 `{{source}}` 匹配了原字符串，而所匹配部分的左边内容是 `<img src="`，因此若第二个参数 `source` 含有特殊变量 <code>$`</code> ，就会把 `<img src="` 插入到该特殊变量位置。
+```
+$`           // 这个变量名的效果是 【插入当前匹配的子串左边的内容】。
+```
 
-注意到 `<img src="` 最右侧刚好有一个双引号，那么我们就可以用来闭合 `src` 属性的双引号了。
+就这题而言，因为 `<img src="{{source}}">'.replace('{{source}}', source)` 第一个参数 `{{source}}` 匹配了原字符串，而所匹配部分的左边内容是 `<img src="`，因此若第二个参数 `source` 含有特殊变量，就会把 `<img src="` 插入到该特殊变量位置。
 
-于是我们可以构造 `source` 的值为 <code>$` onerror=prompt(1) ></code> 。
+注意所插入的到 `<img src="` 最右侧刚好有一个双引号，那么我们就可以用来闭合 `src` 属性的双引号了。
 
-当特殊变量 <code>$`</code> 被替换后，实际就等价于 `<img src=" onerror=prompt(1) >` ，再将其通过 `replace` 替换到原串的 `{{source}}` ，就可以得到：
+于是我们可以构造 `source` 的值为 ：
+
+```
+$` onerror=prompt(1) >
+```
+
+当特殊变量被替换后，实际就等价于 `<img src=" onerror=prompt(1) >` ，再将其通过 `replace` 替换到原串的 `{{source}}` ，就可以得到：
 
 ```html
 <img src="<img src=" onerror=prompt(1) >">
@@ -160,7 +168,7 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 那么接下来的问题就是，怎么保留我们所构造的 `source` 值到最后。
 
-根据前面的分析知道， `source` 值应该是 <code>$` onerror=prompt(1) ></code> ，而 `source` 值本质就是源于我们输入的 json 的  `source` 属性值。
+根据前面的分析知道， `source` 值就是源于我们输入的 json 的  `source` 属性值。
 
 但是在此之前有这样的一段代码，当 `source` 值含有 `0-9`、 `a-z`、 `A-Z`、 `_`、 `:`、 `/`、 `.`、 以外的字符，则删除 json 的 `source` 属性：
 
@@ -173,7 +181,11 @@ if (/[^\w:\/.]/.test(config.source)) {
 
 很不幸地，我们构造的 `source` 值是满足删除标准的。
 
-换言之，若直接 input 的 JSON 为 <code>{ 'source' : '$` onerror=prompt(1)' }</code> ，是无法把  `source`  保留到最后的。
+换言之，若直接 input 的 JSON 如下，是无法把  `source`  保留到最后的 :
+
+```json
+{ "source" : "$` onerror=prompt(1)" }
+```
 
 
 ------------
