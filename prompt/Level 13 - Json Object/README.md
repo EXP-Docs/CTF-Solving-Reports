@@ -131,19 +131,17 @@ return '<img src="{{source}}">'.replace('{{source}}', source);
 
 ------------
 
-但是根据 JS 的 [`replace('{{source}}', source)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E8%AF%AD%E6%B3%95) 函数的语法，第二个由我们控制的参数 `source` 时可以插入**特殊变量名**以达到某些效果的，详见 [这里](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E6%8F%8F%E8%BF%B0) 。
+但是根据 JS 的 [`replace('{{source}}', source)`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E8%AF%AD%E6%B3%95) 函数的语法，第二个由我们控制的参数 `source` 是可以插入**特殊变量名**以达到某些效果的（详见 [这里](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#%E6%8F%8F%E8%BF%B0) ）：
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2013%20-%20Json%20Object/imgs/02.png)
 
 而我们要使用的特殊变量名，就是 
 
 ```
-$`           // 这个变量名的效果是 【插入当前匹配的子串左边的内容】。
+$`      // 这个变量名的效果是 【插入当前匹配的子串左边的内容】。
 ```
 
-就这题而言，因为 `<img src="{{source}}">'.replace('{{source}}', source)` 第一个参数 `{{source}}` 匹配了原字符串，而所匹配部分的左边内容是 `<img src="`，因此若第二个参数 `source` 含有特殊变量，就会把 `<img src="` 插入到该特殊变量位置。
-
-注意所插入的到 `<img src="` 最右侧刚好有一个双引号，那么我们就可以用来闭合 `src` 属性的双引号了。
+就这题而言，因为 `<img src="{{source}}">'.replace('{{source}}', source)` 第一个参数 `{{source}}` 匹配了原字符串，而所匹配部分的左边内容是 `<img src="`，因此若第二个参数 `source` 含有特殊变量，就会把 `<img src="` 插入到该特殊变量位置。 注意所插入的到 `<img src="` 最右侧刚好有一个双引号，那么我们就可以用来闭合 `src` 属性的双引号了。
 
 于是我们可以构造 `source` 的值为 ：
 
@@ -170,7 +168,7 @@ $` onerror=prompt(1) >
 
 根据前面的分析知道， `source` 值就是源于我们输入的 json 的  `source` 属性值。
 
-但是在此之前有这样的一段代码，当 `source` 值含有 `0-9`、 `a-z`、 `A-Z`、 `_`、 `:`、 `/`、 `.`、 以外的字符，则删除 json 的 `source` 属性：
+但是在此之前有这样的一段 `test` 代码，当 `source` 值含有 `0-9`、 `a-z`、 `A-Z`、 `_`、 `:`、 `/`、 `.`、 以外的字符，则删除 json 的 `source` 属性：
 
 ```javascript
 // forbit invalid image source
@@ -181,7 +179,7 @@ if (/[^\w:\/.]/.test(config.source)) {
 
 很不幸地，我们构造的 `source` 值是满足删除标准的。
 
-换言之，若直接 input 的 JSON 如下，是无法把  `source`  保留到最后的 :
+换言之，若直接 input 的 JSON 如下，是无法把  `source`  属性值保留到最后的 :
 
 ```json
 { "source" : "$` onerror=prompt(1)" }
@@ -207,8 +205,8 @@ if (/[^\w:\/.]/.test(config.source)) {
 
 例如若在 JS 代码中定义一个这样的 JSON 变量 `var json = {"source": "exp"}` ：
 
-- 当需要访问 `source` 的属性值时： `var src = json.source` ，实际上是 `__proto__` 的 `getter` 在起作用
-- 当需要修改 `source` 的属性值时： `json.source = "EXP"` ，实际上是 `__proto__` 的 `setter` 在起作用
+- 当需要访问 `source` 的属性值时，如： `var src = json.source` ，实际上是 `__proto__` 的 `getter` 在起作用
+- 当需要修改 `source` 的属性值时，如： `json.source = "EXP"` ，实际上是 `__proto__` 的 `setter` 在起作用
 
 虽然 `__proto__` 是一个访问器，不过默认情况下，我们是不可以 `json.__proto__.source` 这样访问属性的。
 
