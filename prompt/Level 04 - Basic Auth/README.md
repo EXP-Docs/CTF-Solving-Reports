@@ -85,6 +85,10 @@ XSS 平台推荐使用 [http://xss.tf](http://xss.tf) ，新建一个项目，�
 
 利用 XXS 平台的项目地址，构造最终的 payload 为：`http://prompt.ml%2f:pwd@xss.tf/RVO`
 
+> 注：
+<br/>　　若要追求最短 payload ，密码部分 `pwd` 是可以不要的，但是 `:` 和 `@` 必须保留。
+<br/>　　且根据 [相对协议地址](http://blog.httpwatch.com/2010/02/10/using-protocol-relative-urls-to-switch-between-http-and-https/) 原理，`http:` 也是可以不要的。
+
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/prompt/Level%2004%20-%20Basic%20Auth/imgs/04.png)
 
 
