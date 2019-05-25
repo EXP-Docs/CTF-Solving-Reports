@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【Redtiger 专题】 [[官网入口](http://redtiger.labs.overthewire.org/)] [[解题报告](#)]
+　【FileUpload 专题】 [[官网入口](https://github.com/c0ny1/upload-labs)] [[解题报告](#)]
 
 ------
 

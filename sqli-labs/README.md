@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【Prompt 专题】 [[官网入口](https://github.com/Audi-1/sqli-labs)] [[解题报告](#)]
+　【SQLi 专题】 [[官网入口](https://github.com/Audi-1/sqli-labs)] [[解题报告](#)]
 
 ------
 
