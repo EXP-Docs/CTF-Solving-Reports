@@ -1,18 +1,8 @@
-# CTF-Solving-Reports
-　【SQLi 专题】 [[官网入口](http://redtiger.labs.overthewire.org/)] [[解题报告](#)]
+## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 01 - Simple SQL-Injection](http://redtiger.labs.overthewire.org/level1.php)] [[解题报告](#)]
 
 ------
 
-- [Level 01 - Simple SQL-Injection](#)
-- [Level 02 - Simple login-bypass](#)
-- [Level 03 - Get an error](#)
-- [Level 04 - Blind Injection](#)
-- [Level 05 - Advanced login-bypass](#)
-- [Level 06 - SQL-Injection](#)
-- [Level 07 - SQL-Injection](#)
-- [Level 08 - SQL-Injection](#)
-- [Level 09 - SQL-Injection](#)
-- [Level 10 - SQL-Injection](#)
+
 
 ------
 
