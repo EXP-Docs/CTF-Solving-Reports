@@ -3,8 +3,8 @@
 
 ------
 
-- [Level 01 - Simple SQL-Injection](#)
-- [Level 02 - Simple login-bypass](#)
+- [Level 01 - Simple SQL-Injection](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection)
+- [Level 02 - Simple login-bypass](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/redtigers-hackit/Level%2002%20-%20Simple%20login-bypass)
 - [Level 03 - Get an error](#)
 - [Level 04 - Blind Injection](#)
 - [Level 05 - Advanced login-bypass](#)
