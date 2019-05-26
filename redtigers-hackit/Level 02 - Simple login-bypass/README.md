@@ -1,8 +1,18 @@
-## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 02 - Simple login-bypass](http://redtiger.labs.overthewire.org/level2.php)] [[解题报告](#)]
+## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 02 - Simple login-bypass](http://redtiger.labs.overthewire.org/level2.php)] [[解题报告](http://exp-blog.com/2019/05/26/pid-3812/)]
 
 ------
 
+水题。
 
+提示是使用 SQL 条件进行登陆绕过。
+
+很容易发现在 Password 输入框构造 payload 为 `admin' or '1' = '1` 使得密码永真，则可成功绕过。
+
+> 由于 Password 永真，Username 随便填即可
+
+得到 flag 和通关密码，完成挑战。
+
+![](http://exp-blog.com/wp-content/uploads/2019/05/a53d9bab3e2d986a060ad99e156e8498.png)
 
 ------
 
