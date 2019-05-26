@@ -38,14 +38,14 @@ function checkFile() {
 
 上传此文件后，因为文件后缀为 `.png` ，所以即使打开图片也无法解析 PHP 代码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/4df5136adaeb6e5feb64d324e37c4c7e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/upload-labs/Pass-01/imgs/01.png)
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/f7ff7a1eb842d98dc95d5092463e5713.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/upload-labs/Pass-01/imgs/02.png)
 
 
 要绕过其实很简单，只需要用 BurpSuite 拦截上传文件的 POST 请求，然后修改 POST 内容中的文件名，把 `payload.png` 修改成 `payload.php` （注意 `Content-Type` 要确保为图片类型）。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/bc6cfe473ce27def160359d5164653f4.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/upload-labs/Pass-01/imgs/03.png)
 
 上传成功后，访问改名后的 `payload.php` 文件，并利用一句话木马执行 `phpinfo();` 命令：
 
@@ -55,7 +55,7 @@ http://upload.labs/upload/payload.php?exp=phpinfo();
 
 解析 `phpinfo();` 命令成功，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/cf7b6c0da5c45b3efebcaecb8a58fc4f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/upload-labs/Pass-01/imgs/04.png)
 
 ------
 
