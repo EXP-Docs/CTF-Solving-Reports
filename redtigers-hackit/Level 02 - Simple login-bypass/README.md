@@ -12,7 +12,7 @@
 
 得到 flag 和通关密码，完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/a53d9bab3e2d986a060ad99e156e8498.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2002%20-%20Simple%20login-bypass/imgs/01.png)
 
 ------
 
