@@ -10,7 +10,7 @@
 
 > 虽然不知道 level1_users 的列名，但是账密输入框的名称暗示了有两个列名是 `username` 和 `password` 。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/404477632dd48e36d4f8fbd5eea1a76f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/01.png)
 
 
 ## 找到注入点
@@ -27,11 +27,11 @@ My cats are sweet.
 Miau
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/a5cec2aaf23e9afd4552a8f49e39388a.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/02.png)
 
 尝试把 url 的 `cat=1` 更改成  `cat=2` ，此时页面回显的查询值为：`This category does not exist! `
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/58abdf155ecf39d283af079afb374d1c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/03.png)
 
 据此推测此处的 SQL 语句为：
 
@@ -53,7 +53,7 @@ select [col1], [col2], ...... from [data_table] where category = 1 union select 
 
 测试下 payload 效果，但是页面回显为 `This category does not exist! `
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/64c208263739bebe0fcc4e50fb03d05f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/04.png)
 
 因为 `union` 有个特性，关联查询的两张表列数必须一致，因此推测查询失败可能是因为列数不一致导致的。
 
@@ -81,8 +81,8 @@ select [col1], [col2], ...... from [data_table] where category = 1 union select 
 
 > 当然这个说明的逻辑不是完全严密的，数据表 `data_table` 可能只有第 5 列没有被查询，而第 6 列被查询了，也会出现这种情况。不过这种事情只要多测试几次就可以探测出来了，故而不再啰嗦。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/de32f715583df8aa7fde37a04ddd8d3b.png)
-![](http://exp-blog.com/wp-content/uploads/2019/05/7c4810eb9c1389ff6d0aacbd77216d64.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/05.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/06.png)
 
 ## 构造 payload
 
@@ -92,19 +92,19 @@ select [col1], [col2], ...... from [data_table] where category = 1 union select 
 
 试一下效果，很明显这次可以查询到数据，而且虽然我们查询了4 列，但是只有第 3 和第 4 列被回显到页面：
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/27b678e09597bf8cc52f15e3f2cdfee0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/07.png)
 
 很自然我们可以利用第 3、4 列去查询目标用户名和密码，最终构造 payload 如下：
 
 `1 union select 1, 2, username, password from level1_users`
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/4d4943259a971aeb148b2f648ffa9de6.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/08.png)
 
 成功得到账密，完成挑战。
 
 输入账密后得到 flag 和 跳关密码。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/e218635b7d593e9d531585a79e3a06ba.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/09.png)
 
 
 ------
