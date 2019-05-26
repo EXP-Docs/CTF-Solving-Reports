@@ -12,6 +12,7 @@
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/01.png)
 
+------
 
 ## 找到注入点
 
@@ -38,6 +39,8 @@ Miau
 ```sql
 select [col1], [col2], ...... from [data_table] where category = $_GET['cat']
 ```
+
+------
 
 ### 试错
 
@@ -83,6 +86,8 @@ select [col1], [col2], ...... from [data_table] where category = 1 union select 
 
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/05.png)
 ![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/redtigers-hackit/Level%2001%20-%20Simple%20SQL-Injection/imgs/06.png)
+
+------
 
 ## 构造 payload
 
