@@ -10,7 +10,7 @@
 - [[RedTiger's Hackit](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/redtigers-hackit)] （[http://redtiger.labs.overthewire.org/](http://redtiger.labs.overthewire.org/)）
 - [[sqli-labs](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/sqli-labs)] （[https://github.com/Audi-1/sqli-labs](https://github.com/Audi-1/sqli-labs)）
 - [[CG-CTF](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/cg-ctf)] （[https://cgctf.nuptsast.com/challenges](https://cgctf.nuptsast.com/challenges)）
-- [[xss-quiz](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/cg-ctf)] （[http://xss-quiz.int21h.jp/](http://xss-quiz.int21h.jp/)）
+- [[xss-quiz](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-quiz)] （[http://xss-quiz.int21h.jp/](http://xss-quiz.int21h.jp/)）
 - [[upload-labs](https://github.com/c0ny1/upload-labs)] （[https://github.com/c0ny1/upload-labs](https://github.com/c0ny1/upload-labs)）
 
 
