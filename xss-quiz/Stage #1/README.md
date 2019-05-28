@@ -1,22 +1,24 @@
-## [[xss-quiz](http://xss-quiz.int21h.jp/)] [[Stage #1](http://xss-quiz.int21h.jp/?sid=475368e5dc271b97092b620119b74afa872dbab3)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3299/)]
+## [[xss-quiz](http://xss-quiz.int21h.jp/)] [[Stage #1](http://xss-quiz.int21h.jp)] [[解题报告](http://exp-blog.com/2019/05/29/pid-3847/)]
 
 ------
 
-水题。
+水题。题目要求是执行 JS 脚本 `alert(document.domain);`
 
-在 Search 框输入任意内容，如 `exp`，会跳转到输出页面 `?query=exp`，并把搜索内容回显到页面。
+不难发现在 Search 框输入的内容，不会做任何过滤直接输出到页面：
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/01.png)
+![](http://exp-blog.com/wp-content/uploads/2019/05/3ddd0c4203b3c6ce1bbaadf167704bce.png)
 
-测试输入 `<img src=0 />`，发现页面未经过滤直接输出：
+那么只需要构造以下 payload 到 Search 框，点击 Search 按钮即可完成挑战。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/02.png)
+```javascript
+<script>alert(document.domain);</script>
+```
 
-这就好办了，直接构造 payload 即可：
+![](http://exp-blog.com/wp-content/uploads/2019/05/c5faf42adec3527c2266da3a21f22655.png)
 
-`<script>alert("exp")</script>`
+> 本题用 Chrome 浏览器无法完成挑战（会被拦截），用 Firefox 则可完成挑战。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-game/level-1/imgs/03.png)
+![](http://exp-blog.com/wp-content/uploads/2019/05/9ecafc78ff8e6e126b9eb3e3c110e92f.png)
 
 ------
 
