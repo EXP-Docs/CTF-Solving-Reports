@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【XSS 专题】 [[官网入口](http://xss-quiz.int21h.jp/)] [[解题报告](#)]
+　【XSS 专题】 [[官网入口](http://xss-quiz.int21h.jp/)] [[解题报告](http://exp-blog.com/2019/05/29/pid-3844/)]
 
 ------
 
