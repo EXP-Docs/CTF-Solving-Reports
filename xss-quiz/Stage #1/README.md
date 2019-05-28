@@ -6,7 +6,7 @@
 
 不难发现在 Search 框输入的内容，不会做任何过滤直接输出到页面：
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/3ddd0c4203b3c6ce1bbaadf167704bce.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-quiz/Stage%20%231/imgs/01.png)
 
 那么只需要构造以下 payload 到 Search 框，点击 Search 按钮即可完成挑战。
 
@@ -14,11 +14,11 @@
 <script>alert(document.domain);</script>
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/c5faf42adec3527c2266da3a21f22655.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-quiz/Stage%20%231/imgs/02.png)
 
 > 本题用 Chrome 浏览器无法完成挑战（会被拦截），用 Firefox 则可完成挑战。
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/9ecafc78ff8e6e126b9eb3e3c110e92f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/xss-quiz/Stage%20%231/imgs/03.png)
 
 ------
 
