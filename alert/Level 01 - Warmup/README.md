@@ -8,7 +8,7 @@
 ");alert(1);("
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/9d3b4b6d2d028e35590c0186e63c5b1b.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/alert/Level%2001%20-%20Warmup/imgs/01.png)
 
 
 ------

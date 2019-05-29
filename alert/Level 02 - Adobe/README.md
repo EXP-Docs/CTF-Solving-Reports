@@ -1,4 +1,4 @@
-## [[alert(1) to win](https://alf.nu/alert1)] [[Level 01 - Warmup](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/30/pid-3865/)]
+## [[alert(1) to win](https://alf.nu/alert1)] [[Level 01 - Warmup](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/30/pid-3868/)]
 
 ------
 
@@ -14,7 +14,7 @@
 \");alert(1);//
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/05/75ae8a44d90705ddce76610dfd818028.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/alert/Level%2002%20-%20Adobe/imgs/01.png)
 
 
 ------
