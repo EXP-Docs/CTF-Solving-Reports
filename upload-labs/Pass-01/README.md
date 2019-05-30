@@ -50,7 +50,7 @@ function checkFile() {
 上传成功后，访问改名后的 `payload.php` 文件，并利用一句话木马执行 `phpinfo();` 命令：
 
 ```html
-http://upload.labs/upload/payload.php?exp=phpinfo();
+http://127.0.0.1/upload/payload.php?exp=phpinfo();
 ```
 
 解析 `phpinfo();` 命令成功，完成挑战。
