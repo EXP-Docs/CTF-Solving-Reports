@@ -3,7 +3,7 @@
 
 ------
 
-- [Less 01 - Error Based Single Quotes](http://exp-blog.com/2019/06/02/pid-3882/)
+- [Less 01 - Error Based Single Quotes](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes)
 - [Less 02](#)
 - [Less 03](#)
 - [Less 04](#)
@@ -68,6 +68,8 @@
 - [Less 63](#)
 - [Less 64](#)
 - [Less 65](#)
+
+> 强烈推荐参考文章：《[sqli-labs 中文使用手册](https://github.com/lyy289065406/sqli-labs-document/blob/master/mysql-injection.pdf)》
 
 ------
 

