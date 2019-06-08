@@ -20,6 +20,8 @@
 - [Level 14 - Base64](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2014%20-%20Base64)
 - [Level 15 - Length2](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt/Level%2015%20-%20Length2)
 
+> 可参考官方的 [wiki](https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml) 解题思路
+
 ------
 
 ## 版权声明
