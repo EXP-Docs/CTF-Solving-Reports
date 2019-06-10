@@ -25,7 +25,7 @@
 - [Level H4](#)
 
 
-> 可参考官方的 [wiki](https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml) 解题思路
+> 可参考官方 [wiki](https://github.com/cure53/XSSChallengeWiki/wiki/prompt.ml) 的解题思路
 
 ------
 
