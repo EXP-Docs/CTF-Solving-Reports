@@ -2,6 +2,19 @@
 
 ------
 
+## 题目
+
+```javascript
+function escape(s) {
+  s = s.replace(/"/g, '\\"');
+  return '<script>console.log("' + s + '");</script>';
+}
+```
+
+------
+
+## 解题报告
+
 由于所有 `"` 都被转义为 `\"` ，导致无法直接闭合函数。
 
 但是不能直接闭合，不等于无法闭合。

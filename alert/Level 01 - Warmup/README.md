@@ -2,6 +2,18 @@
 
 ------
 
+## 题目
+
+```javascript
+function escape(s) {
+  return '<script>console.log("'+s+'");</script>';
+}
+```
+
+------
+
+## 解题报告
+
 水题，闭合函数即可，payload 如下：
 
 ```javascript
