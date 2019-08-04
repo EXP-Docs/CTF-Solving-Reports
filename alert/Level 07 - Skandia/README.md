@@ -32,7 +32,7 @@ JS 标签对大小写是不敏感的，但是 JS 函数则是大小写敏感，�
 ```
 
 
-![](http://exp-blog.com/wp-content/uploads/2019/08/a207338c1021f31c4bf65c53711e16be.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/alert/Level%2007%20-%20Skandia/imgs/01.png)
 
 
 
