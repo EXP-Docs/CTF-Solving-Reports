@@ -34,7 +34,7 @@ function escape(s) {
 </scr</scriptipt><script>alert(1);//
 ```
 
-![](http://exp-blog.com/wp-content/uploads/2019/08/b8f5348c9eadd23b74d7fbe40ef54e1c.png)
+![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/alert/Level%2009%20-%20JSON%202/imgs/01.png)
 
 
 
