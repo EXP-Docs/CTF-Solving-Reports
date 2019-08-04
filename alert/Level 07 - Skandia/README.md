@@ -10,6 +10,8 @@ function escape(s) {
 }
 ```
 
+------
+
 ## 解题报告
 
 这题用 `toUpperCase` 把输入字符全部转换成大写了。

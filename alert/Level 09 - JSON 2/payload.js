@@ -1,0 +1,1 @@
+</scr</scriptipt><script>alert(1);//
