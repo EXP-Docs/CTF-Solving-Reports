@@ -1,27 +1,9 @@
 # CTF-Solving-Reports
-　【XSS 专题】 [[官网入口](http://xss-quiz.int21h.jp/)] [[解题报告](http://exp-blog.com/2019/05/29/pid-3844/)]
+　【BugkuCTF 专题】 [[官网入口](https://ctf.bugku.com/challenges)] [[解题报告](#)]
 
 ------
 
-- [Stage #1](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-quiz/Stage%20%231)
-- [Stage #2](#)
-- [Stage #3](#)
-- [Stage #4](#)
-- [Stage #5](#)
-- [Stage #6](#)
-- [Stage #7](#)
-- [Stage #8](#)
-- [Stage #9](#)
-- [Stage #10](#)
-- [Stage #11](#)
-- [Stage #12](#)
-- [Stage #13](#)
-- [Stage #14](#)
-- [Stage #15](#)
-- [Stage #16](#)
-- [Stage #17](#)
-- [Stage #18](#)
-- [Stage #19](#)
+
 
 ------
 
