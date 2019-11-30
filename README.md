@@ -13,7 +13,7 @@
 - [[xss-quiz](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-quiz)] （[http://xss-quiz.int21h.jp/](http://xss-quiz.int21h.jp/)）
 - [[upload-labs](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/upload-labs)] （[https://github.com/c0ny1/upload-labs](https://github.com/c0ny1/upload-labs)）
 - [[BugkuCTF](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/bugku-ctf)] （[https://ctf.bugku.com/challenges](https://ctf.bugku.com/challenges)）
-
+- [攻防世界](https://adworld.xctf.org.cn/) （[https://adworld.xctf.org.cn/](https://adworld.xctf.org.cn/)）
 
 
 
