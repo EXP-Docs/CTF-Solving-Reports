@@ -4,17 +4,17 @@
 
 ------
 
-- [[Root Me](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme)] （[https://www.root-me.org/](https://www.root-me.org/)）
-- [[XSS Game](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-game)] （[https://xss-game.appspot.com/](https://xss-game.appspot.com/)）
-- [[prompt(1) to win](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/prompt)] （[http://prompt.ml](http://prompt.ml)）
-- [[alert(1) to win](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/alert)] （[https://alf.nu/alert1](https://alf.nu/alert1)）
-- [[RedTiger's Hackit](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/redtigers-hackit)] （[http://redtiger.labs.overthewire.org/](http://redtiger.labs.overthewire.org/)）
-- [[sqli-labs](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/sqli-labs)] （[https://github.com/Audi-1/sqli-labs](https://github.com/Audi-1/sqli-labs)）
-- [[CG-CTF](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/cg-ctf)] （[https://cgctf.nuptsast.com/challenges](https://cgctf.nuptsast.com/challenges)）
-- [[xss-quiz](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/xss-quiz)] （[http://xss-quiz.int21h.jp/](http://xss-quiz.int21h.jp/)）
-- [[upload-labs](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/upload-labs)] （[https://github.com/c0ny1/upload-labs](https://github.com/c0ny1/upload-labs)）
-- [[BugkuCTF](https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/bugku-ctf)] （[https://ctf.bugku.com/challenges](https://ctf.bugku.com/challenges)）
-- [[攻防世界]](https://adworld.xctf.org.cn/) （[https://adworld.xctf.org.cn/](https://adworld.xctf.org.cn/)）
+- [[Root Me](rootme)] （[https://www.root-me.org/](https://www.root-me.org/)）
+- [[XSS Game](xss-game)] （[https://xss-game.appspot.com/](https://xss-game.appspot.com/)）
+- [[prompt(1) to win](prompt)] （[http://prompt.ml](http://prompt.ml)）
+- [[alert(1) to win](alert)] （[https://alf.nu/alert1](https://alf.nu/alert1)）
+- [[RedTiger's Hackit](redtigers-hackit)] （[http://redtiger.labs.overthewire.org/](http://redtiger.labs.overthewire.org/)）
+- [[sqli-labs](sqli-labs)] （[https://github.com/Audi-1/sqli-labs](https://github.com/Audi-1/sqli-labs)）
+- [[CG-CTF](cg-ctf)] （[https://cgctf.nuptsast.com/challenges](https://cgctf.nuptsast.com/challenges)）
+- [[xss-quiz](xss-quiz)] （[http://xss-quiz.int21h.jp/](http://xss-quiz.int21h.jp/)）
+- [[upload-labs](upload-labs)] （[https://github.com/c0ny1/upload-labs](https://github.com/c0ny1/upload-labs)）
+- [[BugkuCTF](bugku-ctf)] （[https://ctf.bugku.com/challenges](https://ctf.bugku.com/challenges)）
+- [[攻防世界]](#) （[https://adworld.xctf.org.cn/](https://adworld.xctf.org.cn/)）
 
 
 
