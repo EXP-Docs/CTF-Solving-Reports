@@ -16,7 +16,7 @@
 
 查看网页源码，可以发现在最后面隐藏了一段 JS 代码， 其作用是判断 Flash 的输出值是否等于 `dbbcd6ee441aa6d2889e6e3cae6adebe` ，很明显，只要我们输入某组数字得到这个值，那么这组数字就是最终密码。换言之，我们最终目标是反推 `dbbcd6ee441aa6d2889e6e3cae6adebe` 对应的输入值。
 
-不难发现， `dbbcd6ee441aa6d2889e6e3cae6adebe` 很像一个 MD5 码，使用 [MD5Online](https://www.md5online.org/md5-decrypt.html) 进行解码，果然得到 6 个十六进制数 `41 41 95 51 95 AA` 。
+不难发现 `dbbcd6ee441aa6d2889e6e3cae6adebe` 很像一个 MD5 码，使用 [MD5Online](https://www.md5online.org/md5-decrypt.html) 进行解码，果然得到 6 个十六进制数 `41 41 95 51 95 AA` 。
 
 只要对这段 JS 代码增加一个断点进行 DEBUG，可以在每次输入数字后，得到其对应的 MD5输出。
 
