@@ -13,7 +13,10 @@
 - [LDAP注入与防御剖析](https://blog.csdn.net/quiet_girl/article/details/50716312)
 - [LDAP注入漏洞与防御](https://www.jianshu.com/p/d94673be9ed0)
 
-------------
+
+> 《[[CTF 解题报告] SQLi - LDAP.pptx](https://docs.google.com/presentation/d/e/2PACX-1vS7NmTzYRqKzR6WjqNFM1Ub0WHU0Gr3LKlwvLwAvJQUQRAd_-Q6RR68KVkEDjJgrlYvgUhbFxcz2p6A/pub?start=false&loop=false&delayms=3000)》
+
+
 
 ## 相关语法
 
@@ -29,7 +32,7 @@
 
 > LDAP 把括号称之为【过滤器】，所有元素/操作都必须在括号内
 
-------------
+
 
 ## 找到注入点
 
@@ -51,7 +54,7 @@
 
 其中 `[username]` 和 `[password]` 就是我们可控的注入点。
 
-------------
+
 
 ## 构造 payload
 

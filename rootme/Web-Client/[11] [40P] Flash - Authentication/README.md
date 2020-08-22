@@ -2,6 +2,8 @@
 
 ------
 
+> 《[[[CTF 解题报告] Flash - Authentication.pptx](https://docs.google.com/presentation/d/e/2PACX-1vQmpph0Wrvgf53x8gPIwSfi43XwT--GvOiMEckNLYF0P39QhzLNFtI05pnjXSixSaJoZC0iqajnZWMS/pub?start=false&loop=false&delayms=3000)》
+
 推理题。没错，这题的答案我是推理出来的。
 
 打开挑战页面只有一个 flash 动画，里面只有 1、2、3、4 四个数字，通过点击数字进行输入密码。
