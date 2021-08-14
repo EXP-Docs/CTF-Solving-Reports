@@ -71,7 +71,6 @@ def main() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
-                print(type)
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
@@ -140,13 +139,14 @@ def main() :
             data = re.sub(ptn, '![](./imgs/', data)
 
             
-            # 迁移目录
+            # 保存文章
             args = dirPath.split('/')[:-1]
-            snkdir = '/'.join(args)
+            snkdir = '/'.join(args) + '/' + _filename
             snkpath = snkdir + '.md'
             with open(snkpath, 'w+', encoding='utf-8') as file:
                 file.write(data)
 
+            # 迁移目录
             os.rename(dirPath, snkdir)
        
 
