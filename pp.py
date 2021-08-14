@@ -8,7 +8,7 @@ import random
 
 
 HEAD = '''---
-title: 【%(src)s】【%(type)s】 %(title)s
+title: %(title)s
 date: 2019-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
 categories: 
 - CTF
@@ -25,6 +25,8 @@ tags:
 - 题目：[%(title)s](%(title_url)s)
 - 分数：%(point)s Points
 
+------
+
 '''
 
 TAIL = '''
@@ -32,8 +34,8 @@ TAIL = '''
 
 ## 答案下载
 
-- payload: [下载](%(payload_url)s)
-- flag: [下载](%(flag_url)s)
+- payload: [%(payload_tips)s](%(payload_url)s)
+- flag: [%(flag_tips)s](%(flag_url)s)
 
 > flag 下载后是名为 flagzip 的文件，需要手动更改文件后缀为 `*.zip`，然后解压即可（主要是为了避免 Root-Me 扫描）
 
@@ -104,17 +106,23 @@ def main() :
 
             if os.path.exists(dirPath + 'payload') :
                 payload_url = './payload'
+                payload_tips = '下载'
             else :
                 payload_url = '#'
+                payload_tips = '无'
 
             if os.path.exists(dirPath + 'flagzip') :
                 flag_url = './flagzip'
+                flag_tips = '下载'
             else :
                 flag_url = '#'
+                flag_tips = '无'
 
             _tail = TAIL % {
                 'payload_url': payload_url, 
-                'flag_url': flag_url
+                'payload_tips': payload_tips, 
+                'flag_url': flag_url,
+                'flag_tips': flag_tips
             }
 
             rgx = r'## 版权声明.*'
