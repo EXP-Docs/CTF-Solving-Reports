@@ -5,24 +5,6 @@ import shutil
 import re
 import random
 
-# HEAD = '''---
-# title: [RootMe][App-Script] Bash - System 1
-# date: 2011-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
-# categories: 
-# - CTF
-# tags:
-# - CTF
-# - RootMe
-# - App-Script
-# - 解题报告
-# ---
-
-# - 来源：[RootMe](https://www.root-me.org/)
-# - 类型：[App-Script](https://www.root-me.org/en/Challenges/App-Script/)
-# - 题目：[Bash - System 1](https://www.root-me.org/en/Challenges/App-Script/ELF32-System-1)
-# - 分数：5 Points
-
-# '''
 
 
 HEAD = '''---
@@ -37,7 +19,9 @@ tags:
 - 解题报告
 ---
 
-- 来源：[%(src)s](%(src_url)s)
+## 来源
+
+- 站点：[%(src)s](%(src_url)s)
 - 类型：[%(type)s](%(type_url)s)
 - 题目：[%(title)s](%(title_url)s)
 - 分数：%(point)s Points
