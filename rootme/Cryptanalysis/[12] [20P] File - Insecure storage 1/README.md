@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[File - Insecure storage 1](https://www.root-me.org/en/Challenges/Cryptanalysis/File-Insecure-storage-1)] [[解题报告](http://exp-blog.com/2019/03/02/pid-3445/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[File - Insecure storage 1](https://www.root-me.org/en/Challenges/Cryptanalysis/File-Insecure-storage-1)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cryptanalysis/file-insecurestorage1/)]
 
 ------
 

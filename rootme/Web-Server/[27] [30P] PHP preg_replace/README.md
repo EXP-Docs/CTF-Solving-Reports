@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[PHP preg_replace()](https://www.root-me.org/en/Challenges/Web-Server/PHP-preg_replace)] [[解题报告](http://exp-blog.com/2019/03/07/pid-3495/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[PHP preg_replace()](https://www.root-me.org/en/Challenges/Web-Server/PHP-preg_replace)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/phppreg_replace()/)]
 
 ------
 

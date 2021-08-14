@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Uncompress me](https://www.root-me.org/en/Challenges/Programming/Uncompress-me)] [[解题报告](http://exp-blog.com/2019/02/08/pid-3213/)]
+## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Uncompress me](https://www.root-me.org/en/Challenges/Programming/Uncompress-me)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/programming/uncompressme/)]
 
 ------
 

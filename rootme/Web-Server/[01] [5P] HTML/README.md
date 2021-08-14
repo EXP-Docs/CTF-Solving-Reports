@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTML](https://www.root-me.org/en/Challenges/Web-Server/HTML)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2941/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTML](https://www.root-me.org/en/Challenges/Web-Server/HTML)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/html/)]
 
 ------
 

@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Client](https://www.root-me.org/en/Challenges/Web-Client/)] [[Javascript - Obfuscation 1](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Obfuscation-1)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2909/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Client](https://www.root-me.org/en/Challenges/Web-Client/)] [[Javascript - Obfuscation 1](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Obfuscation-1)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-client/javascript-obfuscation1/)]
 
 ------
 

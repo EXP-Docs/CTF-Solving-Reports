@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[App-Script](https://www.root-me.org/en/Challenges/App-Script/)] [[Bash - System 1](https://www.root-me.org/en/Challenges/App-Script/ELF32-System-1)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2705/)]
+## [[Root-Me](https://www.root-me.org/)] [[App-Script](https://www.root-me.org/en/Challenges/App-Script/)] [[Bash - System 1](https://www.root-me.org/en/Challenges/App-Script/ELF32-System-1)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/app-script/bash-system1/)]
 
 ------
 

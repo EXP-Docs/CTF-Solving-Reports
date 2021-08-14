@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTTP verb tampering](https://www.root-me.org/en/Challenges/Web-Server/HTTP-verb-tampering)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2972/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTTP verb tampering](https://www.root-me.org/en/Challenges/Web-Server/HTTP-verb-tampering)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/httpverbtampering/)]
 
 ------
 

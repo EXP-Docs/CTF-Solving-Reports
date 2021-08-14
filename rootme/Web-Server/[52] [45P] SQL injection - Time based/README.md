@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[SQL injection - Time based](https://www.root-me.org/en/Challenges/Web-Server/SQL-injection-Time-based)] [[解题报告](http://exp-blog.com/2019/03/17/pid-3586/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[SQL injection - Time based](https://www.root-me.org/en/Challenges/Web-Server/SQL-injection-Time-based)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/sqlinjection-timebased/)]
 
 ------
 

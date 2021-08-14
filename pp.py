@@ -68,7 +68,6 @@ def rootme() :
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
-                print(dirPath)
                 continue
 
             if dirPath.endswith('src') or dirPath.endswith('testdata') or dirPath.endswith('doc') :
@@ -77,22 +76,11 @@ def rootme() :
             srcpath = dirPath + '/README.md'
             with open(srcpath, 'r', encoding='utf-8') as file :
                 data = file.read()
+                _data = data
             # try :
             #     os.rename(dirPath + '/payload.md', dirPath + '/payload')
             # except :
             #     pass
-
-
-            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace(' ', '').lower())
-            rgx = r'(\[\[解题报告\]\(http)([^)]+?)'
-            ptn = re.compile(rgx)
-            mth = re.search(ptn, data)
-            if mth :
-                data = re.sub(ptn, '\1' + url, data)
-
-            with open(srcpath, 'w', encoding='utf-8') as file:
-                file.write(data)
-
 
 
             # 替换首尾
@@ -155,6 +143,17 @@ def rootme() :
             data = re.sub(ptn, '![](./imgs/', data)
 
             
+            # 替换url
+            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace(' ', '').lower())
+            rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
+            ptn = re.compile(rgx)
+            mth = re.search(ptn, _data)
+            if mth :
+                _data = re.sub(ptn, r'\1%s\3' % url, _data)
+            with open(srcpath, 'w', encoding='utf-8') as file:
+                file.write(_data)
+
+
             # 保存文章
             # args = dirPath.split('/')[:-1]
             # snkdir = '/'.join(args) + '/' + _filename

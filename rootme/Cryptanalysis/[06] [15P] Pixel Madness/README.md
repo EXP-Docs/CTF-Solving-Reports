@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Pixel Madness](https://www.root-me.org/en/Challenges/Cryptanalysis/Pixel-Madness-86)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2699/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Pixel Madness](https://www.root-me.org/en/Challenges/Cryptanalysis/Pixel-Madness-86)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cryptanalysis/pixelmadness/)]
 
 ------
 

@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[CAPTCHA me if you can](https://www.root-me.org/en/Challenges/Programming/CAPTCHA-me-if-you-can)] [[解题报告](http://exp-blog.com/2019/02/09/pid-3217/)]
+## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[CAPTCHA me if you can](https://www.root-me.org/en/Challenges/Programming/CAPTCHA-me-if-you-can)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/programming/captchameifyoucan/)]
 
 ------
 
