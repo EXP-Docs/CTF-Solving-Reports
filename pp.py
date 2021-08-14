@@ -8,7 +8,7 @@ import random
 
 
 HEAD = '''---
-title: [%(src)s] [%(type)s] %(title)s
+title: 【%(src)s】【%(type)s】 %(title)s
 date: 2019-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
 categories: 
 - CTF
