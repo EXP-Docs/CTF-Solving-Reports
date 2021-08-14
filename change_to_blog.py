@@ -7,7 +7,15 @@ import random
 
 
 
-HEAD = '''---
+
+
+def main() :
+    rootme()
+
+
+
+def rootme() :
+    HEAD = '''---
 title: %(title)s
 date: 2019-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
 categories: 
@@ -29,7 +37,7 @@ tags:
 
 '''
 
-TAIL = '''
+    TAIL = '''
 
 
 ## 答案下载
@@ -41,16 +49,10 @@ TAIL = '''
 
 '''
 
+    FILENAME = '%(title)s'
 
-FILENAME = '%(title)s'
-
-def main() :
-    rootme()
-
-
-
-def rootme() :
     DIR = '.'
+
     type = None
     for dirPath, dirNames, fileNames in os.walk(DIR):   #迭代目录
         if '.' == dirPath or '.git' in dirPath :
