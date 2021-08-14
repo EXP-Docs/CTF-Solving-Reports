@@ -47,7 +47,7 @@ FILENAME = '%(title)s'
 def main() :
     rootme()
 
-    
+
 
 def rootme() :
     DIR = '.'
@@ -61,10 +61,10 @@ def rootme() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
-                try :
-                    os.remove(dirPath + '/README.md')
-                except :
-                    pass
+                # try :
+                #     os.remove(dirPath + '/README.md')
+                # except :
+                #     pass
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
@@ -75,17 +75,31 @@ def rootme() :
                 continue
 
             srcpath = dirPath + '/README.md'
-            with open(srcpath, 'r', encoding='utf-8') as file:
+            with open(srcpath, 'r', encoding='utf-8') as file :
                 data = file.read()
-            try :
-                os.rename(dirPath + '/payload.md', dirPath + '/payload')
-            except :
-                pass
+            # try :
+            #     os.rename(dirPath + '/payload.md', dirPath + '/payload')
+            # except :
+            #     pass
+
+
+            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace(' ', '').lower())
+            rgx = r'(\[\[解题报告\]\(http)([^)]+?)'
+            ptn = re.compile(rgx)
+            mth = re.search(ptn, data)
+            if mth :
+                data = re.sub(ptn, '\1' + url, data)
+
+            with open(srcpath, 'w', encoding='utf-8') as file:
+                file.write(data)
+
+
 
             # 替换首尾
             rgx = r'## \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\].*?------'
             ptn = re.compile(rgx, re.DOTALL)
             rst = ptn.findall(data)[0]
+
             point = re.search(r'./rootme/' + type + '/\[\d+\] \[(\d+)P\]', dirPath, flags=0)[1]
 
             _filename = FILENAME % {
@@ -142,16 +156,18 @@ def rootme() :
 
             
             # 保存文章
-            args = dirPath.split('/')[:-1]
-            snkdir = '/'.join(args) + '/' + _filename
-            snkpath = snkdir + '.md'
-            with open(snkpath, 'w+', encoding='utf-8') as file:
-                file.write(data)
+            # args = dirPath.split('/')[:-1]
+            # snkdir = '/'.join(args) + '/' + _filename
+            # snkpath = snkdir + '.md'
+            # with open(snkpath, 'w+', encoding='utf-8') as file:
+            #     file.write(data)
 
             # 迁移目录
-            os.remove(srcpath)
-            os.rename(dirPath, snkdir)
+            # os.remove(srcpath)
+            # os.rename(dirPath, snkdir)
        
+            
+            
 
 
 
