@@ -61,10 +61,10 @@ def rootme() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
-                # try :
-                #     os.remove(dirPath + '/README.md')
-                # except :
-                #     pass
+                try :
+                    os.remove(dirPath + '/README.md')
+                except :
+                    pass
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
@@ -77,10 +77,10 @@ def rootme() :
             with open(srcpath, 'r', encoding='utf-8') as file :
                 data = file.read()
                 _data = data
-            # try :
-            #     os.rename(dirPath + '/payload.md', dirPath + '/payload')
-            # except :
-            #     pass
+            try :
+                os.rename(dirPath + '/payload.md', dirPath + '/payload')
+            except :
+                pass
 
 
             # 替换首尾
@@ -144,26 +144,26 @@ def rootme() :
 
             
             # 替换url
-            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').lower())
-            rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
-            ptn = re.compile(rgx)
-            mth = re.search(ptn, _data)
-            if mth :
-                _data = re.sub(ptn, r'\1%s\3' % url, _data)
-            with open(srcpath, 'w', encoding='utf-8') as file:
-                file.write(_data)
+            # url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').lower())
+            # rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
+            # ptn = re.compile(rgx)
+            # mth = re.search(ptn, _data)
+            # if mth :
+            #     _data = re.sub(ptn, r'\1%s\3' % url, _data)
+            # with open(srcpath, 'w', encoding='utf-8') as file:
+            #     file.write(_data)
 
 
             # 保存文章
-            # args = dirPath.split('/')[:-1]
-            # snkdir = '/'.join(args) + '/' + _filename
-            # snkpath = snkdir + '.md'
-            # with open(snkpath, 'w+', encoding='utf-8') as file:
-            #     file.write(data)
+            args = dirPath.split('/')[:-1]
+            snkdir = '/'.join(args) + '/' + _filename
+            snkpath = snkdir + '.md'
+            with open(snkpath, 'w+', encoding='utf-8') as file:
+                file.write(data)
 
             # 迁移目录
-            # os.remove(srcpath)
-            # os.rename(dirPath, snkdir)
+            os.remove(srcpath)
+            os.rename(dirPath, snkdir)
        
             
             
