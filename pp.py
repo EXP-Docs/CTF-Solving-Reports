@@ -8,7 +8,7 @@ import random
 
 
 HEAD = '''---
-title: 【%(src)s】【%(type)s】 %(title)s
+title: [%(src)s] [%(type)s] %(title)s
 date: 2019-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
 categories: 
 - CTF
@@ -77,10 +77,7 @@ def main() :
             rst = ptn.findall(data)[0]
             point = re.search(r'./rootme/' + type + '/\[\d+\] \[(\d+)P\]', dirPath, flags=0)[1]
 
-            title = rst[4]
             _filename = FILENAME % {
-                'src': rst[0], 
-                'type': rst[2],
                 'title': rst[4]
             }
 
@@ -129,7 +126,7 @@ def main() :
             
             # 保存文章
             args = dirPath.split('/')[:-1]
-            snkdir = '/'.join(args) + '/' + title
+            snkdir = '/'.join(args) + '/' + _filename
             snkpath = snkdir + '.md'
             with open(snkpath, 'w+', encoding='utf-8') as file:
                 file.write(data)
