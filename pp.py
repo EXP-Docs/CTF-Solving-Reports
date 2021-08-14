@@ -144,6 +144,7 @@ def rootme() :
 
             
             # 替换url
+            # 注意: 文章相互引用的前缀为 https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/rootme
             # url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').lower())
             # rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
             # ptn = re.compile(rgx)
