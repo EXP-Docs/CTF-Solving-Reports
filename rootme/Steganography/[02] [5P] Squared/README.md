@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Steganography](https://www.root-me.org/en/Challenges/Steganography/)] [[Squared](https://www.root-me.org/en/Challenges/Steganography/Squared-38)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/steganography/squared/)]
+## [[Root-Me](https://www.root-me.org/)] [[Steganography](https://www.root-me.org/en/Challenges/Steganography/)] [[Squared](https://www.root-me.org/en/Challenges/Steganography/Squared-38)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2688/)]
 
 ------
 

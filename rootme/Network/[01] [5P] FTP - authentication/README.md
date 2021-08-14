@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Network](https://www.root-me.org/en/Challenges/Network/)] [[FTP - authentication](https://www.root-me.org/en/Challenges/Network/FTP-authentication)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/network/ftp-authentication/)]
+## [[Root-Me](https://www.root-me.org/)] [[Network](https://www.root-me.org/en/Challenges/Network/)] [[FTP - authentication](https://www.root-me.org/en/Challenges/Network/FTP-authentication)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2695/)]
 
 ------
 

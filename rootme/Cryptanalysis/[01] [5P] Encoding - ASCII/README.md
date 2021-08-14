@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Encoding - ASCII](https://www.root-me.org/en/Challenges/Cryptanalysis/Encoding-ASCII)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cryptanalysis/encoding-ascii/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Encoding - ASCII](https://www.root-me.org/en/Challenges/Cryptanalysis/Encoding-ASCII)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2872/)]
 
 ------
 

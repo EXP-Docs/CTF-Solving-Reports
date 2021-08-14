@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Quick Response Code](https://www.root-me.org/en/Challenges/Programming/Quick-Response-Code)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/programming/quickresponsecode/)]
+## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Quick Response Code](https://www.root-me.org/en/Challenges/Programming/Quick-Response-Code)] [[解题报告](http://exp-blog.com/2019/02/10/pid-3267/)]
 
 ------
 

@@ -144,7 +144,7 @@ def rootme() :
 
             
             # 替换url
-            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace(' ', '').lower())
+            url = 's://exp-blog.com/safe/ctf/rootme/%s/%s/' % (type.lower(), _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').lower())
             rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
             ptn = re.compile(rgx)
             mth = re.search(ptn, _data)

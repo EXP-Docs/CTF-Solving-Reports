@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[LDAP injection - authentication](https://www.root-me.org/en/Challenges/Web-Server/LDAP-injection-authentication)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/ldapinjection-authentication/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[LDAP injection - authentication](https://www.root-me.org/en/Challenges/Web-Server/LDAP-injection-authentication)] [[解题报告](http://exp-blog.com/2019/03/11/pid-3549/)]
 
 ------
 
