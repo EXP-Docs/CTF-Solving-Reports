@@ -54,7 +54,10 @@ def main() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
-                
+                try :
+                    os.remove(dirPath + '/README.md')
+                except :
+                    pass
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
