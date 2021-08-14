@@ -8,7 +8,7 @@ import random
 
 
 HEAD = '''---
-title: [%(src)s][%(type)s] %(title)s
+title: 【%(src)s】【%(type)s】 %(title)s
 date: 2019-%(Mon)s-%(Day)s %(hh)s:%(mm)s:%(ss)s
 categories: 
 - CTF
@@ -19,10 +19,9 @@ tags:
 - 解题报告
 ---
 
-## 来源
 
-- 站点：[%(src)s](%(src_url)s)
-- 类型：[%(type)s](%(type_url)s)
+- 来源：[%(src)s](%(src_url)s)
+- 题型：[%(type)s](%(type_url)s)
 - 题目：[%(title)s](%(title_url)s)
 - 分数：%(point)s Points
 
