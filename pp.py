@@ -40,7 +40,7 @@ TAIL = '''
 '''
 
 
-FILENAME = '[%(src)s][%(type)s] %(title)s'
+FILENAME = '%(title)s'
 
 def main() :
     DIR = '.'
@@ -77,6 +77,7 @@ def main() :
             rst = ptn.findall(data)[0]
             point = re.search(r'./rootme/' + type + '/\[\d+\] \[(\d+)P\]', dirPath, flags=0)[1]
 
+            title = rst[4]
             _filename = FILENAME % {
                 'src': rst[0], 
                 'type': rst[2],
@@ -128,7 +129,7 @@ def main() :
             
             # 保存文章
             args = dirPath.split('/')[:-1]
-            snkdir = '/'.join(args) + '/' + _filename
+            snkdir = '/'.join(args) + '/' + title
             snkpath = snkdir + '.md'
             with open(snkpath, 'w+', encoding='utf-8') as file:
                 file.write(data)
