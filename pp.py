@@ -47,14 +47,14 @@ tags:
 TAIL = '''
 
 
-## 答案
+## 答案下载
 
 - payload: [下载](%(payload_url)s)
 - flag: [下载](%(flag_url)s)
 
 > flag 下载后是名为 flagzip 的文件，需要手动更改文件后缀为 `*.zip`，然后解压即可（主要是为了避免 Root-Me 扫描）
 
-# '''
+'''
 
 
 FILENAME = '[%(src)s][%(type)s] %(title)s'
@@ -71,6 +71,10 @@ def main() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
+                try :
+                    os.remove(dirPath + '/README.md')
+                except :
+                    pass
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
@@ -134,7 +138,7 @@ def main() :
 
 
             # 替换图片
-            rgx = r'^\!\[\]\(.+/imgs/'
+            rgx = r'\!\[\]\(.+?/imgs/'
             ptn = re.compile(rgx)
             data = re.sub(ptn, '![](./imgs/', data)
 
@@ -147,6 +151,7 @@ def main() :
                 file.write(data)
 
             # 迁移目录
+            os.remove(srcpath)
             os.rename(dirPath, snkdir)
        
 
@@ -154,3 +159,4 @@ def main() :
 
 if __name__ == '__main__' :
     main()
+
