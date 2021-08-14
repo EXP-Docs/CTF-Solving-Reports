@@ -104,14 +104,14 @@ def main() :
             data = re.sub(ptn, _head, data)
 
 
-            if os.path.exists(dirPath + 'payload') :
+            if os.path.exists(dirPath + '/payload') :
                 payload_url = './payload'
                 payload_tips = '下载'
             else :
                 payload_url = '#'
                 payload_tips = '无'
 
-            if os.path.exists(dirPath + 'flagzip') :
+            if os.path.exists(dirPath + '/flagzip') :
                 flag_url = './flagzip'
                 flag_tips = '下载'
             else :
