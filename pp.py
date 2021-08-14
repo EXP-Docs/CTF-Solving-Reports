@@ -45,6 +45,11 @@ TAIL = '''
 FILENAME = '%(title)s'
 
 def main() :
+    rootme()
+
+    
+
+def rootme() :
     DIR = '.'
     type = None
     for dirPath, dirNames, fileNames in os.walk(DIR):   #迭代目录
