@@ -71,10 +71,6 @@ def main() :
             with open(srcpath, 'r', encoding='utf-8') as file:
                 data = file.read()
             try :
-                os.remove(dirPath + '/README.md')
-            except :
-                pass
-            try :
                 os.rename(dirPath + '/payload.md', dirPath + '/payload')
             except :
                 pass
