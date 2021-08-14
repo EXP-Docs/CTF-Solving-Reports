@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[The Roman’s wheel](https://www.root-me.org/en/Challenges/Programming/The-Roman-s-wheel-151)] [[解题报告](http://exp-blog.com/2019/02/08/pid-3206/)]
+## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[The Roman’s wheel](https://www.root-me.org/en/Challenges/Programming/The-Roman-s-wheel-151)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/programming/the-roman’s-wheel/)]
 
 ------
 

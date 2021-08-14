@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[CRLF](https://www.root-me.org/en/Challenges/Web-Server/CRLF)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2981/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[CRLF](https://www.root-me.org/en/Challenges/Web-Server/CRLF)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/crlf/)]
 
 ------
 

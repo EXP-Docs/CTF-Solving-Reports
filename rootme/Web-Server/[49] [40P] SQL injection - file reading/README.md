@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[SQL injection - file reading](https://www.root-me.org/en/Challenges/Web-Server/SQL-injection-file-reading)] [[解题报告](http://exp-blog.com/2019/03/17/pid-3597/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[SQL injection - file reading](https://www.root-me.org/en/Challenges/Web-Server/SQL-injection-file-reading)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/sql-injection-file-reading/)]
 
 ------
 

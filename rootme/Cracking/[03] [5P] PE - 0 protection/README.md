@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cracking](https://www.root-me.org/en/Challenges/Cracking/)] [[PE - 0 protection](https://www.root-me.org/en/Challenges/Cracking/PE-0-protection)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2701/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cracking](https://www.root-me.org/en/Challenges/Cracking/)] [[PE - 0 protection](https://www.root-me.org/en/Challenges/Cracking/PE-0-protection)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cracking/pe-0-protection/)]
 
 ------
 

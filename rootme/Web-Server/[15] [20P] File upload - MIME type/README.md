@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[File upload - MIME type](https://www.root-me.org/en/Challenges/Web-Server/File-upload-MIME-type)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2987/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[File upload - MIME type](https://www.root-me.org/en/Challenges/Web-Server/File-upload-MIME-type)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/file-upload-mime-type/)]
 
 ------
 

@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Client](https://www.root-me.org/en/Challenges/Web-Client/)] [[Javascript - Authentication](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Authentication)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2900/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Client](https://www.root-me.org/en/Challenges/Web-Client/)] [[Javascript - Authentication](https://www.root-me.org/en/Challenges/Web-Client/Javascript-Authentication)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-client/javascript-authentication/)]
 
 ------
 

@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Go back to college](https://www.root-me.org/en/Challenges/Programming/Go-back-to-college-147)] [[解题报告](http://exp-blog.com/2019/02/07/pid-3184/)]
+## [[Root-Me](https://www.root-me.org/)] [[Programming](https://www.root-me.org/en/Challenges/Programming/)] [[Go back to college](https://www.root-me.org/en/Challenges/Programming/Go-back-to-college-147)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/programming/go-back-to-college/)]
 
 ------
 

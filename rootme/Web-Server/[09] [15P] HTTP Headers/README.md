@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTTP Headers](https://www.root-me.org/en/Challenges/Web-Server/HTTP-Headers)] [[解题报告](http://exp-blog.com/2019/01/13/pid-2968/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[HTTP Headers](https://www.root-me.org/en/Challenges/Web-Server/HTTP-Headers)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/http-headers/)]
 
 ------
 
