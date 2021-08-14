@@ -54,10 +54,7 @@ def main() :
                 rgx = r'\./rootme/([^/]+)$'
                 ptn = re.compile(rgx)
                 type = ptn.findall(dirPath)[0]
-                try :
-                    os.remove(dirPath + '/README.md')
-                except :
-                    pass
+                
 
         if type is not None and dirPath.startswith('./rootme/' + type + '/') :
             if dirPath.endswith('imgs') :
@@ -70,6 +67,14 @@ def main() :
             srcpath = dirPath + '/README.md'
             with open(srcpath, 'r', encoding='utf-8') as file:
                 data = file.read()
+            try :
+                os.remove(dirPath + '/README.md')
+            except :
+                pass
+            try :
+                os.rename(dirPath + '/payload.md', dirPath + '/payload')
+            except :
+                pass
 
             # 替换首尾
             rgx = r'## \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\] \[\[([^]]+)\]\(([^]]+)\)\].*?------'
