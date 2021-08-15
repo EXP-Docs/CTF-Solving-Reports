@@ -1,4 +1,4 @@
-## [[sqli-labs](https://github.com/Audi-1/sqli-labs)] [[Less 01 - Error Based Single Quotes](http://127.0.0.1/Less-1/)] [[解题报告](http://exp-blog.com/2019/06/02/pid-3882/)]
+## [[sqli-labs](https://github.com/Audi-1/sqli-labs)] [[Less 01 - Error Based Single Quotes](http://127.0.0.1/Less-1/)] [[解题报告](https://exp-blog.com/safe/ctf/sqli-labs/less-01-error-based-single-quotes/)]
 
 ------
 
