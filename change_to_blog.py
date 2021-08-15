@@ -43,7 +43,7 @@ tags:
 
 ## 答案下载
 
-- payload: [%(payload_tips)s](%(payload_url)s)
+%s
 
 '''
 
@@ -87,18 +87,16 @@ tags:
                 }
                 data = re.sub(ptn, _head, data)
 
+                enums = []
+                for payload in os.listdir(dirPath):
+                    if payload.startswith('payload') :
+                        enum = '- %s : [下载](./%s)' % (payload, payload)
+                        enums.append(enum)
 
-                if os.path.exists(dirPath + '/payload') :
-                    payload_url = './payload'
-                    payload_tips = '下载'
-                else :
-                    payload_url = '#'
-                    payload_tips = '无'
+                if len(enums) <= 0 :
+                    enums.append('- payload : [无](#)')
 
-                _tail = TAIL % {
-                    'payload_url': payload_url, 
-                    'payload_tips': payload_tips
-                }
+                _tail = TAIL % ('\n'.join(enums))
 
                 rgx = r'## 版权声明.*'
                 ptn = re.compile(rgx, re.DOTALL)
@@ -123,15 +121,15 @@ tags:
 
 
                 # 保存文章
-                args = dirPath.split('/')[:-1]
-                snkdir = '/'.join(args) + '/' + _filename
-                snkpath = snkdir + '.md'
-                with open(snkpath, 'w+', encoding='utf-8') as file:
-                    file.write(data)
+                # args = dirPath.split('/')[:-1]
+                # snkdir = '/'.join(args) + '/' + _filename
+                # snkpath = snkdir + '.md'
+                # with open(snkpath, 'w+', encoding='utf-8') as file:
+                #     file.write(data)
 
                 # # 迁移目录
-                os.remove(srcpath)
-                os.rename(dirPath, snkdir)
+                # os.remove(srcpath)
+                # os.rename(dirPath, snkdir)
 
 
 
