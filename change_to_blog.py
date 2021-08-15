@@ -121,15 +121,15 @@ tags:
 
 
                 # 保存文章
-                # args = dirPath.split('/')[:-1]
-                # snkdir = '/'.join(args) + '/' + _filename
-                # snkpath = snkdir + '.md'
-                # with open(snkpath, 'w+', encoding='utf-8') as file:
-                #     file.write(data)
+                args = dirPath.split('/')[:-1]
+                snkdir = '/'.join(args) + '/' + _filename
+                snkpath = snkdir + '.md'
+                with open(snkpath, 'w+', encoding='utf-8') as file:
+                    file.write(data)
 
                 # # 迁移目录
-                # os.remove(srcpath)
-                # os.rename(dirPath, snkdir)
+                os.remove(srcpath)
+                os.rename(dirPath, snkdir)
 
 
 

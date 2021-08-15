@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level C - ノ┬─┬ノ ︵ ( \\o°o)\\](http://prompt.ml/12)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-c-ノ┬─┬ノ-︵-(-\o°o)\/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level C - ノ┬─┬ノ ︵ ( \\o°o)\\](http://prompt.ml/12)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-c-no-no-odego/)]
 
 ------
 
