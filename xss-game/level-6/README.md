@@ -1,4 +1,4 @@
-## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 6 : Follow the 🐇](https://xss-game.appspot.com/level6)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3322/)]
+## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 6 - Follow the rabbit](https://xss-game.appspot.com/level6)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3322/)]
 
 ------
 

@@ -1,4 +1,4 @@
-## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 3 : That sinking feeling...](https://xss-game.appspot.com/level3)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3331/)]
+## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 3 - That sinking feeling...](https://xss-game.appspot.com/level3)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3331/)]
 
 ------
 
