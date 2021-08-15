@@ -1,4 +1,4 @@
-## [[alert(1) to win](https://alf.nu/alert1)] [[Level 01 - Warmup](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/30/pid-3868/)]
+## [[alert(1) to win](https://alf.nu/alert1)] [[Level 02 - Adobe](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/30/pid-3868/)]
 
 ------
 
