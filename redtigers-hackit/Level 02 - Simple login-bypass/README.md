@@ -1,4 +1,4 @@
-## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 02 - Simple login-bypass](http://redtiger.labs.overthewire.org/level2.php)] [[解题报告](http://exp-blog.com/2019/05/26/pid-3812/)]
+## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 02 - Simple login-bypass](http://redtiger.labs.overthewire.org/level2.php)] [[解题报告](https://exp-blog.com/safe/ctf/redtigers-hackit/level-02-simple-login-bypass/)]
 
 ------
 

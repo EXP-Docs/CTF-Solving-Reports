@@ -1,4 +1,4 @@
-## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 01 - Simple SQL-Injection](http://redtiger.labs.overthewire.org/level1.php)] [[解题报告](http://exp-blog.com/2019/05/25/pid-3801/)]
+## [[RedTiger's Hackit](http://redtiger.labs.overthewire.org/)] [[Level 01 - Simple SQL-Injection](http://redtiger.labs.overthewire.org/level1.php)] [[解题报告](https://exp-blog.com/safe/ctf/redtigers-hackit/level-01-simple-sql-injection/)]
 
 ------
 
