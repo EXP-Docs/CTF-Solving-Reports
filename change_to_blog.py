@@ -73,7 +73,7 @@ tags:
                 _filename = FILENAME % {
                     'title': rst[2]
                 }
-                print(rst)
+                
                 _head = HEAD % {
                     'src': rst[0], 
                     'src_url': rst[1], 
