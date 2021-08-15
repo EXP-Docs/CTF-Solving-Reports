@@ -1,4 +1,4 @@
-## [[upload-labs](https://github.com/c0ny1/upload-labs)] [[Pass-02](http://127.0.0.1/Pass-02/index.php)] [[解题报告](http://exp-blog.com/2019/05/26/pid-3829/)]
+## [[upload-labs](https://github.com/c0ny1/upload-labs)] [[Pass-02](http://127.0.0.1/Pass-02/index.php)] [[解题报告](https://exp-blog.com/safe/ctf/upload-labs/pass-02-file-type/)]
 
 ------
 
