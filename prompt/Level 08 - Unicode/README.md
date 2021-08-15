@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 8 - Unicode](http://prompt.ml/8)] [[解题报告](http://exp-blog.com/2019/03/24/pid-3681/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 8 - Unicode](http://prompt.ml/8)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-8-unicode/)]
 
 ------
 

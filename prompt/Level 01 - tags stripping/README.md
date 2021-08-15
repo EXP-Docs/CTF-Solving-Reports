@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 1 - tags stripping](http://prompt.ml/1)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3623/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 1 - tags stripping](http://prompt.ml/1)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-1-tags-stripping/)]
 
 ------
 

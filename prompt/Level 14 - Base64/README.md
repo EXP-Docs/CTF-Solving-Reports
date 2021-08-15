@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level E - Base64](http://prompt.ml/14)] [[解题报告](http://exp-blog.com/2019/03/29/pid-3762/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level E - Base64](http://prompt.ml/14)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-e-base64/)]
 
 ------
 

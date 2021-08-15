@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level B - In Exception](http://prompt.ml/11)] [[解题报告](http://exp-blog.com/2019/03/24/pid-3710/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level B - In Exception](http://prompt.ml/11)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-b-in-exception/)]
 
 ------
 

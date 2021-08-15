@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level A - (╯°□°）╯︵ ┻━┻](http://prompt.ml/10)] [[解题报告](http://exp-blog.com/2019/03/24/pid-3706/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level A - (╯°□°）╯︵ ┻━┻](http://prompt.ml/10)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-a-(╯°□°）╯︵-┻━┻/)]
 
 ------
 

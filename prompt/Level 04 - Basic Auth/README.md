@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 4 - Basic Auth](http://prompt.ml/4)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3635/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 4 - Basic Auth](http://prompt.ml/4)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-4-basic-auth/)]
 
 ------
 

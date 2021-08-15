@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 2 - frowny face](http://prompt.ml/2)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3626/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 2 - frowny face](http://prompt.ml/2)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-2-frowny-face/)]
 
 ------
 

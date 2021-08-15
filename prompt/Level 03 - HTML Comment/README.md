@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level 3 - HTML Comment](http://prompt.ml/3)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3631/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level 3 - HTML Comment](http://prompt.ml/3)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-3-html-comment/)]
 
 ------
 

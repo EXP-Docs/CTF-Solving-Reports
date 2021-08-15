@@ -1,4 +1,4 @@
-## [[alert(1) to win](https://alf.nu/alert1)] [[Level 09 - JSON 2](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/08/04/pid-3900/)]
+## [[alert(1) to win](https://alf.nu/alert1)] [[Level 09 - JSON 2](https://alf.nu/alert1)] [[解题报告](https://exp-blog.com/safe/ctf/alert/level-09-json-2/)]
 
 ------
 

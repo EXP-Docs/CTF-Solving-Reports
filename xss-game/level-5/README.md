@@ -1,4 +1,4 @@
-## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 5 - Breaking protocol](https://xss-game.appspot.com/level5)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3327/)]
+## [[XSS-Game](https://xss-game.appspot.com/)] [[Level 5 - Breaking protocol](https://xss-game.appspot.com/level5)] [[解题报告](https://exp-blog.com/safe/ctf/xss-game/level-5-breaking-protocol/)]
 
 ------
 

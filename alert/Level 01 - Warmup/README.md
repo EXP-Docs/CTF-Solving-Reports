@@ -1,4 +1,4 @@
-## [[alert(1) to win](https://alf.nu/alert1)] [[Level 01 - Warmup](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/30/pid-3865/)]
+## [[alert(1) to win](https://alf.nu/alert1)] [[Level 01 - Warmup](https://alf.nu/alert1)] [[解题报告](https://exp-blog.com/safe/ctf/alert/level-01-warmup/)]
 
 ------
 

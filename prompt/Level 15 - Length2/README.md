@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level F - Length2](http://prompt.ml/15)] [[解题报告](http://exp-blog.com/2019/03/25/pid-3730/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level F - Length2](http://prompt.ml/15)] [[解题报告](https://exp-blog.com/safe/ctf/prompt/level-f-length2/)]
 
 ------
 
