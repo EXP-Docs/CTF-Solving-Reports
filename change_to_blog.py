@@ -73,7 +73,7 @@ tags:
                 _filename = FILENAME % {
                     'title': rst[2]
                 }
-                
+
                 _head = HEAD % {
                     'src': rst[0], 
                     'src_url': rst[1], 
@@ -112,7 +112,7 @@ tags:
 
                 # 替换url
                 # 注意: 文章相互引用的前缀为 https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/ + rootdir
-                url = 's://exp-blog.com/safe/ctf/%s/%s/' % (rootdir, _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').lower())
+                url = 's://exp-blog.com/safe/ctf/%s/%s/' % (rootdir, _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').replace(',', '').replace('.', '').lower())
                 rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
                 ptn = re.compile(rgx)
                 mth = re.search(ptn, _data)
