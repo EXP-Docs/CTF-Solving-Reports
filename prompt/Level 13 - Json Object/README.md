@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level D – Json Object](http://prompt.ml/13)] [[解题报告](http://exp-blog.com/2019/03/27/pid-3737/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level D - Json Object](http://prompt.ml/13)] [[解题报告](http://exp-blog.com/2019/03/27/pid-3737/)]
 
 ------
 

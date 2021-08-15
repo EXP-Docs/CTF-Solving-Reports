@@ -1,4 +1,4 @@
-## [[prompt(1) to win](http://prompt.ml)] [[Level H1 – Hoisting](http://prompt.ml/-1)] [[解题报告](http://exp-blog.com/2019/06/09/pid-3891/)]
+## [[prompt(1) to win](http://prompt.ml)] [[Level H1 - Hoisting](http://prompt.ml/-1)] [[解题报告](http://exp-blog.com/2019/06/09/pid-3891/)]
 
 ------
 
