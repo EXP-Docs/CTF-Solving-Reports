@@ -112,26 +112,26 @@ tags:
 
                 # 替换url
                 # 注意: 文章相互引用的前缀为 https://github.com/lyy289065406/CTF-Solving-Reports/tree/master/ + rootdir
-                url = 's://exp-blog.com/safe/ctf/%s/%s/' % (rootdir, _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').replace(',', '').replace('.', '').lower())
-                rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
-                ptn = re.compile(rgx)
-                mth = re.search(ptn, _data)
-                if mth :
-                    _data = re.sub(ptn, r'\1%s\3' % url, _data)
-                with open(srcpath, 'w', encoding='utf-8') as file:
-                    file.write(_data)
+                # url = 's://exp-blog.com/safe/ctf/%s/%s/' % (rootdir, _filename.replace('-', '@@@').replace(' ', '-').replace('-@@@-', '-').replace(',', '').replace('.', '').lower())
+                # rgx = r'(\[\[解题报告\]\(http)([^)]+?)(\)\])'
+                # ptn = re.compile(rgx)
+                # mth = re.search(ptn, _data)
+                # if mth :
+                #     _data = re.sub(ptn, r'\1%s\3' % url, _data)
+                # with open(srcpath, 'w', encoding='utf-8') as file:
+                #     file.write(_data)
 
 
                 # 保存文章
-                # args = dirPath.split('/')[:-1]
-                # snkdir = '/'.join(args) + '/' + _filename
-                # snkpath = snkdir + '.md'
-                # with open(snkpath, 'w+', encoding='utf-8') as file:
-                #     file.write(data)
+                args = dirPath.split('/')[:-1]
+                snkdir = '/'.join(args) + '/' + _filename
+                snkpath = snkdir + '.md'
+                with open(snkpath, 'w+', encoding='utf-8') as file:
+                    file.write(data)
 
                 # # 迁移目录
-                # os.remove(srcpath)
-                # os.rename(dirPath, snkdir)
+                os.remove(srcpath)
+                os.rename(dirPath, snkdir)
 
 
 
