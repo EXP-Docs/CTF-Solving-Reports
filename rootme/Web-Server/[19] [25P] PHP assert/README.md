@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[PHP assert()](https://www.root-me.org/en/Challenges/Web-Server/PHP-assert)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/php-assert()/)]
+## [[Root-Me](https://www.root-me.org/)] [[Web-Server](https://www.root-me.org/en/Challenges/Web-Server/)] [[PHP assert()](https://www.root-me.org/en/Challenges/Web-Server/PHP-assert)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/web-server/php-assert/)]
 
 ------
 
