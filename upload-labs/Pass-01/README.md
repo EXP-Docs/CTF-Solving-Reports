@@ -1,4 +1,4 @@
-## [[upload-labs](https://github.com/c0ny1/upload-labs)] [[Pass-01](http://127.0.0.1/Pass-01/index.php)] [[解题报告](https://exp-blog.com/safe/ctf/upload-labs/pass-01-file-extension/)]
+## [[upload-labs](https://github.com/c0ny1/upload-labs)] [[Pass 01 - File Extension](http://127.0.0.1/Pass-01/index.php)] [[解题报告](https://exp-blog.com/safe/ctf/upload-labs/pass-01-file-extension/)]
 
 ------
 
