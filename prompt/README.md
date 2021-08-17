@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【Prompt 专题】 [[官网入口](http://prompt.ml)] [[解题报告](http://exp-blog.com/2019/03/18/pid-3608/)]
+　【Prompt 专题】 [[官网入口](http://prompt.ml)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

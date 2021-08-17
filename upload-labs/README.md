@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【FileUpload 专题】 [[官网入口](https://github.com/c0ny1/upload-labs)] [[解题报告](http://exp-blog.com/2019/05/26/pid-3820/)]
+　【FileUpload 专题】 [[官网入口](https://github.com/c0ny1/upload-labs)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

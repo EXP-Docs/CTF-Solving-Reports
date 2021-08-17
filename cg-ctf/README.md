@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【CG-CTF 专题】 [[官网入口](https://cgctf.nuptsast.com/challenges)] [[解题报告](#)]
+　【CG-CTF 专题】 [[官网入口](https://cgctf.nuptsast.com/challenges)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

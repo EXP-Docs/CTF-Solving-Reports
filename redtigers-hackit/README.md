@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【SQLi 专题】 [[官网入口](http://redtiger.labs.overthewire.org/)] [[解题报告](http://exp-blog.com/2019/05/25/pid-3797/)]
+　【SQLi 专题】 [[官网入口](http://redtiger.labs.overthewire.org/)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

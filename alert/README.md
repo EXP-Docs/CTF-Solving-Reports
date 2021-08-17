@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【Alert 专题】 [[官网入口](https://alf.nu/alert1)] [[解题报告](http://exp-blog.com/2019/05/29/pid-3863/)]
+　【Alert 专题】 [[官网入口](https://alf.nu/alert1)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

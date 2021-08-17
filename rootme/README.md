@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【Root-Me 专题】 [[官网入口](https://www.root-me.org/)] [[解题报告](http://exp-blog.com/2019/01/02/pid-2597/)]
+　【Root-Me 专题】 [[官网入口](https://www.root-me.org/)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

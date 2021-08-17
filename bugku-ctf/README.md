@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【BugkuCTF 专题】 [[官网入口](https://ctf.bugku.com/challenges)] [[解题报告](#)]
+　【BugkuCTF 专题】 [[官网入口](https://ctf.bugku.com/challenges)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 

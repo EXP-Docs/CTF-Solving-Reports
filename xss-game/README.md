@@ -1,5 +1,5 @@
 # CTF-Solving-Reports
-　【XSS-Game 专题】 [[官网入口](https://xss-game.appspot.com/)] [[解题报告](http://exp-blog.com/2019/02/15/pid-3316/)]
+　【XSS-Game 专题】 [[官网入口](https://xss-game.appspot.com/)] [[解题报告](https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/)]
 
 ------
 
