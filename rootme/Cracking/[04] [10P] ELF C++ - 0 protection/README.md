@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cracking](https://www.root-me.org/en/Challenges/Cracking/)] [[ELF C++ - 0 protection](https://www.root-me.org/en/Challenges/Cracking/ELF-C-0-protection)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cracking/elf-c++-0-protection/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cracking](https://www.root-me.org/en/Challenges/Cracking/)] [[ELF C++ - 0 protection](https://www.root-me.org/en/Challenges/Cracking/ELF-C-0-protection)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cracking/elf-c-0-protection/)]
 
 ------
 

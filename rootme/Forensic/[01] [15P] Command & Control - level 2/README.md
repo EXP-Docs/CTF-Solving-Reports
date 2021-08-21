@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Forensic](https://www.root-me.org/en/Challenges/Forensic/)] [[Command & Control - level 2](https://www.root-me.org/en/Challenges/Forensic/Command-Control-level-2)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/forensic/command-&-control-level-2/)]
+## [[Root-Me](https://www.root-me.org/)] [[Forensic](https://www.root-me.org/en/Challenges/Forensic/)] [[Command & Control - level 2](https://www.root-me.org/en/Challenges/Forensic/Command-Control-level-2)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/forensic/command-control-level-2/)]
 
 ------
 

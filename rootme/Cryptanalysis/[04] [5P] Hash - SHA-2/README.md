@@ -1,4 +1,4 @@
-## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Hash - SHA-2](https://www.root-me.org/en/Challenges/Cryptanalysis/Hash-SHA-2)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cryptanalysis/hash-sha@@@2/)]
+## [[Root-Me](https://www.root-me.org/)] [[Cryptanalysis](https://www.root-me.org/en/Challenges/Cryptanalysis/)] [[Hash - SHA-2](https://www.root-me.org/en/Challenges/Cryptanalysis/Hash-SHA-2)] [[解题报告](https://exp-blog.com/safe/ctf/rootme/cryptanalysis/hash-sha-2/)]
 
 ------
 
