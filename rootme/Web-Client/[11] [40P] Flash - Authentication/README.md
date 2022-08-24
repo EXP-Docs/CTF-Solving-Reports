@@ -8,6 +8,8 @@
 
 打开挑战页面只有一个 flash 动画，里面只有 1、2、3、4 四个数字，通过点击数字进行输入密码。
 
+![](./imgs/00.png)
+
 通过连续输入某同一个数字测试发现，输入的规律如下：
 
 - 最多输入 6 个数字，就会自动触发密码校验
@@ -20,7 +22,7 @@
 
 只要对这段 JS 代码增加一个断点进行 DEBUG，可以在每次输入数字后，得到其对应的 MD5输出。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B11%5D%20%5B40P%5D%20Flash%20-%20Authentication/imgs/01.png)
+![](./imgs/01.png)
 
 然后再使用 [MD5Online](https://www.md5online.org/md5-decrypt.html) 对每一次 DEBUG 得到的输出进行解码，最终我记录了这样的一个表（注意某些 MD5 码因为未被录入到解码表，无法解码，所以某些组合无法进行记录）：
 
@@ -77,9 +79,9 @@
 
 输入测试发现，前者 `141432434322` 就是正确答案，完成挑战。
 
-> 其实这种解法有点取巧，因为刚好真正的密码组合比较简单而已，若是更复杂一点就会因为可能性过多而无法推测了。这题更靠谱的解法是反编译 Flash 的源码进行分析：可以下载题中的 Flash 得到 `RootMe.swf` 文件，然后使用 SWF 反编译工具 [jpexs-decompiler](https://github.com/jindrapetrik/jpexs-decompiler/releases) 查看其源码进行加密原理分析，具体分析步骤见 [这里](https://offsecresearch.com/blog/2017/03/flash-authentication-brigandage/) （注意里面部分截图的说明是错的，例如 XOR 的原理，参考下思路就好） 。
+> 其实这种解法有点取巧，因为刚好真正的密码组合比较简单而已，若是更复杂一点就会因为可能性过多而无法推测了。这题更靠谱的解法是反编译 Flash 的源码进行分析：可以下载题中的 Flash 得到 [`RootMe.swf`](RootMe.swf.zip) 文件，然后使用 SWF 反编译工具 [jpexs-decompiler](https://github.com/jindrapetrik/jpexs-decompiler/releases) 查看其源码进行加密原理分析，具体分析步骤见 [这里](https://offsecresearch.com/blog/2017/03/flash-authentication-brigandage/) （注意里面部分截图的说明是错的，例如 XOR 的原理，参考下思路就好） 。
 
-![](https://github.com/lyy289065406/CTF-Solving-Reports/blob/master/rootme/Web-Client/%5B11%5D%20%5B40P%5D%20Flash%20-%20Authentication/imgs/02.png)
+![](./imgs/02.png)
 
 ------
 
